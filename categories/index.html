@@ -6,20 +6,22 @@ description: "An archive of posts sorted by category."
 comments: false
 ---
 
-<div id="archives">
+<div id="categories">
     {% for category in site.categories %}
-    <div class="archive-group">
+    <div>
         {% capture category_name %}{{ category | first }}{% endcapture %}
         <div id="#{{ category_name | slugize }}"></div>
         <p></p>
 
-        <h3 class="category-head">{{ category_name }}</h3>
+        <h3>{{ category_name }}</h3>
         <a name="{{ category_name | slugize }}"></a>
-        {% for post in site.categories[category_name] %}
-        <article class="archive-item">
-            <h4> → <a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h4>
+        <article>
+            <ul>
+                {% for post in site.categories[category_name] %}{% if post.title != null %}
+                <li class="entry-title"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+                {% endif %}{% endfor %}
+            </ul>
         </article>
-        {% endfor %}
     </div>
     {% endfor %}
 </div>
