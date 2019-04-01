@@ -117,6 +117,18 @@ img {
     -ms-interpolation-mode: bicubic;
     image-rendering: optimizeQuality;
 }
+
+// images and figures
+
+.img-large {
+    width: 70%;
+}
+.img-medium {
+    width: 50%;
+}
+.img-small {
+    width: 30%;
+}
 .img-circle {
 	border-radius: 50%;
 	border: 3px solid $white;
@@ -168,7 +180,7 @@ figure {
   }
 }
 svg:not(:root) {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 // keyboard tag
