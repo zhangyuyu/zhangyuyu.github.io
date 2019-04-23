@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gradle-java-plugin"
+title: "Gradle Java Plugin"
 date: 2015-08-29 19:42:22
 categories: tool
 tags: gradle

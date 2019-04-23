@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gradle-property"
+title: "Gradle Property"
 date: 2015-08-29 10:38:22
 categories: tool
 tags: gradle
