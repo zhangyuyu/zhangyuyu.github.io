@@ -75,7 +75,7 @@ public class LogTest {
 ```
 
 ##### 3.4 其他说明
-在笔者的web项目中，是将MDC的操作放在Filter中，对所有请求前进行filter拦截，然后加上自定义的唯一标识到MDC中，就可以在所有日志输出中，清楚看到某用户的操作流程。
+　　在笔者的web项目中，是将MDC的操作放在Filter中，对所有请求前进行filter拦截，然后加上自定义的唯一标识到MDC中，就可以在所有日志输出中，清楚看到某用户的操作流程。  
 1. 首先有一个单独的MDCRegister定义了对于key需要的put操作。
 ```
 public class MDCRegister {
@@ -140,9 +140,9 @@ public class CustomAuthenticationFilter extends AbstractPreAuthenticatedProcessi
 
 ### 四、Log MDC 实现分析
 #### 1. Slf4j MDC 实现分析
-查看Slf4j MDC的实现源码，可以发现Slf4j MDC内部实现很简单：实现一个单例对应实例，获取具体的MDC实现类，然后其对外接口，就是对参数进行校验，然后调用 MDCAdapter 的方法实现。
+　　查看Slf4j MDC的实现源码，可以发现Slf4j MDC内部实现很简单：实现一个单例对应实例，获取具体的MDC实现类，然后其对外接口，就是对参数进行校验，然后调用 MDCAdapter 的方法实现。
 
-如下只显示了与mdcAdapter相关的Slf4j MDC源码：
+　　如下只显示了与mdcAdapter相关的Slf4j MDC源码：
 ```
 public class MDC {
 
@@ -227,8 +227,8 @@ public interface MDCAdapter {
 ```
 
 #### 2. Logback MDC 实现分析
-Logback 中，用LogbackMDCAdapter实现了Sl4j里面的MDCAdapter接口。
-下面是get 和 put 的代码实现：
+　　Logback 中，用LogbackMDCAdapter实现了Sl4j里面的MDCAdapter接口。  
+　　下面是get 和 put 的代码实现：
 
 ```
 public class LogbackMDCAdapter implements MDCAdapter {
@@ -360,13 +360,13 @@ public final class LoggerFactory {
 }
 
 ```
-上面的部分代码，可以很明显看出，slf4j 会去调用classloader获取当前加载的类中，实现了指定的接口`org/slf4j/impl/StaticLoggerBinder.class`的类，如果多余1个，则会抛出异常。
+　　上面的部分代码，可以很明显看出，slf4j 会去调用classloader获取当前加载的类中，实现了指定的接口`org/slf4j/impl/StaticLoggerBinder.class`的类，如果多余1个，则会抛出异常。
 
-直接在自己的包中实现一个和Slf4j要求路径一样的类，实现对应的接口，然后就可以调用了。
+　　直接在自己的包中实现一个和Slf4j要求路径一样的类，实现对应的接口，然后就可以调用了。
 
-例如Logback中，则实现了一个 org.slf4j.impl.StaticLoggerBinder 类，而这个类，在上面的Slf4j的LogFactory中直接被使用`StaticLoggerBinder.getSingleton();`
+　　例如Logback中，则实现了一个 org.slf4j.impl.StaticLoggerBinder 类，而这个类，在上面的Slf4j的LogFactory中直接被使用`StaticLoggerBinder.getSingleton();`
 
-Logback中StaticLoggerBinder如下：
+　　Logback中StaticLoggerBinder如下：
 ```
 package org.slf4j.impl;
 
@@ -415,7 +415,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
 ```
 
 #### 2. 输出日志模板解析
-关于logback.xml的解析工作，也是在初始化的时候完成的。
+　　关于logback.xml的解析工作，也是在初始化的时候完成的。
 
 2.1 首先StaticLoggerBinder.init()会执行ContextInitializer的autoConfig():
 
@@ -486,7 +486,7 @@ public void doConfigure(final List<SaxEvent> eventList) throws JoranException {
         }
     }
 ```
-在 Logback 中，解析xml的工作，最后都是交给 Action 和其继承类来完成。在 Action 类中提供了三个方法begin、body和end三个方法，这三个抽象方法中：
+　　在 Logback 中，解析xml的工作，最后都是交给 Action 和其继承类来完成。在 Action 类中提供了三个方法begin、body和end三个方法，这三个抽象方法中：
 
 * begin 方法负责处理ElementSelector元素的解析；
 * body 方法，一般为空，处理文本的；
@@ -508,7 +508,7 @@ public class PatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEvent
     }
 }
 ```
-PatternLayoutEncoder会执行start()方法，然后调用相关方法对pattern进行解析，然后构建一个节点链表，保存这个链表会在日志输出的时使用到。
+　　PatternLayoutEncoder会执行start()方法，然后调用相关方法对pattern进行解析，然后构建一个节点链表，保存这个链表会在日志输出的时使用到。
 ```
 
     public void start() {
@@ -590,7 +590,7 @@ class Compiler<E> extends ContextAwareBase {
 ```
 
 #### 3. 日志输出分析
-前面部分进行了初始化配置，紧接着在`logger.info()`的时候，就可以根据初始化得到的Node链表head来解析，遇到%X的时候，从MDC中获取对应的key值，然后append到日志字符串中，然后输出。
+　　前面部分进行了初始化配置，紧接着在`logger.info()`的时候，就可以根据初始化得到的Node链表head来解析，遇到%X的时候，从MDC中获取对应的key值，然后append到日志字符串中，然后输出。
 
 3.1 Logger会执行buildLoggingEventAndAppend方法：
 ```
@@ -707,7 +707,7 @@ public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
     }
 ```
 
-在writeLoopOnConverters方法中，获取对应字符串是不同的，其根据不同的Converter，输出也不同。而Converter的判断，时就是根据我们配置的map映射来的。
+　　在writeLoopOnConverters方法中，获取对应字符串是不同的，其根据不同的Converter，输出也不同。而Converter的判断，时就是根据我们配置的map映射来的。
 
 3.4 MDCConverter的convert实现:
 ```
@@ -733,8 +733,8 @@ public class MDCConverter extends ClassicConverter {
     }
 }
 ```
-下面是LoggingEvent中的getMDCPropertyMap，可以看到转换类型是LogbackMDCAdapter。
-因此，上述event.getMDCPropertyMap().get(key)就可以从LogbackMDCAdapter（MDC Logback实现）中调用get方法了。
+　　下面是LoggingEvent中的getMDCPropertyMap，可以看到转换类型是LogbackMDCAdapter。  
+　　因此，上述event.getMDCPropertyMap().get(key)就可以从LogbackMDCAdapter（MDC Logback实现）中调用get方法了。
 ```
 public Map<String, String> getMDCPropertyMap() {
         // populate mdcPropertyMap if null
@@ -753,7 +753,7 @@ public Map<String, String> getMDCPropertyMap() {
     }
 ```
 
-自此，伴随着从SLF4J到Logback的运行流程，介绍了Logback MDC的使用：
+　　自此，伴随着从SLF4J到Logback的运行流程，介绍了Logback MDC的使用：
 - 从LoggerFactory.getLogger()讲起
 - 初始化找到底层具体的实现接口
 - 日志模板解析

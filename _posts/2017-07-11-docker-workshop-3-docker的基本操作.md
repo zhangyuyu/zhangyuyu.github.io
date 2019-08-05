@@ -10,7 +10,7 @@ tags:
 ---
 ### 一、前言
 
-　　[上一篇 Docker简介](http://zhangyuyu.github.io/2017/07/10/Docker-workshop-2-Docker%E7%AE%80%E4%BB%8B/)讲述了Docker相关的理论知识，了解了Docker的场景及优势，练习了内核的namespace以及cgroup。
+　　[上一篇 Docker简介](http://zhangyuyu.github.io/2017/07/10/Docker-workshop-2-Docker%E7%AE%80%E4%BB%8B/)讲述了Docker相关的理论知识，了解了Docker的场景及优势，练习了内核的namespace以及cgroup。  
 　　本篇将开始实际动手操作，熟悉docker基本的指令。
 
 ### 二、背景
@@ -47,7 +47,7 @@ tags:
 * 单个应用或服务
 
 #### 2. 镜像的分层存储
-　　传统的Linux加载bootfs时会先将rootfs设为read-only，然后在系统自检之后将rootfs从read-only改为read-write，然后我们就可以在rootfs上进行写和读的操作了。
+　　传统的Linux加载bootfs时会先将rootfs设为read-only，然后在系统自检之后将rootfs从read-only改为read-write，然后我们就可以在rootfs上进行写和读的操作了。  
 　　但Docker的镜像却不是这样，它在bootfs自检完毕之后并不会把rootfs的read-only改为read-write。而是利用union mount（UnionFS的一种挂载机制）将一个或多个read-only的rootfs加载到之前的read-only的rootfs层之上。
 
 ![](/assets/img/docker-image-layer1.png)
@@ -361,7 +361,7 @@ catalogue:
 * 不要依赖于IP地址，而是要从外面通过环境变量传入 （Don’t rely on IP addresses ）
 
 ### 最后
-　　本篇文章主要是按照构建流程练习了docker的一些常见基本指令，指令并不全面，详细的指令可以参考[官网](https://docs.docker.com/engine/reference/commandline/docker/#parent-command)进行练习。
+　　本篇文章主要是按照构建流程练习了docker的一些常见基本指令，指令并不全面，详细的指令可以参考[官网](https://docs.docker.com/engine/reference/commandline/docker/#parent-command)进行练习。  
 　　[下一篇](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)将讲述Docker的数据存储。
 
 ### References

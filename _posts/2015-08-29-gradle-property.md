@@ -5,14 +5,14 @@ date: 2015-08-29 10:38:22
 categories: tool
 tags: gradle
 ---
-　　很多Plugin都会向Project中加入额外的Property，在使用这些Plugin时，我们需要对这些Property进行赋值。
+　　很多Plugin都会向Project中加入额外的Property，在使用这些Plugin时，我们需要对这些Property进行赋值。  
 　　Gradle在默认情况下已经为Project定义了很多Property，其中比较常用的有：
->project：Project本身
-name：Project的名字
-path：Project的绝对路径
-description：Project的描述信息
-buildDir：Project构建结果存放目录
-version：Project的版本号
+>project：Project本身  
+name：Project的名字  
+path：Project的绝对路径  
+description：Project的描述信息  
+buildDir：Project构建结果存放目录  
+version：Project的版本号  
 
 
 ### 一、project属性配置

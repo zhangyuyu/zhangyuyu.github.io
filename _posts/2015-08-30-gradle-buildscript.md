@@ -8,7 +8,7 @@ tags:
 ---
 
 ## 一、buildscript、根级别、allprojects的区别
-在编写Gradle脚本的时候，在build.gradle文件中经常看到这样的代码：
+　　在编写Gradle脚本的时候，在build.gradle文件中经常看到这样的代码：
 ```groovy build.gradle
 buildscript {
     repositories {
@@ -70,13 +70,13 @@ task printCSV() {
     }
 }
 ```
-这个时候，是在buildscript里面加入对apache的common-csv库的引用。需要注意的是在buildscript代码块中，对dependencies使用的是classpath声明。
-该classpath声明说明了在执行其余的build脚本时，class loader可以使用这些你提供的依赖项。这也正是我们使用buildscript代码块的目的。
+　　这个时候，是在buildscript里面加入对apache的common-csv库的引用。需要注意的是在buildscript代码块中，对dependencies使用的是classpath声明。  
+　　该classpath声明说明了在执行其余的build脚本时，class loader可以使用这些你提供的依赖项。这也正是我们使用buildscript代码块的目的。
 
 ### 2. 根级别
 > 如果你的项目中也需要使用该类库
 
-就需要定义在buildscript代码块之外的dependencies代码块中，所以有可能会看到在build.gradle中出现以下代码：
+　　就需要定义在buildscript代码块之外的dependencies代码块中，所以有可能会看到在build.gradle中出现以下代码：
 ```groovy
 repositories {
     mavenLocal()

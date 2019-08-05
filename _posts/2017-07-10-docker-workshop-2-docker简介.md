@@ -133,7 +133,7 @@ Docker主要包括两个大组件：
 在[下一篇 Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)里会有对镜像的详细介绍。
 
 #### 4. Docker容器
-　　Docker 容器就是 Docker 镜像的运行实例。用户可以通过 CLI（docker）或是 API 启动、停止、移动或删除容器。可以这么认为，对于应用软件，镜像是软件生命周期的构建和打包阶段，而容器则是启动和运行阶段。
+　　Docker 容器就是 Docker 镜像的运行实例。用户可以通过 CLI（docker）或是 API 启动、停止、移动或删除容器。可以这么认为，对于应用软件，镜像是软件生命周期的构建和打包阶段，而容器则是启动和运行阶段。  
 　　总结起来，Docker容器就是：
 
 * 一个镜像格式
@@ -141,8 +141,8 @@ Docker主要包括两个大组件：
 * 一个执行环境
 
 #### 5.Registry
-　　Docker用Registry保存用户构建的镜像。
-Registry 分私有和公有两种：
+　　Docker用Registry保存用户构建的镜像。  
+　　Registry 分私有和公有两种：
 
 * [Docker Hub](https://hub.docker.com/)是默认的 Registry，由 Docker公司维护，上面有数以万计的镜像，用户可以自由下载和使用。
 * 出于对速度或安全的考虑，用户也可以创建自己的私有Registry

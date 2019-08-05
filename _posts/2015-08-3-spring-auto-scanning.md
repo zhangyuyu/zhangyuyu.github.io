@@ -162,7 +162,7 @@ Spring将会扫描所有用@Component注释过得组件。
 	</beans>
 　　以上xml文件中，所有文件名字，只要包含DAO和Service`（*DAO.*，*Service.*）`关键字的，都将被检查注册到Spring容器中。
 #### 2、Filter Component——exclude
-　　用exclude，制定组件避免被Spring发现并被注册到容器中。
+　　用exclude，制定组件避免被Spring发现并被注册到容器中。  
 以下配置排除用@Service注释过的组件，注意type="annotation"
 
 	<context:component-scan base-package="com.lei.customer" >

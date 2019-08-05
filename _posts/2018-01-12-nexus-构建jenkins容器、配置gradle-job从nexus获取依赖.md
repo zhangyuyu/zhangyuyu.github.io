@@ -50,10 +50,10 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 * kitematic的右侧也会出现如下页面：
-　　![](/assets/img/nexus-jenkins-kitematic-web-view.png 400 200%}
+　　![](/assets/img/nexus-jenkins-kitematic-web-view.png){: .img-medium}
 
 * 浏览器访问`http://localhost:51001/`，输入上述命令行的password
-　　![](/assets/img/nexus-jenkins-unlock.png 400 200%}
+　　![](/assets/img/nexus-jenkins-unlock.png){: .img-medium}
 
 * 自定义安装插件
 　　建议在下图中，选择“select plugins to install”，然后不要选择太多的插件，等到要用的时候再去安装。笔者在本次使用中只选择了`Git plugin`和`Gradle Plugin`。
@@ -61,25 +61,25 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
     * Git插件:用于从git仓库获取代码
     * Gradle插件:用于打包gradle项目
 
-![](/assets/img/nexus-jenkins-customize-plugins.png 400 200%}
+![](/assets/img/nexus-jenkins-customize-plugins.png){: .img-medium}
 
 * 创建admin user
 　　为了不忘记，笔者设置的是`admin/admin`。
 
-![](/assets/img/nexus-jenkins-admin-user.png 400 200%}
+![](/assets/img/nexus-jenkins-admin-user.png){: .img-medium}
 
 * 配置插件
 　　依次选择Jenkins -> Manage Jenkins -> Global Tool Configuration：
 
-![](/assets/img/nexus-jenkins-configure-tools.png 800 500%}
+![](/assets/img/nexus-jenkins-configure-tools.png){: .img-medium}
 
 ## 三、配置gradle job
 
 ### 1. 新建Freestyle project
-　　![](/assets/img/nexus-jenkins-new-item.png 800 500%}
+　　![](/assets/img/nexus-jenkins-new-item.png){: .img-medium}
 
 ### 2. 配置source code management
-　　![](/assets/img/nexus-jenkins-configure-source-code.png 800 500%}
+　　![](/assets/img/nexus-jenkins-configure-source-code.png){: .img-medium}
 
 　　选择Git：
 * Repository URL 填写你的项目的git地址
@@ -87,7 +87,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 * Branches to build => Branch Specifier (blank for 'any') 这里填写构建项目时将要拉取的分支的名称 例如(*/master)
 
 ### 3. 配置build
-　　![](/assets/img/nexus-jenkins-configure-build.png 800 500%}
+　　![](/assets/img/nexus-jenkins-configure-build.png){: .img-medium}
 
 　　选择Invoke Gradle script：
 * 选择 Invoke Gradle , Gradle Version 中选择前面自动安装的gradle
@@ -142,7 +142,7 @@ nexusUrl=http://localhost:32768/repository/
 ##### 4.3.4 具体解决步骤
 * 先构建nexus3-container容器和jenkins-container的网络连接
 用Docker for mac，在两个container的network设置处，都要配置Links：
-![](/assets/img/nexus-jenkins-link-container.png 600 300%}
+![](/assets/img/nexus-jenkins-link-container.png){: .img-medium}
 之后登陆到`jenkins-container`，就可以ping通`nexus3-container`了。
 
 * 将gradle.properties文件里的nexusUrl设置为`nexus3-container`的ip地址及端口号`510001`。
@@ -151,7 +151,7 @@ nexusUrl=http://localhost:32768/repository/
 
 ### 5. 通过jenkins UI进行build
 　　点击左侧的`Build Now`，即可看到`Build History`里面有Build的次数和时间信息。点击进入，可看到详细的console构建信息：
-　　![](/assets/img/nexus-jenkins-build-console.png 800 550%}
+　　![](/assets/img/nexus-jenkins-build-console.png){: .img-medium}
 
 ## 四、自动化
 

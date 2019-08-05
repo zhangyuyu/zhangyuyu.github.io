@@ -28,7 +28,7 @@ tags:
 ## 三、日志
 <!-- more -->
 ### 1. 传统日志处理
-传统的日志处理，是将日志写到本机磁盘上，通常仅用于排查线上问题，很少用于数据分析。
+　　传统的日志处理，是将日志写到本机磁盘上，通常仅用于排查线上问题，很少用于数据分析。
 等需要时，再登录到机器上，用grep、awk等工具分析。那么，这种方式有什么缺点呢？
 
 * 1.它的效率非常低，因为每一次要排查问题的时候都要登到机器上去，当有几十台或者是上百台机器的时候，每一台机器去登陆这是一个没办法接受的事情，可能一台机器浪费两分钟，整个几小时就过去了。
@@ -38,11 +38,13 @@ tags:
 * 3.日志本身它的价值不光在于排查一些系统问题上面，可能在一些数据的分析上，可能利用日志来做一些用户的决策，这也是它的价值，如果不能把它利用起来，价值就不能充分的发挥出来。
 
 ### 2. docker日志处理
-<center>
-Docker daemon与Docker container的联系：
-　　一个docker的container就是一个特殊的进程，它是由docker daemon创建并启动。
+
+>Docker daemon与Docker container的联系：
+>
+>　　一个docker的container就是一个特殊的进程，它是由docker daemon创建并启动。
 因此container是docker daemon的子进程，由docker daemon守护和管理。
-</center>
+
+
 与Docker相关的日志主要有两部分：
 
 * Docker Daemon日志，即Docker自身运行产生的日志。
@@ -51,7 +53,7 @@ Docker daemon与Docker container的联系：
     - stdout、stderr 标准输出
     - 日志文件记录
 
-![](/assets/img/docker-log-driver.png)
+![](/assets/img/docker-log-driver.png){: .img-medium}
 
 　　标准输出日志，其原理在于，当在启动进程的时候，进程之间有一个父子关系，父进程可以拿到子进程的标准输出。拿到子进程标准输出的后，父进程可以对标准输出做所有希望的处理。
 

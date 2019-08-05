@@ -29,20 +29,20 @@ tags:
 #### 1.1 各项配置
 
 * Repository Connectors
-　　![](/assets/img/nexus-docker-proxy-repository-connectors.png 600 250%}
+　　![](/assets/img/nexus-docker-proxy-repository-connectors.png){: .img-medium}
 
 * Docker Registry API Support 
-　　![](/assets/img/nexus-docker-proxy-registry-api.png 600 250%}
+　　![](/assets/img/nexus-docker-proxy-registry-api.png){: .img-medium}
 
 >　　Generally V1 support is only needed for repository groups that will be used for command line-based searches, when any client side tools in use require V1 or when a upstream proxy repository requires V1. If you are unsure if your setup uses these or V1, it is recommended to activate V1 support as there should be no harm if it is not needed.
 
 　　此处Enable v1之后，会允许使用V1作为V2的fallback。将来，V2会替代V1，但是有些功能（比如docker search）在V2中暂时还没实现。如果你不确定是否要enable V1，那么推荐你激活这个选项，因为激活这个选项不会造成任何危害，但是某些情况下，不激活反而会造成一些错误。
 
 * Proxy
-　　![](/assets/img/nexus-docker-proxy-proxy.png 600 250%}
+　　![](/assets/img/nexus-docker-proxy-proxy.png){: .img-medium}
 
 * Storage
-　　![](/assets/img/nexus-docker-proxy-storage.png 600 250%}
+　　![](/assets/img/nexus-docker-proxy-storage.png){: .img-medium}
 
 #### 1.2 从远程docker hub获取base image `tomcat:8.0-jre8-alpine`
 
@@ -96,7 +96,7 @@ localhost:50000/tomcat   8.0-jre8-alpine     5b01f7b2f446        3 weeks ago    
 ```
 
 ##### 1.2.3 查看nexus docker proxy 仓库
-　　![](/assets/img/nexus-browse-docker-proxy.png 600 500%}
+　　![](/assets/img/nexus-browse-docker-proxy.png){: .img-medium}
 　　可以看到`tomcat:8.0-jre8-alpine`在我们的docker proxy仓库里也存下来了。
 
 #### 1.3 可能出现的错误
@@ -113,7 +113,7 @@ Error response from daemon: Get http://localhost:50002/v2/: dial tcp [::1]:50000
 
 * 解决办法
 　　在Docker for mac的Configure Ports处暴露端口号50002（下图暴露了50000、500001、500002供下文所用）
-![](/assets/img/nexus-docker-proxy-configure-port.png 500 250%}
+![](/assets/img/nexus-docker-proxy-configure-port.png){: .img-medium}
 
 ##### 1.3.2. 401 Unauthorized
 * 具体错误：
@@ -152,17 +152,17 @@ Error response from daemon: Get https://localhost:50002/v2/: http: server gave H
 ```
 
 　　对于Windows or Mac，应该设置如下：
-　　![](/assets/img/nexus-docker-proxy-daemon.png 500 250%}
+　　![](/assets/img/nexus-docker-proxy-daemon.png){: .img-medium}
 
 ### 2. 创建docker hosted仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-hosted.png 600 600%}
+　　![](/assets/img/nexus-docker-hosted.png){: .img-medium}
 
 ### 3. 创建docker group仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-group.png 600 600%}
+　　![](/assets/img/nexus-docker-group.png){: .img-medium}
 
 ## 三、构建应用image上传至nexus
 
@@ -174,6 +174,7 @@ Error response from daemon: Get https://localhost:50002/v2/: http: server gave H
 #### 1.2 准备材料Dockerfile和war包
 
 * Dockerfile
+
 ```
 FROM localhost:50000/tomcat:8.0-jre8-alpine
 
@@ -181,10 +182,15 @@ MAINTAINER yuzhang <1580074674@qq.com>
 
 ADD simple-web-1.0.0.war /usr/local/tomcat/webapps/
 ```
-　　端口号`50000`是docker group的端口号，该端口号既包含了docker proxy的端口，也包含了docker hosted的端口。
+
+端口号`50000`是docker group的端口号，该端口号既包含了docker proxy的端口，也包含了docker hosted的端口。
 
 * simple-web-1.0.0.war
-　　`cp build/libs/simple-web-1.0.0.war docker/`
+
+```
+cp build/libs/simple-web-1.0.0.war docker/
+```
+
 
 #### 1.3 构建镜像
 
@@ -332,12 +338,12 @@ docker push localhost:50001/simple-web:1.0.0
 #### 2.2 查看[docker hosted](http://localhost:32768/#browse/browse:docker-local)仓库
 
 　　下图，可看到上传的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-local.png 600 500%}
+　　![](/assets/img/nexus-browse-docker-local.png){: .img-medium}
 
 #### 2.3 查看[docker group](http://localhost:32768/#browse/browse:docker-group)仓库
 
 　　下图，可看到之前proxy中的上传的tomcat:8.0-jre8-alpine镜像，以及我们自己构建的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-group.png 600 500%}
+　　![](/assets/img/nexus-browse-docker-group.png){: .img-medium}
 
 #### 2.4 删除本地镜像，从docker hosted仓库获取镜像
 
@@ -434,7 +440,11 @@ efe8908e7b83: Pushed
 ```
 
 ## 最后
-　　本篇文章主要是利用nexus构建了docker相关的仓库（docker proxy、docker hosted、docker hosted仓库）。通过docker proxy仓库代理Docker Hub，从远程下载base image；基于base image构建自己的应用程序镜像；最后将应用程序镜像push到private的docker hosted仓库中。
+
+　　本篇文章主要是利用nexus构建了docker相关的仓库（docker proxy、docker hosted、docker hosted仓库）。
+通过docker proxy仓库代理Docker Hub，从远程下载base image；基于base image构建自己的应用程序镜像；
+最后将应用程序镜像push到private的docker hosted仓库中。
+　　
 　　根据构建产物构建镜像、上传镜像的过程，可以用一个shell脚本完成，详细可以参考Github代码。
 　　Github代码地址：https://github.com/zhangyuyu/Simple-web
 

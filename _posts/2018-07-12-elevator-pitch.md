@@ -41,13 +41,16 @@ tags:
 　　有很多种方法可用于创建项目愿景，ThoughtWorks常用的有三种：
 
 * Regular Joe Vision
+
 　　具有预期结果的常规愿景陈述。最适合下面两种更具创意的方法可能不起作用的情形。
 
 * The Elevator Pitch
+
 　　对项目输出、其主要特征以及它们如何区分的简短结构化描述。
 　　值得指出的是，Moore本人并不认为Elevator Pitch与完整的项目愿景相同 - 但在此处只是为了描述客户愿景，这一点上，这个工具还是可以适用的。
 
 * The Product Box 
+
 　　项目的输出被假想成商店货架上的一个产品，期待被注意到。通过要求客户为你的产品设计产品包装盒，来确定出最令人兴奋的产品的功能。更多参考[Product Box, innovationgames](https://www.innovationgames.com/product-box/)
 
 　　本篇文章，主要针对于The Elevator Pitch。
@@ -75,13 +78,13 @@ tags:
 
 ### 1. 在一张大白纸上写出以下问题：
 
-a. Who is the **TARGET CUSTOMER**?
-b. What is the　**CUSTOMER NEED**?
-c. What is the　**PRODUCT NAME**?
-d. What is the　**PRODUCT CATEGORY**?
-e. What is its　**KEY BENEFIT**?
-f. Who or what is the **COMPETITION**?
-g. What are the product's **UNIQUE DIFFERENTIATORS_?
+a. Who is the **TARGET CUSTOMER**?  
+b. What is the　**CUSTOMER NEED**?  
+c. What is the　**PRODUCT NAME**?  
+d. What is the　**PRODUCT CATEGORY**?  
+e. What is its　**KEY BENEFIT**?  
+f. Who or what is the **COMPETITION**?  
+g. What are the product's **UNIQUE DIFFERENTIATORS**?  
 
 ### 2. 跟参与者过以下问题，确保所有参与者理解每个问题的含义。
 
@@ -100,33 +103,33 @@ g. What are the product's **UNIQUE DIFFERENTIATORS_?
 
 ### 1. 模板
 
-英文：
-    **<font color=#0099ff size=3>FOR** [ target customer ]
-    **<font color=#0099ff size=3>WHO** [ statement of the need or opportunity ]
-    **<font color=#0099ff size=3>THE** [ product name ]
-    **<font color=#0099ff size=3>IS A** [ product category ]
-    **<font color=#0099ff size=3>THAT** [ key benefit, compelling reason to use ]
-    **<font color=#0099ff size=3>UNLIKE** [ primary competitive alternative ]
-    **<font color=#0099ff size=3>OUR PRODUCT** [ statement of primary differentiation ].
+英文：  
+    **<font color=#0099ff size=3>FOR** [ target customer ]  
+    **<font color=#0099ff size=3>WHO** [ statement of the need or opportunity ]  
+    **<font color=#0099ff size=3>THE** [ product name ]  
+    **<font color=#0099ff size=3>IS A** [ product category ]  
+    **<font color=#0099ff size=3>THAT** [ key benefit, compelling reason to use ]  
+    **<font color=#0099ff size=3>UNLIKE** [ primary competitive alternative ]  
+    **<font color=#0099ff size=3>OUR PRODUCT** [ statement of primary differentiation ].  
 
-中文：
-    对于需要<u><font color=#999999 size=3>   陈述用户需求   </u>的
-    <u><font color=#999999 size=3>   陈述对用户形容词      </u>用户
-    我们的<u><font color=#999999 size=3>   产品名      </u>
-    是一个<u><font color=#999999 size=3>   产品类型     </u>
-    它可以<u><font color=#999999 size=3>   核心价值点   </u>
-    与<u><font color=#999999 size=3>   竞争对手   </u>不同的是
-    它<u><font color=#999999 size=3>   描述独特特点   </u>
+中文：  
+    对于需要<u><font color=#999999 size=3>   陈述用户需求   </u>的  
+    <u><font color=#999999 size=3>   陈述对用户形容词      </u>用户  
+    我们的<u><font color=#999999 size=3>   产品名      </u>  
+    是一个<u><font color=#999999 size=3>   产品类型     </u>  
+    它可以<u><font color=#999999 size=3>   核心价值点   </u>  
+    与<u><font color=#999999 size=3>   竞争对手   </u>不同的是  
+    它<u><font color=#999999 size=3>   描述独特特点   </u>  
 
 ### 2. 模板示例：数字化平台
 
-**<font color=#0099ff size=3>For** All Digital Channels
-**<font color=#0099ff size=3>Who** want a frictionless experience to rapidly innovate
-**<font color=#0099ff size=3>The** Digital Platform
-**<font color=#0099ff size=3>Is A** set of services supporting a differentiated set of capabilities
-**<font color=#0099ff size=3>That** drives change through rapid creation of new customer features
-**<font color=#0099ff size=3>Unlike** our channel specific approach
-**<font color=#0099ff size=3>Our product** allows the platform customers to test ideas rapidly while
+**<font color=#0099ff size=3>For** All Digital Channels  
+**<font color=#0099ff size=3>Who** want a frictionless experience to rapidly innovate  
+**<font color=#0099ff size=3>The** Digital Platform  
+**<font color=#0099ff size=3>Is A** set of services supporting a differentiated set of capabilities  
+**<font color=#0099ff size=3>That** drives change through rapid creation of new customer features  
+**<font color=#0099ff size=3>Unlike** our channel specific approach  
+**<font color=#0099ff size=3>Our product** allows the platform customers to test ideas rapidly while  
 supporting high reliability.
 
 ## 最后

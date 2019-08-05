@@ -15,13 +15,13 @@ tags:
 
 ### 1. 创建单独的blob
 
-　　![](/assets/img/nexus-create-local-blob.png 500 250%}
+　　![](/assets/img/nexus-create-local-blob.png){: .img-medium}
 
 　　完成创建之后，可以在宿主机上看到路径`nexus-data/blobs/mvn-local-blob`的存在。
 
 ### 2. 创建hosted仓库
 　　选择maven2(hosted)的仓库，进行创建：
-　　![](/assets/img/nexus-create-maven2-hosted.png 500 800%}
+　　![](/assets/img/nexus-create-maven2-hosted.png){: .img-medium}
 
 　　注意选择：
 

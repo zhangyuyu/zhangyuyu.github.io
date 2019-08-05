@@ -20,18 +20,20 @@ tags:
 <!-- more -->
 
 ## 二、背景
-　　有幸参与到一个项目的初期阶段，初期是指项目基本还没形成，team 还未组建，只有一个非常 high level 的愿景。
+　　有幸参与到一个项目的初期阶段，初期是指项目基本还没形成，team 还未组建，只有一个非常 high level 的愿景。  
 　　进行项目kick off的workshop之前，项目组的 BA/QA 在准备Init Client Meeting 的 Agenda 时候，跟我介绍了Impact Mapping 这个工具，它给了一个全新的视角和方式来进行需求（目标）的分析，是一种可协作、可视化、快速的思维分析模式。
 
 ## 三、理解Impact Mapping
 
 ### 1. 什么是Impact Mapping
 <center>
-Impact mapping is a strategic planning technique. It prevents organisations from getting lost while building products and delivering projects, by clearly communicating assumptions, helping teams align their activities with overall business objectives and make better roadmap decisions.
+　　Impact mapping is a strategic planning technique. It prevents organisations from getting lost while building products and delivering projects, by clearly communicating assumptions, helping teams align their activities with overall business objectives and make better roadmap decisions.
 </center>
+
 　　Impact Mapping(影响地图)，是一种战略规划技术，通过明确传达假设，以防止组织在构建产品、交付项目时迷失方向，从而帮助团队将其活动与整体业务目标保持一致，并制定更好的路线图决策。
 
 ![](/assets/img/impact-mapping-assumptions.png)
+
 　　简言之，Impact Mapping是一种非常简单的可视化思维分析模式，用于规划从目标到可交付成果的路径。
 
 ### 2. Impact Mapping 的目标对象
@@ -96,8 +98,8 @@ assumptions）；
 
 ## 六、下一步
 ### 1. 优先级
-　　当我们画出了Impact Mapping 之后，发现最后一步的Deliverables可能有很多，这时候我们需要进行优先级的划分。
-优先级的划分，取决的是业务目标而不是产品功能，因此在Impact Mapping 上，我们可以找到该成果对应的Goal，从而列出优先级。
+　　当我们画出了Impact Mapping 之后，发现最后一步的Deliverables可能有很多，这时候我们需要进行优先级的划分。  
+　　优先级的划分，取决的是业务目标而不是产品功能，因此在Impact Mapping 上，我们可以找到该成果对应的Goal，从而列出优先级。
 
 ### 2. Story
 　　优先级列出来之后，我们就可以对应建卡了。建卡的模板如下：
@@ -106,25 +108,26 @@ assumptions）；
 ## 七、示例
 　　以一个在线零售商店为例：
 
-1. WHY
-Goal: 增加在线商品的购买量。
+### 1. WHY
+Goal: 增加在线商品的购买量。 
+ 
 Measure:
-    * WHAT: 接下来的三个月内，在线销售量翻倍
-    * WHERE: 收入
-    * CURRENT: $250,000
-    * MIN: $375,000
-    * MAX: $500,000
+* WHAT: 接下来的三个月内，在线销售量翻倍
+* WHERE: 收入
+* CURRENT: $250,000
+* MIN: $375,000
+* MAX: $500,000
 
-2. WHO
+### 2. WHO
     * Primary: 顾客
     * Secondary: 营销人员、广告商，保证我们有稳定的顾客人流
     * Off-stage: 一些分析人员，通过分析来确定下一阶段的目标
 
-3. HOW
+### 3. HOW
     * 顾客: 买更多的商品、买高质量的商品
     * 营销人员: 吸引更多的新顾客和老顾客
 
-4. WHAT
+### 4. WHAT
     * 顾客购买了该产品也会购买其他产品
     * 根据顾客的偏好设置进行推荐
     * 排序高质量产品
@@ -134,7 +137,7 @@ Measure:
 　　汇总画处Impact Mapping 的图如下：   
 　　![](/assets/img/impact-mapping-example.png)
 
-5. STORY
+### 5. STORY
 　　接下来就可以按照模板写story 了，比如：
 
 ```

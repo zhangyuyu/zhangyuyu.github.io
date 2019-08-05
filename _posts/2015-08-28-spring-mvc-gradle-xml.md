@@ -45,12 +45,19 @@ tags:
 
 　　然后，在Terminal里运行```gradle idea```,下载相关依赖，支持intellij IDE。
 ### 二、Spring MVC
+
 #### 1、WelcomeController.java
+
 #### 2、HelloWorldService.java
+
 #### 3、logback.xml
+
 #### 4、spring-core-config.xml
+
 #### 5、spring-mvc-config.xml
+
 #### 6、web.xml
+
 ### 三、运行，输出结果
 　　在terminal中运行`gradle jettyRun`：
 

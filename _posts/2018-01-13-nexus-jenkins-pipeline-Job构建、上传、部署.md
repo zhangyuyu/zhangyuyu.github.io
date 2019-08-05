@@ -32,7 +32,7 @@ tags:
 ## 三、新建pipeline工程
 
 ### 1. 新建item，选择pipeline工程
-　　![](/assets/img/nexus-jenkins-new-item-pipeline.png 800 400%}
+　　![](/assets/img/nexus-jenkins-new-item-pipeline.png){: .img-medium}
 
 ### 2. 配置
 
@@ -54,7 +54,7 @@ node {
 
 ### 3. Build Now
 　　配置完成之后，即可手动触发了。
-　　![](/assets/img/nexus-jenkins-pipeline-build.png 500 300%}
+　　![](/assets/img/nexus-jenkins-pipeline-build.png){: .img-medium}
 
 ## 四、jenkins中涉及到的术语
 

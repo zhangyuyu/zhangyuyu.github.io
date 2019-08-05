@@ -10,8 +10,8 @@ tags:
 ---
 ## 一、前言
 
-　　[上一篇 Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)按照构建流程练习了docker的一些常见基本指令。
-本篇主要讲述Docker数据管理相关的内容。
+　　[上一篇 Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)按照构建流程练习了docker的一些常见基本指令。  
+　　本篇主要讲述Docker数据管理相关的内容。
 
 ## 二、背景
 　　该系列《Docker in Prodcution》内容包含如下部分：
@@ -251,7 +251,7 @@ Volume只有在下列情况下才能被删除：
 ![](/assets/img/docker-volumn-vs-container.png)
 
 ## 六、卷插件
-数据卷
+数据卷  
 优点：
 * 跟主机磁盘性能一样
 * 容器删除后依然保留
@@ -260,7 +260,7 @@ Volume只有在下列情况下才能被删除：
 * 仅限本地磁盘
 * 不能随容器迁移
 
-Docker推出了Volume plugin接口机制，让第三方的存储厂商来支持Docker Volume并且在此基础上进行功能拓展。
+　　Docker推出了Volume plugin接口机制，让第三方的存储厂商来支持Docker Volume并且在此基础上进行功能拓展。
 
 ![](/assets/img/docker-volumn-plugin.png)
 
@@ -269,7 +269,7 @@ Docker推出了Volume plugin接口机制，让第三方的存储厂商来支持D
 * Flocker：Flocker volume plugin driver主要用于多主机环境Docker数据卷的迁移，从而支持数据库应用等stateful有状态应用的主机间迁移。
 
 ## 最后
-　　本篇文章主要是讲述了Docker的数据存储以及数据管理。
+　　本篇文章主要是讲述了Docker的数据存储以及数据管理。  
 [下一篇](http://zhangyuyu.github.io/2017/07/17/Docker-workshop-5-Docker%E7%BD%91%E7%BB%9C/)将讲述Docker的网络。
 
 ## References
