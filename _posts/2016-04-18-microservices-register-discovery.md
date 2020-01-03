@@ -9,21 +9,21 @@ tags:
 ---
 ### 为什么要使用服务发现？
 　　我们可以想象一下，当我们需要远程的访问REST API或者Thrift API时，我们必须得知道服务的网络地址（IP Address和port）。传统的应用程序都是运行在固定的物理机器上，IP Address和端口号都是相对固定的。可以通过配置文件方式来实现不定期更新的Ip Address和端口号。但是，在基于云的微服务应用中，这是一个非常难以解决的问题。如下图所示：
-![](/assets/img/theproblemofdiscovery.png)
+![](/assets/img/theproblemofdiscovery.png){: .img-medium}
 
 　　在基于云的微服务应用中，服务实例的网络地址（IP Address和Port）是动态分配的，并且由于系统的auto-scaling, failures 和 upgrades等因数，一些服务运行的实例数量也是动态变化的。因此，客户端代码需要使用一个非常精细和准确的服务发现机制。  
 　　有两种主要的服务发现方式：客户端发现（[client-side discovery](http://microservices.io/patterns/client-side-discovery.html)）和服务器端发现（[server-side discovery](http://microservices.io/patterns/server-side-discovery.html)）。
 
 ### 客户端发现方式
 　　在使用客户端发现方式时，客户端通过查询服务注册中心，获取可用的服务的实际网络地址（IP Adress 和 端口号）。然后通过负载均衡算法来选择一个可用的服务实例，并将请求发送至该服务。下图显示了客户端发现方式的结构图：  
-![](/assets/img/pattern-clientside.png)
+![](/assets/img/pattern-clientside.png){: .img-medium}
 
 　　在服务启动的时候，向服务注册中心注册服务；在服务停止的时候，向服务注册中心注销服务。服务注册的一个典型的实现方式就是通过heartbeat机制定时刷新。Netflix OSS 就是使用客户端发现方式的一个很好的例子。  Netflix Eureka是一个服务注册中心。它提供了一个管理和查询可用服务的 REST API。 负载均衡功能是通过Netflix Ribbon（是一个IPC客户端）和Eureka一起共同实现的。在文章的后面将深入的介绍Eureka。  
 　　客户端发现方式的优缺点。由于客户端知道所有可用的服务的实际网络地址，所以可以非常方便的实现负载均衡功能（比如：一致性哈希）。但是这种方式有一个非常明显的缺点就是具有非常强的耦合性。针对不同的语言，每个服务的客户端都得实现一套服务发现的功能。
 
 ### 服务端发现方式
 　　另外一种服务发现的方式就是Server-Side Discovery Pattern，下图展示了这种方式的架构示例图：  
-![](/assets/img/pattern-serverside.png)
+![](/assets/img/pattern-serverside.png){: .img-medium}
 
 　　客户端向load balancer 发送请求。load balancer 查询服务注册中心找到可用的服务，然后转发请求到该服务上。和客户端发现一样，服务都要到注册中心进行服务注册和注销。AWS的弹性负载均衡（Elastic Load Balancer–ELB）就是服务端发现的一个例子。ELB通常是用于为外网服务提供负载平衡的。当然你也可以使用ELB为内部虚拟私有云（VPC）提供负载均衡服务。客户端通过使用DNS名称，发送HTTP或TCP请求到ELB。ELB为EC2或ECS集群提供负载均衡服务。AWS并没有提供单独的服务注册中心。而是通过ELB实现EC2实例和ECS容器的注册的。  
 
@@ -48,13 +48,13 @@ Netflix的高可用（Netflix achieves high availability ）是通过在Amazon E
 
 ### Self-Registration
 　　使用Self-Registration的方式注册，服务实例必须自己主动的到注册中心注册和注销。比如可以使用heartbeat机制了实现。下图为这种方式的示意图：  
-![](/assets/img/pattern-selfregistration.png)
+![](/assets/img/pattern-selfregistration.png){: .img-medium}
 　　Netflix OSS Eureka client就是使用这种方式进行服务注册的。Eureka的客户端处理了服务注册和注销的所有工作。  
 　　Self-Registration方式的优缺点：一个明显的优点就是，非常简单，不需要任何其它辅助组件。而缺点也是比较明显的，使得各个服务和注册中心的耦合度比较高。服务的不同语言的客户端都得实现注册和注销的逻辑。另一种服务注册方式，可以达到解耦的功能，就是third-party registration方式。
 
 ### Third-Party Registration
 　　使用Third-Party方式进行服务注册时，服务本身不必关心注册和注销功能。而是通过其他组件（service registrarhandles）来实现服务注册功能。可以通过如事件订阅等方式来监控服务的状态，如果发现一个新的服务实例运行，就向注册中心注册该服务，如果监控到某一服务停止了，就向注册中心注销该服务。下图显示了这种方式的结构图示意图：  
-![](/assets/img/pattern-thirdparties.png)
+![](/assets/img/pattern-thirdparties.png){: .img-medium}
 　　third-party Registration方式的优点是使服务和注册中心解耦，不用为每种语言实现服务注册的逻辑。这种方式的缺点就是必须得考虑该组件的高可用性。
 
 ### 总结
