@@ -9,8 +9,10 @@ tags:
 ---
 ## 一、前言
 
-　　前面两篇文章[Nexus - Sonatype Nexus搭建maven私服](http://zhangyuyu.github.io/2018/01/07/Nexus-SonatypeNexus%E6%90%AD%E5%BB%BAmaven%E7%A7%81%E6%9C%8D/)、[Nexus - Gradle打包上传至Sonatype Nexus](http://zhangyuyu.github.io/2018/01/08/Nexus-Gradle%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E8%87%B3SonatypeNexus/)都是介绍maven相关的仓库，下载应用程序相关的依赖包，上传应用程序的构建产物。
-本篇文章将介绍docker相关的仓库，下载docker镜像，上传自己构建的应用程序的docker镜像。
+　　前面两篇文章[Nexus - Sonatype Nexus搭建maven私服](http://zhangyuyu.github.io/nexus-gradle-upload-package/)、
+[Nexus - Gradle打包上传至Sonatype Nexus](http://zhangyuyu.github.io/nexus-gradle-upload-package/)都是介绍maven相关的仓库，
+下载应用程序相关的依赖包，上传应用程序的构建产物。  
+　　本篇文章将介绍docker相关的仓库，下载docker镜像，上传自己构建的应用程序的docker镜像。
 方便持续集成时候，能够直接从ci上获取应用程序镜像，进行部署。
 
 <!-- more -->
@@ -22,27 +24,33 @@ tags:
 * 创建一个docker hosted仓库，用于管理我们自己构建的镜像
 * 创建一个docker group仓库，用于对上面两个仓库暴露统一的URL。
 
-　　与此同时，我们会创建三个blob：docker-hub-blob、docker-local-blob、docker-blob分别对应上面的docker proxy、docker hosted、docker group仓库。（创建blob的步骤略）
+　　与此同时，我们会创建三个blob：docker-hub-blob、docker-local-blob、docker-blob分别对应上面的docker proxy、
+docker hosted、docker group仓库。（创建blob的步骤略）
 
 ### 1. 创建docker proxy仓库
 
 #### 1.1 各项配置
 
 * Repository Connectors
-　　![](/assets/img/nexus-docker-proxy-repository-connectors.png){: .img-medium}
+　　![](/assets/img/nexus-docker-proxy-repository-connectors.png){: .img-large}
 
 * Docker Registry API Support 
-　　![](/assets/img/nexus-docker-proxy-registry-api.png){: .img-medium}
+　　![](/assets/img/nexus-docker-proxy-registry-api.png){: .img-large}
 
->　　Generally V1 support is only needed for repository groups that will be used for command line-based searches, when any client side tools in use require V1 or when a upstream proxy repository requires V1. If you are unsure if your setup uses these or V1, it is recommended to activate V1 support as there should be no harm if it is not needed.
+>　　Generally V1 support is only needed for repository groups that will be used for command line-based searches,
+> when any client side tools in use require V1 or when a upstream proxy repository requires V1. 
+>If you are unsure if your setup uses these or V1, it is recommended to activate V1 support as there should be 
+>no harm if it is not needed.
 
-　　此处Enable v1之后，会允许使用V1作为V2的fallback。将来，V2会替代V1，但是有些功能（比如docker search）在V2中暂时还没实现。如果你不确定是否要enable V1，那么推荐你激活这个选项，因为激活这个选项不会造成任何危害，但是某些情况下，不激活反而会造成一些错误。
+　　此处Enable v1之后，会允许使用V1作为V2的fallback。将来，V2会替代V1，但是有些功能（比如docker search）
+在V2中暂时还没实现。如果你不确定是否要enable V1，那么推荐你激活这个选项，因为激活这个选项不会造成任何危害，但是某些情况下，
+不激活反而会造成一些错误。
 
 * Proxy
-　　![](/assets/img/nexus-docker-proxy-proxy.png){: .img-medium}
+　　![](/assets/img/nexus-docker-proxy-proxy.png){: .img-large}
 
 * Storage
-　　![](/assets/img/nexus-docker-proxy-storage.png){: .img-medium}
+　　![](/assets/img/nexus-docker-proxy-storage.png){: .img-large}
 
 #### 1.2 从远程docker hub获取base image `tomcat:8.0-jre8-alpine`
 
@@ -96,7 +104,7 @@ localhost:50000/tomcat   8.0-jre8-alpine     5b01f7b2f446        3 weeks ago    
 ```
 
 ##### 1.2.3 查看nexus docker proxy 仓库
-　　![](/assets/img/nexus-browse-docker-proxy.png){: .img-medium}
+　　![](/assets/img/nexus-browse-docker-proxy.png){: .img-large}
 　　可以看到`tomcat:8.0-jre8-alpine`在我们的docker proxy仓库里也存下来了。
 
 #### 1.3 可能出现的错误
@@ -157,12 +165,12 @@ Error response from daemon: Get https://localhost:50002/v2/: http: server gave H
 ### 2. 创建docker hosted仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-hosted.png){: .img-medium}
+　　![](/assets/img/nexus-docker-hosted.png){: .img-large}
 
 ### 3. 创建docker group仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-group.png){: .img-medium}
+　　![](/assets/img/nexus-docker-group.png){: .img-large}
 
 ## 三、构建应用image上传至nexus
 
@@ -338,12 +346,12 @@ docker push localhost:50001/simple-web:1.0.0
 #### 2.2 查看[docker hosted](http://localhost:32768/#browse/browse:docker-local)仓库
 
 　　下图，可看到上传的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-local.png){: .img-medium}
+　　![](/assets/img/nexus-browse-docker-local.png){: .img-large}
 
 #### 2.3 查看[docker group](http://localhost:32768/#browse/browse:docker-group)仓库
 
 　　下图，可看到之前proxy中的上传的tomcat:8.0-jre8-alpine镜像，以及我们自己构建的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-group.png){: .img-medium}
+　　![](/assets/img/nexus-browse-docker-group.png){: .img-large}
 
 #### 2.4 删除本地镜像，从docker hosted仓库获取镜像
 
@@ -443,9 +451,9 @@ efe8908e7b83: Pushed
 
 　　本篇文章主要是利用nexus构建了docker相关的仓库（docker proxy、docker hosted、docker hosted仓库）。
 通过docker proxy仓库代理Docker Hub，从远程下载base image；基于base image构建自己的应用程序镜像；
-最后将应用程序镜像push到private的docker hosted仓库中。
-　　
-　　根据构建产物构建镜像、上传镜像的过程，可以用一个shell脚本完成，详细可以参考Github代码。
+最后将应用程序镜像push到private的docker hosted仓库中。  
+
+　　根据构建产物构建镜像、上传镜像的过程，可以用一个shell脚本完成，详细可以参考Github代码。  
 　　Github代码地址：https://github.com/zhangyuyu/Simple-web
 
 ## References

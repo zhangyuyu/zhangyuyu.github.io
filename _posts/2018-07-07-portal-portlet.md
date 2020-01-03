@@ -22,14 +22,16 @@ tags:
 <!-- more -->
 
 ## 二、背景
-　　最近加入敏捷咨询的团队，客户是一个保险公司，我们的任务是对他们现有的技术架构进行分析，了解他们的痛点，对应做出敏捷转型的方案。
-　　了解到他们目前是采用 IBM 的 Websphere服务器，采用Portal的架构模式。各个 portlet 之间相互调用，相互依赖，并不是完全的独立。因此他们的主要痛点在于，每次部署都需要很长时间的准备，此外，很难进行集成测试。当然，还有其他一些问题，但是经过小组讨论之后，进行敏捷转型，第一步是要帮助其构建持续集成、持续交付。
+　　最近加入敏捷咨询的团队，客户是一个保险公司，我们的任务是对他们现有的技术架构进行分析，了解他们的痛点，对应做出敏捷转型的方案。  
+　　了解到他们目前是采用 IBM 的 Websphere服务器，采用Portal的架构模式。各个 portlet 之间相互调用，相互依赖，并不是完全的独立。
+因此他们的主要痛点在于，每次部署都需要很长时间的准备，此外，很难进行集成测试。当然，还有其他一些问题，但是经过小组讨论之后，
+进行敏捷转型，第一步是要帮助其构建持续集成、持续交付。  
 　　在此之前，笔者对Portal 这一套门户系统，并不了解，因此特意先做点准备工作。
 
 ## 三、一些概念
 　　先简单解释下`Portal`、`Portlet`、`Portlet 容器`和`JSR168`，然后再详细展开：
 
-![](/assets/img/portal-portlet-architecture.png)
+![](/assets/img/portal-portlet-architecture.png){: .img-large}
 
 　　`Portal`是一种web应用，`Portlet`是一种Web组件。通俗来说，`Portlet`就是一个`Portal`上的子窗口。`Portlet容器`是`Portlet`的运行时环境。`JSR168`是规范，为创建Portlet建立标准的API。
 
@@ -62,7 +64,7 @@ tags:
 
 　　随着企业级Portal的大量涌现，不同提供商创建了不同的Portal组件API，即Portlet。不同的不兼容给应用服务商，Portal用户和Portal Server提供商都造成了问题。为了消除这些问题，JSR168，即Portlet规范提出，从而提供Portlet和Portal间的互操作性。
 
-![](/assets/img/portal-portlet-protocol.png) 
+![](/assets/img/portal-portlet-protocol.png){: .img-large}
 
 　　JSR168的目标:
 
@@ -81,7 +83,8 @@ tags:
 ### 1. Portal页面
 
 　　`Portal`可以被视为一系列具有不同区域的网页。这些区域包含不同的窗口，每个窗口包含一个`Portlet`：
-![](/assets/img/portal-portlet-page.png)
+
+![](/assets/img/portal-portlet-page.png){: .img-large}
 
 　　Portlet 生成片段（Fragment），而 Portal 通常要添加上标题（Title）、控制按钮和其他装饰性元素（Decorations and Controls），而得到 Portlet 窗口（Portlet Window）。最后 Portal 将多个 Portlet 窗口聚合而成一个完整的文档，即 Portal 页面（Portal Page）。
 
@@ -121,11 +124,10 @@ tags:
 * `Widget`比标准的`Portlet`更具响应式，因为`Widget` 对服务器的调用是独立的浏览器调用。但是，也许有时候呈现页面的某一个部分并不是期望行为。
 * `Widget`通常直接与信息系统交互，来获取它们需要的内容，`Portal`则是聚合很多`Portlet`生成的内容
 
-![](/assets/img/portal-portlet-widget.png)
-
+![](/assets/img/portal-portlet-widget.png){: .img-large}
 ### <span id="Servlet">2. `Portlet` 和 `Servlet`</span>
 
-![](/assets/img/portal-portlet-servlet.png)
+![](/assets/img/portal-portlet-servlet.png){: .img-large}
 
 　　相似之处：
 * 都是基于Java技术的web组件
@@ -145,7 +147,7 @@ tags:
 ## <span id="Portlet的生命周期">五、Portlet的生命周期</span>
 
 　　`Portlet API`包含一个`GenericPortlet`类，它实现`Portlet`，`EventPortlet`和`ResourceServingPortlet`接口并提供默认功能。开发人员通常应直接或间接扩展`GenericPortlet`类以实现其portlet。
-![](/assets/img/portal-portlet-interface-diagram.png)
+![](/assets/img/portal-portlet-interface-diagram.png){: .img-large}
 
 　　基本的`Portlet接口`，生命周期包括下面四个方法：
 
@@ -164,7 +166,7 @@ tags:
 
 ## 最后
 　　下图是基于IBM WebSphere Portal的企业门户示例，选择门户平台产品将帮助企业更好的建立各种企业级的集成标准。
-![](/assets/img/portal-portlet-ibm.png)
+![](/assets/img/portal-portlet-ibm.png){: .img-large}
 
 　　本文只是对Portal门户系统的初步了解，至于它的优势劣势、以及它的具体使用场景、使用的注意事项，甚至portlet的开发，不在此做过多描述。要有实际使用过之后，才有更深刻的体会。
 

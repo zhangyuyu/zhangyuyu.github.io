@@ -19,12 +19,12 @@ tags:
 ## 二、背景
 　　最近准备巩固已学的 Java 知识，同时《[面试为什么需要了解JVM](https://mp.weixin.qq.com/s/NsPNfNViujmjM_nzcCc0IA)》一文更加坚定了信念。
 
-　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/2018/07/10/Java-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-vs-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-vs-Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/)》开始，先准备对JVM相关的知识点进行回顾：
+　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/java-jvm-vs-memory-model-vs-java-object-model/)》开始，先准备对JVM相关的知识点进行回顾：
 
 * **Java-JVM-类加载机制**（本篇）
-* [Java-JVM-内存结构](http://zhangyuyu.github.io/2018/07/16/Java-JVM-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
-* [Java-JVM-GC算法](http://zhangyuyu.github.io/2018/07/20/Java-JVM-GC%E7%AE%97%E6%B3%95/)
-* [Java-内存模型](http://zhangyuyu.github.io/2018/07/22/Java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/)
+* [Java-JVM-内存结构](http://zhangyuyu.github.io/Java-jvm-memory/)
+* [Java-JVM-GC算法](http://zhangyuyu.github.io/java-jvm-gc/)
+* [Java-内存模型](http://zhangyuyu.github.io/memory-model/)
 
 ## <span id="什么是类加载机制">三、什么是类加载机制</span>
 　　虚拟机把描述类的数据从`.class`文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java 类型，这就是虚拟机的类加载机制。类加载的最终产品是位于堆区中的Class对象，Class对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口。
@@ -159,7 +159,7 @@ tags:
 
 ### 3. 双亲委派模型
 
-![](/assets/img/java-class-loader-parents-delegation-model.png)
+![](/assets/img/java-class-loader-parents-delegation-model.png){: .img-large}
 
 　　双亲委派模型要求除了顶层的启动类加载器外，其余类加载器都应该有自己的父类加载器。注意，这里类加载器之间的父子关系一般不会以继承的关系实现，而是使用组合关系来复用父加载器的代码。
 
@@ -197,7 +197,7 @@ tags:
 
 ## 最后
 　　本篇主要是从类的生命周期包含七个阶段（加载、验证、准备、解析、初始化、使用和卸载）说起，然后对于类加载的五个阶段（加载、验证、准备、解析、初始化）进行详细展开，最后了解了类加载器的相关知识。
-　　下一篇将讲述《[Java-JVM-内存结构](http://zhangyuyu.github.io/2018/07/16/Java-JVM-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)》。
+　　下一篇将讲述《[Java-JVM-内存结构](http://zhangyuyu.github.io/Java-jvm-memory/)》。
 
 ## References
 * [java类的加载机制, 纯洁的微笑](http://www.ityouknow.com/jvm/2017/08/19/class-loading-principle.html)

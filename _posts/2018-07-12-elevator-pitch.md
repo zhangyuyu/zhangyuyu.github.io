@@ -104,32 +104,32 @@ g. What are the product's **UNIQUE DIFFERENTIATORS**?
 ### 1. 模板
 
 英文：  
-    **<font color=#0099ff size=3>FOR** [ target customer ]  
-    **<font color=#0099ff size=3>WHO** [ statement of the need or opportunity ]  
-    **<font color=#0099ff size=3>THE** [ product name ]  
-    **<font color=#0099ff size=3>IS A** [ product category ]  
-    **<font color=#0099ff size=3>THAT** [ key benefit, compelling reason to use ]  
-    **<font color=#0099ff size=3>UNLIKE** [ primary competitive alternative ]  
-    **<font color=#0099ff size=3>OUR PRODUCT** [ statement of primary differentiation ].  
+    **FOR** [ target customer ]  
+    **WHO** [ statement of the need or opportunity ]  
+    **THE** [ product name ]  
+    **IS A** [ product category ]  
+    **THAT** [ key benefit, compelling reason to use ]  
+    **UNLIKE** [ primary competitive alternative ]  
+    **OUR PRODUCT** [ statement of primary differentiation ].  
 
 中文：  
-    对于需要<u><font color=#999999 size=3>   陈述用户需求   </u>的  
-    <u><font color=#999999 size=3>   陈述对用户形容词      </u>用户  
-    我们的<u><font color=#999999 size=3>   产品名      </u>  
-    是一个<u><font color=#999999 size=3>   产品类型     </u>  
-    它可以<u><font color=#999999 size=3>   核心价值点   </u>  
-    与<u><font color=#999999 size=3>   竞争对手   </u>不同的是  
-    它<u><font color=#999999 size=3>   描述独特特点   </u>  
+    对于需要<u>   陈述用户需求   </u>的  
+    <u>   陈述对用户形容词      </u>用户  
+    我们的<u>   产品名      </u>  
+    是一个<u>   产品类型     </u>  
+    它可以<u>   核心价值点   </u>  
+    与<u>   竞争对手   </u>不同的是  
+    它<u>   描述独特特点   </u>  
 
 ### 2. 模板示例：数字化平台
 
-**<font color=#0099ff size=3>For** All Digital Channels  
-**<font color=#0099ff size=3>Who** want a frictionless experience to rapidly innovate  
-**<font color=#0099ff size=3>The** Digital Platform  
-**<font color=#0099ff size=3>Is A** set of services supporting a differentiated set of capabilities  
-**<font color=#0099ff size=3>That** drives change through rapid creation of new customer features  
-**<font color=#0099ff size=3>Unlike** our channel specific approach  
-**<font color=#0099ff size=3>Our product** allows the platform customers to test ideas rapidly while  
+**For** All Digital Channels  
+**Who** want a frictionless experience to rapidly innovate  
+**The** Digital Platform  
+**Is A** set of services supporting a differentiated set of capabilities  
+**That** drives change through rapid creation of new customer features  
+**Unlike** our channel specific approach  
+**Our product** allows the platform customers to test ideas rapidly while  
 supporting high reliability.
 
 ## 最后

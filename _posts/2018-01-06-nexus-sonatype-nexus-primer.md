@@ -9,9 +9,10 @@ tags:
 ---
 ## 一、前言
 　　最近在组建公司内部的Devops Community，按照一整套的项目故事线列出了Devops knowledge Library。
-其中涉及到基础知识、云平台、持续集成、产出物管理、开发流程和工具、容器编排、配置管理、监控管理、日志管理、HA等。  
-　　为了尽快的搭建内部人员的知识体系，按照上述流程，我们利用最常见的工具，构想了一个简单的流水线，每个人负责流水线的一部分，然后顺序串到一起，进行输出。  
-　　这里，我主要负责利用Nexus进行仓库的管理，本篇主要讲述nexus的一些基础，[下一篇](http://zhangyuyu.github.io/2018/01/07/Nexus-SonatypeNexus%E6%90%AD%E5%BB%BAmaven%E7%A7%81%E6%9C%8D/)将利用nexus作为maven的私服，利用gradle进行构建一个简单的web应用。
+其中涉及到基础知识、云平台、持续集成、产出物管理、开发流程和工具、容器编排、配置管理、监控管理、日志管理、HA等。    
+　　为了尽快的搭建内部人员的知识体系，按照上述流程，我们利用最常见的工具，构想了一个简单的流水线，每个人负责流水线的一部分，
+然后顺序串到一起，进行输出。  
+　　这里，我主要负责利用Nexus进行仓库的管理，本篇主要讲述nexus的一些基础，[下一篇](http://zhangyuyu.github.io/nexus-sonatype-nexus-maven-server/)将利用nexus作为maven的私服，利用gradle进行构建一个简单的web应用。
 
 <!-- more -->
 
@@ -185,13 +186,16 @@ sh-4.2$
 主要是邮件服务器，调度的设置地方
 
 ## 七、实现原理
-　　Nexus Repository是以Java和JavaScript为主，实现的一个包含前端与后台的Web服务。 后台方面，它采用Jetty作为应用服务器、Karaf作为OSGi容器、OrientDB作为数据库。 前端方面，它使用Swagger UI作为框架，是一个单页面Web App。
+　　Nexus Repository是以Java和JavaScript为主，实现的一个包含前端与后台的Web服务。 后台方面，它采用Jetty作为应用服务器、
+Karaf作为OSGi容器、OrientDB作为数据库。 前端方面，它使用Swagger UI作为框架，是一个单页面Web App。
 
-　　另外，它也通过Resteasy支持REST API，可以通过网络进行访问控制。并且，自行实现了一个插件系统，用插件的方式支持了更多复杂的功能。比如，Maven、PyPI、Docker这些支持，都是由插件实现的。 如果希望支持其它方式的代理、缓存、发布，比如APT，也可以通过插件定制。
+　　另外，它也通过Resteasy支持REST API，可以通过网络进行访问控制。并且，自行实现了一个插件系统，用插件的方式支持了更多复杂的功能。
+比如，Maven、PyPI、Docker这些支持，都是由插件实现的。 如果希望支持其它方式的代理、缓存、发布，比如APT，也可以通过插件定制。
 
 ## 八、最后
-　　本篇主要讲述了Nexus的概念及好处，介绍了nexus涉及到的安装目录以及数据目录，简单的列举了一下Nexus repository manager UI上的功能。
-　　[下一篇](http://zhangyuyu.github.io/2018/01/07/Nexus-SonatypeNexus%E6%90%AD%E5%BB%BAmaven%E7%A7%81%E6%9C%8D/) 将利用nexus作为maven的私服，利用gradle进行构建一个简单的web应用。
+　　本篇主要讲述了Nexus的概念及好处，介绍了nexus涉及到的安装目录以及数据目录，简单的列举了一下Nexus repository manager UI上的功能。  
+　　[下一篇](http://zhangyuyu.github.io/nexus-sonatype-nexus-maven-server/) 将利用nexus作为maven的私服，
+利用gradle进行构建一个简单的web应用。
 
 ## References
 * [【项目管理】Sonatype Nexus,Maven私服](http://blog.csdn.net/gaoying_blogs/article/details/48917847)

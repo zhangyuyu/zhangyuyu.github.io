@@ -8,7 +8,7 @@ tags:
 - nexus
 ---
 ## 一、前言
-　　[前一篇](http://zhangyuyu.github.io/2018/01/07/Nexus-SonatypeNexus%E6%90%AD%E5%BB%BAmaven%E7%A7%81%E6%9C%8D/)介绍了用nexus搭建一个maven私服，并尝试创建了一个proxy仓库。本篇将主要创建一个hosted仓库，上传gradle生成的构建产物。
+　　[前一篇](http://zhangyuyu.github.io/nexus-sonatype-nexus-maven-server/)介绍了用nexus搭建一个maven私服，并尝试创建了一个proxy仓库。本篇将主要创建一个hosted仓库，上传gradle生成的构建产物。
 
 <!-- more -->
 ## 二、搭建Nexus hosted 仓库

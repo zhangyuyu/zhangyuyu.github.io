@@ -10,7 +10,6 @@ comments: true
 ## 一、前言
 
 　　本文主要是记录一下参与了"Why Multicultural Teams are More Successful" Meetup的过程，以及从中学习到的方法心态。
-
 <!-- more -->
 
 ## 二、背景
@@ -29,7 +28,9 @@ comments: true
 
 ### 1. 为什么多元文化的团队更成功？
 　　首先看一个数据，到2030年时候，50%的工作都会消失。那么解决办法是什么呢？  
-　　<center>学习+ 全球视角的发展。</center>  
+```html
+                            学习+ 全球视角的发展。
+```
 　　而多元文化的团队，更能适应这种模式，在创新方面也会更有优势。
 
 　　多元文化的公司:
@@ -73,7 +74,7 @@ comments: true
 
 ### 5. 总结
 　　面三个练习之后，你会觉得，好像就是练习了一下，直到最后讲师画龙点睛的串到一起。是的，我们平常跨文化team的工作中，很多时候回遇到上面的场景，上面让你实践的练习就是最好的技巧与方法。下面是最后讲师给出的cheat sheet:
-<font face="Monaco" size=3>
+```
 
 1. Always be aware of your own point of view - the lens through which you view of world.
 
@@ -95,8 +96,7 @@ recognise the individual personality traits of your team members. This is always
 9. Put your own assumptions about other cultures repeatedly to the test. Evaluate as little as possible, ask a lot, show curiosity and genuine interest in your team members.
 
 10. Expand your knowledge about other cultures on a constant basis - go travelling, learn languages and meet new people from around the world.
-
-</font>
+```
 
 　　上面的三个练习分别对应cheat sheet的第1，2，5点。
 

@@ -9,7 +9,7 @@ tags:
 ---
 
 ## 一、前言
-　　上一篇《[Java-JVM-类加载机制](http://zhangyuyu.github.io/2018/07/15/Java-JVM-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/)》讲述了 JVM 类加载的过程，类加载的最终产品是位于堆区中的Class对象，本篇主要针对于Java 虚拟机运行时数据区域展开：
+　　上一篇《[Java-JVM-类加载机制](http://zhangyuyu.github.io/java-jvm-classloader/)》讲述了 JVM 类加载的过程，类加载的最终产品是位于堆区中的Class对象，本篇主要针对于Java 虚拟机运行时数据区域展开：
 
 * 程序计数器
 * Java 虚拟机栈
@@ -23,12 +23,12 @@ tags:
 ## 二、背景
 　　最近准备巩固已学的 Java 知识，同时《[面试为什么需要了解JVM](https://mp.weixin.qq.com/s/NsPNfNViujmjM_nzcCc0IA)》一文更加坚定了信念。
 
-　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/2018/07/10/Java-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-vs-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-vs-Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/)》开始，先准备对JVM相关的知识点进行回顾：
+　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/java-jvm-vs-memory-model-vs-java-object-model/)》开始，先准备对JVM相关的知识点进行回顾：
 
-* [Java-JVM-类加载机制](http://zhangyuyu.github.io/2018/07/15/Java-JVM-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/)
+* [Java-JVM-类加载机制](http://zhangyuyu.github.io/java-jvm-classloader/)
 * **Java-JVM-内存结构**（本篇）
-* [Java-JVM-GC算法](http://zhangyuyu.github.io/2018/07/20/Java-JVM-GC%E7%AE%97%E6%B3%95/)
-* [Java-内存模型](http://zhangyuyu.github.io/2018/07/22/Java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/)
+* [Java-JVM-GC算法](http://zhangyuyu.github.io/java-jvm-gc/)
+* [Java-内存模型](http://zhangyuyu.github.io/2018/07/22/java-memory-model/)
 
 ## 三、运行时数据区域
 
@@ -90,15 +90,15 @@ tags:
 　　上面在运行时数据区域的各部分介绍里，说明了线程共享情况和异常情况。
 
 　　根据线程共享可以归类如下：
-　　![](/assets/img/java-jvm-memory-thread.png)
+　　![](/assets/img/java-jvm-memory-thread.png){: .img-medium}
 
 　　根据异常可以归类如下：
-　　![](/assets/img/java-jvm-memory-error.png)
+　　![](/assets/img/java-jvm-memory-error.png){: .img-large}
 
 ## 最后
 　　本篇主要是针对JVM 内存结构的各个区域（程序计数器、Java 虚拟机栈、本地方法栈、Java 堆、方法区、运行时常量池）进行介绍，其中程序计数器、Java 虚拟机栈、本地方法栈是线程私有的，Java 堆、方法区、运行时常量池是线程共享的。程序计数器是唯一一个在Java虚拟机规范中没有规定任何`OutOfMemoryError`情况的区域。
 
-　　下一篇将讲述《[Java-JVM-GC算法](http://zhangyuyu.github.io/2018/07/20/Java-JVM-GC%E7%AE%97%E6%B3%95/)》
+　　下一篇将讲述《[Java-JVM-GC算法](http://zhangyuyu.github.io/java-jvm-gc/)》
 
 ## References
 * [JVM内存结构, 纯洁的微笑](http://www.ityouknow.com/jvm/2017/08/25/jvm-memory-structure.html)

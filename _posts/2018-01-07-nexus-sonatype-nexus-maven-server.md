@@ -8,7 +8,7 @@ tags:
 - nexus
 ---
 ## 一、前言
-　　[上一篇](http://zhangyuyu.github.io/2018/01/06/Nexus-SonatypeNexus%E5%85%A5%E9%97%A8/)里面介绍了Sonatype Nexus的基础知识，本篇文章将搭建一个maven私服，从里面获取应用程序需要的jar依赖。
+　　[上一篇](http://zhangyuyu.github.io/nexus-sonatype-nexus-primer/)里面介绍了Sonatype Nexus的基础知识，本篇文章将搭建一个maven私服，从里面获取应用程序需要的jar依赖。
 <!-- more -->
 
 ## 二、搭建Nexus
@@ -19,18 +19,20 @@ tags:
 
 ### 2. 安装Kitematic
 　　直接点击Docker for mac，选择Kitematic即可下载安装。
-![](/assets/img/nexus-install-kitematic.png)
+![](/assets/img/nexus-install-kitematic.png){: .img-small}
 
 ### 3. 创建nexus容器
 　　在Kitematic上搜索nexus，选择nexus3，点击create，即可下载镜像，创建容器。
 
 #### 3.1 docker image
 　　宿主机上docker image的存放地址：
-　　`$HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux`
+```
+$HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux
+```
 
 #### 3.2 docker container
 　　配置端口号如下：
-![](/assets/img/nexus-container-configure.png)
+![](/assets/img/nexus-container-configure.png){: .img-large}
 
 #### 4. 访问nexus
 　　访问 http://localhost:32768/ ，登录用户名`admin`，密码`admin123`。
@@ -42,7 +44,7 @@ tags:
 ![](/assets/img/nexus-repostories-maven-center.png)
 
 　　如果没有改代理仓库，可自己创建一个maven central的代理仓库，并配置如上图。
-
+r-workshop-4-docker-volume.md
 ## 三、搭建web应用
 
 目录结构如下：
@@ -180,15 +182,19 @@ BUILD SUCCESSFUL in 37s
 ### 2. 查看依赖jar文件
 
 　　相关的依赖包的获取顺序为：
-　　`remote maven central -> nexus私服的nexus data -> 本地宿主机的~/.gradle`
+```
+remote maven central -> nexus私服的nexus data -> 本地宿主机的~/.gradle
+```
 
 #### 2.1 nexus缓存jar文件
 
-* 在 http://localhost:32768/#browse/browse:maven-central 可以看到：
-![](/assets/img/nexus-jar-files.png)
+* 在`http://localhost:32768/#browse/browse:maven-central`可以看到：
+
+![](/assets/img/nexus-jar-files.png){: .img-large}
 
 * 关闭电脑的网络，手动点击右侧的path，可以下载jar文件
-![](/assets/img/nexus-jar-path.png)
+
+![](/assets/img/nexus-jar-path.png){: .img-medium}
 
 * 手动删除宿主机上nexus-data/blob/default/content的内容，再次下载时候，会报错502。
 
@@ -227,10 +233,11 @@ Press any key to stop the server.
 　　`http://localhost:8090/simple-web/` ,可以看到`Hello, World.`出现。
 
 ## 最后
-　　本篇将nexus作为maven私服，使本地的gradle web应用直接从nexus获取相关依赖，从而避免网络断开造成应用不可访问。
-　　[下一篇](http://zhangyuyu.github.io/2018/01/08/Nexus-Gradle%E6%89%93%E5%8C%85%E4%B8%8A%E4%BC%A0%E8%87%B3SonatypeNexus/)基于本篇工程的基础上，会用gradle生成程序构建产物，打包上传到nexus。
+　　本篇将nexus作为maven私服，使本地的gradle web应用直接从nexus获取相关依赖，从而避免网络断开造成应用不可访问。  
+　　[下一篇](http://zhangyuyu.github.io/nexus-gradle-upload-package/)基于本篇工程的基础上，会用gradle生成程序
+构建产物，打包上传到nexus。
 
-Github代码地址：https://github.com/zhangyuyu/Simple-web
+　　Github代码地址：https://github.com/zhangyuyu/Simple-web
 
 ## References
 * [Simple Gradle Web Application](http://codetutr.com/2013/03/23/simple-gradle-web-application/)

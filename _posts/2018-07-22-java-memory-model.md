@@ -10,8 +10,8 @@ tags:
 ---
 ## 一、前言
 
-　　前文《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/2018/07/10/Java-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-vs-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-vs-Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/)》中提到JVM内存结构和Java内存模型的区别。  
-　　JVM内存结构，和Java虚拟机的运行时区域有关。而Java内存模型，和Java并发编程有关。《[Java-JVM-内存结构](http://zhangyuyu.github.io/2018/07/16/Java-JVM-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)》一文中对JVM内存结构进行了说明，本篇将主要回顾Java的内存模型：
+　　前文《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/java-jvm-vs-memory-model-vs-java-object-model/)》中提到JVM内存结构和Java内存模型的区别。  
+　　JVM内存结构，和Java虚拟机的运行时区域有关。而Java内存模型，和Java并发编程有关。《[Java-JVM-内存结构](http://zhangyuyu.github.io/Java-jvm-memory/)》一文中对JVM内存结构进行了说明，本篇将主要回顾Java的内存模型：
 
 * 硬件的效率和一致性
 * Java内存模型
@@ -24,11 +24,11 @@ tags:
 ## 二、背景
 　　最近准备巩固已学的 Java 知识，同时《[面试为什么需要了解JVM](https://mp.weixin.qq.com/s/NsPNfNViujmjM_nzcCc0IA)》一文更加坚定了信念。
 
-　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/2018/07/10/Java-JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84-vs-Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-vs-Java%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/)》开始，先准备对JVM相关的知识点进行回顾：
+　　从《[Java - JVM内存结构 vs Java内存模型 vs Java对象模型](http://zhangyuyu.github.io/java-jvm-vs-memory-model-vs-java-object-model/)》开始，先准备对JVM相关的知识点进行回顾：
 
-* [Java-JVM-类加载机制](http://zhangyuyu.github.io/2018/07/15/Java-JVM-%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/)
-* [Java-JVM-内存结构](http://zhangyuyu.github.io/2018/07/16/Java-JVM-%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/)
-* [Java-JVM-GC算法](http://zhangyuyu.github.io/2018/07/20/Java-JVM-GC%E7%AE%97%E6%B3%95/)
+* [Java-JVM-类加载机制](http://zhangyuyu.github.io/java-jvm-classloader/)
+* [Java-JVM-内存结构](http://zhangyuyu.github.io/Java-jvm-memory/)
+* [Java-JVM-GC算法](http://zhangyuyu.github.io/java-jvm-gc/)
 * **Java-内存模型**（本篇）
 
 ## 三、硬件的效率与一致性
