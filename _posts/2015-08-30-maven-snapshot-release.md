@@ -27,14 +27,14 @@ tags:
 
 ### 4. 措施
 　　将依赖更改为`SNAPSHOT`的依赖，具体措施为增加如下的`updatePolicy`：
-```groovy
+```xml
 <snapshots>
     <enabled>true</enabled>
     <updatePolicy>always</updatePolicy>
 </snapshots>
 ```
 　　改之后：
-```groovy
+```xml
 <repositories>
     <repository>
         <id>ea-nexus</id>
@@ -54,7 +54,7 @@ tags:
 * `release`正式仓库则是用来保存稳定的发行版本。release版本不允许修改，每次进行release版本修改，发布必须提升版本号。
 
 　　定义一个组件/模块为快照版本，只需要在pom文件中在该模块的版本号后加上`-SNAPSHOT`即可(注意这里必须是大写)
-```groovy
+```xml
 <artifactId>pmo-common</artifactId>
 <packaging>jar</packaging>
 <version>1.1.9-SNAPSHOT</version>
@@ -66,7 +66,7 @@ tags:
 　　如果是正式发布版本，那么在`mvn deploy`时会自动发布到正式版本库中，而使用正式版本的模块，在不更改版本号的情况下，
 编译打包时如果本地已经存在该版本的模块则**不会主动**去镜像服务器上下载。
 
-```groovy
+```xml
 <distributionManagement>
     <repository>
         <id>nexus-releases</id>

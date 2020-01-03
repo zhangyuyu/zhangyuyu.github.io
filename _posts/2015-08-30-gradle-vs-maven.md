@@ -18,7 +18,7 @@ tags:
 ## 二、历史
 
 ### 1. Ant
-`　　Ant`("Another Neat Tool")，是由Apache软件件基金会启动的一个开源项目。
+　　`Ant`("Another Neat Tool")，是由Apache软件件基金会启动的一个开源项目。
 2000年发布，在很短时间内成为Java项目上最流行的构建工具。它基于过程式编程的idea。在最初的版本之后，逐渐具备了支持插件的功能。
 * 使用XML描述构建的步骤
 * 只负责构建步骤管理，如果要添加依赖管理的功能，还需要引入`Ivy`
@@ -56,7 +56,7 @@ Gradle比起Maven的先进之处。
 ### 1. 依赖管理
 在Java世界中，groupId、artifactId、version组成的Coordination（坐标）唯一标识一个依赖。任何基于Maven构建的项目自身也必须定义这三项属性，
 生成的包可以是Jar包，也可以是war包或者ear包。一个典型的依赖引用如下所示：
-```groovy
+```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter</artifactId>

@@ -9,7 +9,8 @@ tags:
 
 ## 一、buildscript、根级别、allprojects的区别
 　　在编写Gradle脚本的时候，在build.gradle文件中经常看到这样的代码：
-```groovy build.gradle
+build.gradle
+```groovy 
 buildscript {
     repositories {
         mavenCentral()
@@ -25,7 +26,6 @@ allprojects {
         mavenCentral()
     }
 }
-
 ```
 
 1. buildscript
