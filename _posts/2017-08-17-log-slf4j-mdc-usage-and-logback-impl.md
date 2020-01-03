@@ -8,10 +8,13 @@ tags:
 - logging
 ---
 ### 一、前言
-　　上一篇[Java日志管理](http://zhangyuyu.github.io/2017/08/17/Log-Java%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/)里面对Java相关的日志库进行了梳理，了解了常见的日志框架（Log Implement）和日志门面(Log Facade)。
+　　上一篇[Java日志管理](http://zhangyuyu.github.io/log-java/)里面对Java相关的日志库进行了梳理，
+了解了常见的日志框架（Log Implement）和日志门面(Log Facade)。
 
-* 使用日志门面，开发者只需要针对门面接口开发，而调用组件的应用程序则可以搭配自己喜好的日志实现工具，目前来看Slf4j + LogBack组合方式是比较通用的方式。
-* 对于web应用而言，多线程的调用是很常见的，我们可能需要对一个用户的操作流程进行归类标记，用来区分哪个行为和哪个日志事件有关，MDC则很好的处理这个需求。
+* 使用日志门面，开发者只需要针对门面接口开发，而调用组件的应用程序则可以搭配自己喜好的日志实现工具，目前来看
+Slf4j + LogBack组合方式是比较通用的方式。
+* 对于web应用而言，多线程的调用是很常见的，我们可能需要对一个用户的操作流程进行归类标记，用来区分哪个行为和哪个日志事件有关，
+MDC则很好的处理这个需求。
 
 本篇将介绍Slf4j + LogBack的组合方式，介绍MDC的使用，并结合源码对实现原理进行分析。
 
@@ -20,14 +23,17 @@ tags:
 
 <!-- more -->
 ### 三、Slf4j MDC 介绍
-　　介绍Slf4j和MDC的由来，可以参考上一篇[Java日志管理](http://zhangyuyu.github.io/2017/08/17/Log-Java%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/)。
+　　介绍Slf4j和MDC的由来，可以参考上一篇[Java日志管理](http://zhangyuyu.github.io/log-java/)。
 
 #### 1. Slf4j是什么？
-　　Slf4j全称为Simple Logging Facade for Java (简单日志门面)，作为各种日志框架的简单门面或者抽象，包括JUL，Log4j，Logback。SLF4J允许用户在部署期间加入自己希望使用的日志系统。其实Slf4j与Log4j, Logback都是同一作者。
+　　Slf4j全称为Simple Logging Facade for Java (简单日志门面)，作为各种日志框架的简单门面或者抽象，包括JUL、Log4j、Logback。
+SLF4J允许用户在部署期间加入自己希望使用的日志系统。其实Slf4j与Log4j, Logback都是同一作者。
 
 #### 2. MDC是什么?
 　　MDC全称为Mapped Diagnostic Context（映射调试上下文）是 log4j 和 logback 提供的一种方便在多线程条件下记录日志的功能。
-　　典型的例子是 Web 应用服务器。当用户访问某个页面时，应用服务器可能会创建一个新的线程来处理该请求，也可能从线程池中复用已有的线程。在一个用户的会话存续期间，可能有多个线程处理过该用户的请求。这使得比较难以区分不同用户所对应的日志。当需要追踪某个用户在系统中的相关日志记录时，就会变得很麻烦。
+　　典型的例子是 Web 应用服务器。当用户访问某个页面时，应用服务器可能会创建一个新的线程来处理该请求，也可能从线程池中复用已有的线程。
+在一个用户的会话存续期间，可能有多个线程处理过该用户的请求。这使得比较难以区分不同用户所对应的日志。
+当需要追踪某个用户在系统中的相关日志记录时，就会变得很麻烦。
 
 >　　虽然，Slf4j 是用来适配其他的日志具体实现包的，但是针对 MDC功能，目前只有Logback 以及 Log4j 支持。
 
@@ -35,7 +41,7 @@ tags:
 
 ##### 3.1 使用MDC
 
-```
+```java
 package com.daimler.otr;
 
 import org.slf4j.Logger;
@@ -44,7 +50,7 @@ import org.slf4j.MDC;
 
 public class LogTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(LogTest.class;
+    private static final Logger logger = LoggerFactory.getLogger(LogTest.class);
 
     public static void main(String[] args) {
         MDC.put("THREAD_ID", String.valueOf(Thread.currentThread().getId()));
@@ -56,7 +62,7 @@ public class LogTest {
 
 ##### 3.2 logback的配置
 
-```
+```xml
 <configuration>
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
@@ -75,9 +81,10 @@ public class LogTest {
 ```
 
 ##### 3.4 其他说明
-　　在笔者的web项目中，是将MDC的操作放在Filter中，对所有请求前进行filter拦截，然后加上自定义的唯一标识到MDC中，就可以在所有日志输出中，清楚看到某用户的操作流程。  
+　　在笔者的web项目中，是将MDC的操作放在Filter中，对所有请求前进行filter拦截，然后加上自定义的唯一标识到MDC中，
+就可以在所有日志输出中，清楚看到某用户的操作流程。  
 1. 首先有一个单独的MDCRegister定义了对于key需要的put操作。
-```
+```java
 public class MDCRegister {
     private void registerUUID(String requestId){
         MDC.put("uuid", requestId);
@@ -110,7 +117,7 @@ public class MDCRegister {
 }
 ```
 2. 然后自定义Filter，使用MDC相关操作
-```
+```java
 @Component
 public class CustomAuthenticationFilter extends AbstractPreAuthenticatedProcessingFilter {
 
@@ -129,10 +136,10 @@ public class CustomAuthenticationFilter extends AbstractPreAuthenticatedProcessi
         
         return request;
     }
-
+}
 ```
 3. 定义logback.xml中的pattern
-```
+```xml
 <pattern>[V][%d][%-5p][%t][%c{0}][%M][%X{uuid}][%X{app_version}][%X{user_name}][%X{session_id}] - %m%n</pattern>
 ```
 
@@ -140,10 +147,11 @@ public class CustomAuthenticationFilter extends AbstractPreAuthenticatedProcessi
 
 ### 四、Log MDC 实现分析
 #### 1. Slf4j MDC 实现分析
-　　查看Slf4j MDC的实现源码，可以发现Slf4j MDC内部实现很简单：实现一个单例对应实例，获取具体的MDC实现类，然后其对外接口，就是对参数进行校验，然后调用 MDCAdapter 的方法实现。
+　　查看Slf4j MDC的实现源码，可以发现Slf4j MDC内部实现很简单：实现一个单例对应实例，获取具体的MDC实现类，然后其对外接口，
+就是对参数进行校验，然后调用 MDCAdapter 的方法实现。
 
 　　如下只显示了与mdcAdapter相关的Slf4j MDC源码：
-```
+```java
 public class MDC {
 
     static MDCAdapter mdcAdapter;
@@ -209,7 +217,7 @@ public class MDC {
 ```
 
 MDCAdapter接口源码如下：
-```
+```java
 public interface MDCAdapter {
   
     public void put(String key, String val);
@@ -230,7 +238,7 @@ public interface MDCAdapter {
 　　Logback 中，用LogbackMDCAdapter实现了Sl4j里面的MDCAdapter接口。  
 　　下面是get 和 put 的代码实现：
 
-```
+```java
 public class LogbackMDCAdapter implements MDCAdapter {
     final ThreadLocal<Map<String, String>> copyOnThreadLocal = new ThreadLocal<Map<String, String>>();
 
@@ -287,17 +295,20 @@ public class LogbackMDCAdapter implements MDCAdapter {
             return null;
         }
     }
-    ...
+    // ...
 }
 ```
 
 ### 五、 Logback 日志输出实现
-MDC 的功能实现很简单，就是在线程上下文中，维护一个 Map<String,String> 属性来支持日志输出的时候，当我们在配置文件logback.xml中配置了%X{key}，则后台日志打印出对应的 key 的值。
+　　MDC 的功能实现很简单，就是在线程上下文中，维护一个 Map<String,String> 属性来支持日志输出的时候，
+当我们在配置文件logback.xml中配置了%X{key}，则后台日志打印出对应的 key 的值。
+
 #### 1. 初始化
-所谓初始化，就是我们构建logger的时候。在LoggerFactory.getLogger()，调用的是 slf4j 的方法，而底层使用的是logback的实现。因此，初始化的重点就是找到底层具体的实现接口，然后构建具体类。
+　　所谓初始化，就是我们构建logger的时候。在LoggerFactory.getLogger()，调用的是 slf4j 的方法，而底层使用的是logback的实现。
+因此，初始化的重点就是找到底层具体的实现接口，然后构建具体类。
 
 Sl4j中LoggerFactory如下：
-```
+```java
 package org.slf4j;
 public final class LoggerFactory {
     public static Logger getLogger(String name) {
@@ -349,11 +360,11 @@ public final class LoggerFactory {
             replayEvents();
             SUBST_FACTORY.clear();
         } catch (NoClassDefFoundError ncde) {
-            ...  
+            // ...  
         } catch (java.lang.NoSuchMethodError nsme) {
-            ...
+           // ...
         } catch (Exception e) {
-            ...
+           // ...
         }
     }
     private static String STATIC_LOGGER_BINDER_PATH = "org/slf4j/impl/StaticLoggerBinder.class"
@@ -367,7 +378,7 @@ public final class LoggerFactory {
 　　例如Logback中，则实现了一个 org.slf4j.impl.StaticLoggerBinder 类，而这个类，在上面的Slf4j的LogFactory中直接被使用`StaticLoggerBinder.getSingleton();`
 
 　　Logback中StaticLoggerBinder如下：
-```
+```java
 package org.slf4j.impl;
 
 import ch.qos.logback.core.status.StatusUtil;
@@ -404,11 +415,11 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
             try {
                 new ContextInitializer(defaultLoggerContext).autoConfig();
             } catch (JoranException je) {
-               ...
+               // ...
             }
-            ...
+           // ...
         } catch (Throwable t) {
-           ...
+           // ...
         }
     }
 }
@@ -419,7 +430,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
 
 2.1 首先StaticLoggerBinder.init()会执行ContextInitializer的autoConfig():
 
-```
+```java
 public class ContextInitializer {
     public void autoConfig() throws JoranException {
             StatusListenerConfigHelper.installIfAsked(loggerContext);
@@ -427,20 +438,20 @@ public class ContextInitializer {
             if (url != null) {
                 configureByResource(url);
             } else {
-                ...
+                // ...
             }
         }
 
     public void configureByResource(URL url) throws JoranException {
-            ...
+            // ...
             if (urlString.endsWith("groovy")) {
-               ...
+                // ...
             } else if (urlString.endsWith("xml")) {
                 JoranConfigurator configurator = new JoranConfigurator();
                 configurator.setContext(loggerContext);
                 configurator.doConfigure(url);
             } else {
-                ...
+               // ...
             }
         }
 }
@@ -448,7 +459,7 @@ public class ContextInitializer {
 
 2.2 此后，会执行GenericConfigurator的下述doConfigure方法：
 
-```
+```java
 public void doConfigure(final List<SaxEvent> eventList) throws JoranException {
         buildInterpreter();
         // disallow simultaneous configurations of the same context
@@ -460,7 +471,7 @@ public void doConfigure(final List<SaxEvent> eventList) throws JoranException {
 
 2.3 紧接着，执行EventPlayer的play方法，解析xml：
 
-```
+```java
  public void play(List<SaxEvent> aSaxEventList) {
         eventList = aSaxEventList;
         SaxEvent se;
@@ -494,7 +505,7 @@ public void doConfigure(final List<SaxEvent> eventList) throws JoranException {
 
 2.4 PatternLayoutEncoder会创建一个PatternLayout对象，然后获取到logback.xml中配置的模板字符串，即`[%d{yyyy-MM-dd HH:mm:ss} %highlight(%-5p) %logger.%M\(%F:%L\)] %X{THREAD_ID} %msg%n`，如配置的节点名一样，其在代码中同样赋值给pattern变量。
 
-```
+```java
 public class PatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEvent> {
     @Override
     public void start() {
@@ -509,11 +520,11 @@ public class PatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEvent
 }
 ```
 　　PatternLayoutEncoder会执行start()方法，然后调用相关方法对pattern进行解析，然后构建一个节点链表，保存这个链表会在日志输出的时使用到。
-```
 
+```java
     public void start() {
         if (pattern == null || pattern.length() == 0) {
-            ...
+           // ...
         }
         try {
             Parser<E> p = new Parser<E>(pattern);
@@ -522,15 +533,15 @@ public class PatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEvent
             }
             Node t = p.parse();
             this.head = p.compile(t, getEffectiveConverterMap());
-            ...
+            // ...
         } catch (ScanException sce) {
-            ...
+            // ...
         }
     }
 ```
 2.5 Parse依次遍历pattern字符串，然后把符合要求的字符串放进tokenList中，这个list就维护了我们最终需要输出的模板的格式化模式了。
 
-```
+```java
     public Parser(String pattern, IEscapeUtil escapeUtil) throws ScanException {
         try {
             TokenStream ts = new TokenStream(pattern, escapeUtil);
@@ -542,7 +553,7 @@ public class PatternLayoutEncoder extends PatternLayoutEncoderBase<ILoggingEvent
 ```
 
 2.6 Compiler会将这个tokenList进行转换，成为我们需要的Node类型的拥有head 和 tail 的链表。
-```
+```java
 class Compiler<E> extends ContextAwareBase {
      Converter<E> compile() {
         head = tail = null;
@@ -590,10 +601,11 @@ class Compiler<E> extends ContextAwareBase {
 ```
 
 #### 3. 日志输出分析
-　　前面部分进行了初始化配置，紧接着在`logger.info()`的时候，就可以根据初始化得到的Node链表head来解析，遇到%X的时候，从MDC中获取对应的key值，然后append到日志字符串中，然后输出。
+　　前面部分进行了初始化配置，紧接着在`logger.info()`的时候，就可以根据初始化得到的Node链表head来解析，遇到%X的时候，
+从MDC中获取对应的key值，然后append到日志字符串中，然后输出。
 
 3.1 Logger会执行buildLoggingEventAndAppend方法：
-```
+```java
 public final class Logger implements org.slf4j.Logger, LocationAwareLogger, AppenderAttachable<ILoggingEvent>, Serializable {
     private void filterAndLog_0_Or3Plus(final String localFQCN, final Marker marker, final Level level, final String msg, final Object[] params,
                         final Throwable t) {
@@ -643,7 +655,7 @@ public final class Logger implements org.slf4j.Logger, LocationAwareLogger, Appe
 ```
 
 3.2 继而调用OutputStreamAppender的append方法（由于配置文件配置的是Appender模式）
-```
+```java
 public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
    @Override
     protected void append(E eventObject) {
@@ -653,8 +665,7 @@ public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
 
         subAppend(eventObject);
     }
-}
-  protected void subAppend(E event) {
+    protected void subAppend(E event) {
         if (!isStarted()) {
             return;
         }
@@ -676,10 +687,11 @@ public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
   protected void writeOut(E event) throws IOException {
         this.encoder.doEncode(event);
     }   
+}
 ```
 
 3.3 按照模板获取值然后转换成字节流输出到后台
-```
+```java
     public void doEncode(E event) throws IOException {
         String txt = layout.doLayout(event);
         outputStream.write(convertToBytes(txt));
@@ -707,10 +719,10 @@ public class OutputStreamAppender<E> extends UnsynchronizedAppenderBase<E> {
     }
 ```
 
-　　在writeLoopOnConverters方法中，获取对应字符串是不同的，其根据不同的Converter，输出也不同。而Converter的判断，时就是根据我们配置的map映射来的。
+　　在writeLoopOnConverters方法中，获取对应字符串是不同的，其根据不同的Converter，输出也不同。而Converter的判断，就是根据我们配置的map映射来的。
 
 3.4 MDCConverter的convert实现:
-```
+```java
 public class MDCConverter extends ClassicConverter {
     public String convert(ILoggingEvent event) {
         Map<String, String> mdcPropertyMap = event.getMDCPropertyMap();
@@ -735,7 +747,7 @@ public class MDCConverter extends ClassicConverter {
 ```
 　　下面是LoggingEvent中的getMDCPropertyMap，可以看到转换类型是LogbackMDCAdapter。  
 　　因此，上述event.getMDCPropertyMap().get(key)就可以从LogbackMDCAdapter（MDC Logback实现）中调用get方法了。
-```
+```java
 public Map<String, String> getMDCPropertyMap() {
         // populate mdcPropertyMap if null
         if (mdcPropertyMap == null) {

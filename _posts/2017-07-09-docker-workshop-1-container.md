@@ -9,18 +9,18 @@ tags:
 - docker
 ---
 ### 一、前言
-　　“不想在自己电脑上装一堆东西，恩，弄个docker容器，随便安装，随便破坏，随便试验的玩吧！”，这是笔者了解docker的初衷。  
+　　"不想在自己电脑上装一堆东西，恩，弄个docker容器，随便安装，随便破坏，随便试验的玩吧！"，这是笔者了解docker的初衷。  
 　　后来回到武汉弄起了《Docker in Production》的workshop，正好项目也用到了docker，这才有股动力push我系统的了解一下docker。
 
 ### 二、背景
-　　该系列《Docker in Prodcution》内容包含如下部分：
+　　该系列《Docker in Production》内容包含如下部分：
 
 * **容器简介**
-* [Docker简介](http://zhangyuyu.github.io/2017/07/10/Docker-workshop-2-Docker%E7%AE%80%E4%BB%8B/)
-* [Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
-* [Docker数据存储](http://zhangyuyu.github.io/2017/07/13/Docker-workshop-4-Docker%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/)
-* [Docker网络](http://zhangyuyu.github.io/2017/07/17/Docker-workshop-5-Docker%E7%BD%91%E7%BB%9C/)
-* [Docker安全](http://zhangyuyu.github.io/2017/07/20/Docker-workshop-6-Docker%E5%AE%89%E5%85%A8/)
+* [Docker简介](http://zhangyuyu.github.io/docker-workshop-2-docker-brief/)
+* [Docker的基本操作](http://zhangyuyu.github.io/docker-workshop-3-docker-operation/)
+* [Docker数据存储](http://zhangyuyu.github.io/docker-workshop-4-docker-volume/)
+* [Docker网络](http://zhangyuyu.github.io/docker-workshop-5-docker-network/)
+* [Docker安全](http://zhangyuyu.github.io/docker-workshop-6-docker-security/)
 * 多主机部署
 * 服务发现
 * 日志、跟踪、监控
@@ -31,7 +31,7 @@ tags:
 <!-- more -->
 　　容器是一种轻量级、可移植、自包含的软件打包技术，使应用程序可以在几乎任何地方以相同的方式运行。开发人员在自己笔记本上创建并测试好的容器，无需任何修改就能够在生产系统的虚拟机、物理服务器或公有云主机上运行。
 
-![](/assets/img/container-structure.png)
+![](/assets/img/container-structure.png){: .img-medium}
 　　容器是轻量级的操作系统级虚拟化，可以让我们在一个资源隔离的进程中运行应用及其依赖项。运行应用程序所必需的组件都将打包成一个镜像并可以复用。执行镜像时，它运行在一个隔离环境中，并且不会共享宿主机的内存、CPU 以及磁盘，这就保证了容器内进程不能监控容器外的任何进程。
 
 ### 四、容器解决的问题
@@ -43,16 +43,16 @@ tags:
 
 　　每一次运输，一方面货主与承运方会担心因货物类型的不同而导致损失，如几个铁桶压在了一堆香蕉上。另外一方面，运输过程中需要使用不同的交通工具严重浪费了大量的时间和精力，如货物先搬上车，到了码头由码头工人卸货，然后装上船，到岸之后卸下船，再装上火车，到达目的地，最后卸货……中间可能还有更多种类的交通工具，涉及到更多次的装、卸货、转移过程。
 
-![](/assets/img/container-in-transportation1.png)
+![](/assets/img/container-in-transportation1.png){: .img-medium}
 
 　　幸运的是，集装箱的发现解决了这个难题。
 
-![](/assets/img/container-in-transportation2.png)
+![](/assets/img/container-in-transportation2.png){: .img-medium}
 
 　　无论货物的体积、形状差异有多大，最终都被装载进集装箱里。由于要实现标准尺寸集装箱的运输，堆场、码头、起吊、船舶、汽车乃至公路桥梁、隧道等，都必须适应它在全球范围内的应用而逐渐加以标准化，形成影响国际贸易的全球物流系统。由此带来的是系统效率大幅度提升，运输费大幅度下降，地球上任何一个地方生产的产品都可以快速而低廉地运送到有需求的地方。
 
 | 比较        | 散货运输    |  集装箱运输  |
-| --------    | -----:   | :----: |
+| :--------    | :-----   | :---- |
 | 货物装卸时间  | 几天到一个星期，分拣、合并、装卸过程繁琐     |   几个小时  |
 | 货物装卸时间占整个运输过程的比例     | >50%   |   <10%    |
 | 所需劳动力    |    大量的码头工人   |   少数的码头工人和起重机操作员   | 
@@ -64,7 +64,7 @@ tags:
 　　同样，我们看看今天的软件开发面临的挑战。
 
 　　以前几乎所有的应用都采用三层架构（Presentation/Appliation/Data），系统部署到有限的几台物理服务器上。如今，开发人员通常使用多种服务（如MQ、cache、DB）构建和组装应用，此外应用很可能部署到不同的环境（如虚拟服务器、私有云和公有云）。一方面应用包含多种服务，这些服务有自己所依赖的库和软件包；另一方面存在多种部署环境，服务在运行时可能需要动态迁移到不同的环境中。如何让每种服务能够在所有的部署环境中顺利运行？  
-　　“服务”和“应用环境”对应到前面运输行业的“货物类型”和“运输工具”，容器则对应“集装箱”。  
+　　"服务"和"应用环境"对应到前面运输行业的"货物类型"和"运输工具"，容器则对应"集装箱"。  
 ![](/assets/img/container-in-application.png)
 
 ### 五、为什么容器技术如此诱人？
@@ -174,10 +174,11 @@ sudo lxc-destroy --name cloned-container
 ```
 
 ### 最后
-　　本篇文章主要是涉及容器，从what, why, how上讲述了容器的相关知识。
-至于容器的历史，有兴趣的读者可以自己查看一下相关资料。 
-[容器简史：从20世纪70年代的chroot到2016的Docker](http://www.dockone.io/article/1522)以及[【容器那些事儿】容器技术的前世今生](http://www.alauda.cn/2016/01/18/container-history/)  
-　　下一篇将讲述Docker的出现以及相关的基本理论知识。
+　　本篇文章主要是涉及容器，从what, why, how上讲述了容器的相关知识。至于容器的历史，有兴趣的读者可以自己查看一下相关资料。 
+* [容器简史：从20世纪70年代的chroot到2016的Docker](http://www.dockone.io/article/1522)
+* [【容器那些事儿】容器技术的前世今生](http://www.alauda.cn/2016/01/18/container-history/)  
+
+　　[下一篇]((http://zhangyuyu.github.io/docker-workshop-2-docker-brief/))将讲述Docker的出现以及相关的基本理论知识。
 
 ### References
 * [为什么容器技术将主宰世界？](http://dockone.io/article/803)

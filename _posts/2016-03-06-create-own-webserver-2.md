@@ -15,7 +15,7 @@ tags:
 　　但是当你试图去连接没有被设计成协同工作的服务器和框架时， 你可能会遇到（可能你遇到过）下面的问题：
 ![](/assets/img/WS_part2_after_wsgi.png){: .img-medium}
 
-　　基本上，你不得不使用能协同工作的组件，而不是你想使用的组件。因此，你如何确保你的web server能够运行多种web框架，而不用改变web server和web框架的代码呢？问题的答案就是*Python Web Server GateWay Interface*(或简称WSHI，读作”wizgy”)。
+　　基本上，你不得不使用能协同工作的组件，而不是你想使用的组件。因此，你如何确保你的web server能够运行多种web框架，而不用改变web server和web框架的代码呢？问题的答案就是*Python Web Server GateWay Interface*(或简称WSHI，读作"wizgy")。
 ![](/assets/img/WS_part2_wsgi_idea.png){: .img-medium}
 
 　　WSGI允许开发者自由选择web server和web框架。现在你可以混合搭配不同的web server和web框架，并选择一个满足你需求的组合。比如，你可以用Gunicorn，Nginx/uWSGI或者Waitress运行Django，Flask或者Pyramid。真正的混合搭配，多亏了服务器和框架对WSGI的支持。  
@@ -24,7 +24,7 @@ tags:
 　　因此，WSGI是我在第一部分提出，并在本文开头重复的问题的答案。你的web server必须实现WSGI接口的服务器端部分，所有的Python web框架已经实现了WSGI接口的框架端部分。这样不用修改服务器的代码去适应指定的web框架，你就能使用你的web server。  
 　　现在你已经知道web server和web框架都支持WSGI，它允许你选择适合的组合，同时也有利与服务器和框架的开发者专注于他们擅长的领域，不会因为越界而踩到对方的脚趾。其他语言也有类似的接口：比如Java有Servlet API，Ruby有Rack。
 
-　　一切都很好，但是我猜你会说："把代码展示给我看！”好吧，一起看看这个简单的WSGI服务器的实现吧：
+　　一切都很好，但是我猜你会说："把代码展示给我看！"好吧，一起看看这个简单的WSGI服务器的实现吧：
 ```python
 
 # Tested with Python 2.7.9, Linux & Mac OS X
@@ -367,7 +367,7 @@ WSGIServer: Serving HTTP on port 8888 …
 ![](/assets/img/WS_part2_server_summary.png){: .img-medium}
 
 　　这就是全部了，你现在有了一个可以工作的WSGI服务器，它可以服务那些用WSGI兼容的Web框架（Django，Flask，Pyramid或者你自己写的WSGI框架）开发的Web应用程序。最好的是服务器能够在不改变服务器代码的情况下与多个Web框架使用。还不错！
-在你离开之前，还有一个问题需要你思考，"如何让你的服务器一次处理多个请求？”
+在你离开之前，还有一个问题需要你思考，"如何让你的服务器一次处理多个请求？"
 　　敬请关注，在第三部分我会展示给你一种实现方式。谢谢！
 　　
 >本文翻译自Ruslan's Blog [Let’s Build A Web Server. Part 2.](https://ruslanspivak.com/lsbaws-part2/)

@@ -9,7 +9,7 @@ comments: true
 ---
 ## 一、前言
 
-　　本文主要是记录一下参与了“Why Multicultural Teams are More Successful” Meetup的过程，以及从中学习到的方法心态。
+　　本文主要是记录一下参与了"Why Multicultural Teams are More Successful" Meetup的过程，以及从中学习到的方法心态。
 
 <!-- more -->
 

@@ -10,18 +10,18 @@ tags:
 ---
 ## 一、前言
 
-　　[上一篇 Docker的数据存储](http://zhangyuyu.github.io/2017/07/13/Docker-workshop-4-Docker%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/)主要讲述Docker数据管理的两种方式：数据卷和数据卷容器。  
+　　[上一篇 Docker的数据存储](http://zhangyuyu.github.io/docker-workshop-4-docker-volume/)主要讲述Docker数据管理的两种方式：数据卷和数据卷容器。  
 　　本篇主要讲述网络的实现、网络模型、网络模式等相关知识。
 
 ## 二、背景
-　　该系列《Docker in Prodcution》内容包含如下部分：
+　　该系列《Docker in Production》内容包含如下部分：
 
-* [容器简介](http://zhangyuyu.github.io/2017/07/09/Docker-workshop-1-%E5%AE%B9%E5%99%A8%E7%AE%80%E4%BB%8B/)
-* [Docker简介](http://zhangyuyu.github.io/2017/07/10/Docker-workshop-2-Docker%E7%AE%80%E4%BB%8B/)
-* [Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
-* [Docker数据存储](http://zhangyuyu.github.io/2017/07/13/Docker-workshop-4-Docker%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/)
+* [容器简介](http://zhangyuyu.github.io/docker-workshop-1-docker-container/)
+* [Docker简介](http://zhangyuyu.github.io/docker-workshop-2-docker-brief/)
+* [Docker的基本操作](http://zhangyuyu.github.io/docker-workshop-3-docker-operation/)
+* [Docker数据存储](http://zhangyuyu.github.io/docker-workshop-4-docker-volume/)
 * **Docker网络**
-* [Docker安全](http://zhangyuyu.github.io/2017/07/20/Docker-workshop-6-Docker%E5%AE%89%E5%85%A8/)
+* [Docker安全](http://zhangyuyu.github.io/docker-workshop-6-docker-security/)
 * 多主机部署
 * 服务发现
 * 日志、跟踪、监控
@@ -30,14 +30,16 @@ tags:
 　　Docker现有的网络模型主要是通过使用Network namespace、Linux Bridge、Iptables、veth pair等技术实现的。
 <!-- more -->
 
-* Network namespace（网络命名空间）
-　　Network namespace主要提供了关于网络资源的隔离，包括网络设备、IPv4和IPv6协议栈、IP路由表、防火墙、/proc/net目录、/sys/class/net目录、端口（socket）等。
-* Linux Bridge
+* Network namespace（网络命名空间）  
+　　Network namespace主要提供了关于网络资源的隔离，包括网络设备、IPv4和IPv6协议栈、IP路由表、防火墙、
+/proc/net目录、/sys/class/net目录、端口（socket）等。
+* Linux Bridge  
 　　功能相当于物理交换机，为连在其上的设备（容器）转发数据帧。如docker0网桥。
-* Iptables
+* Iptables  
 　　主要为容器提供NAT以及容器网络安全。
-* veth pair（虚拟网络设备）
-　　两个虚拟网卡组成的数据通道。在Docker中，用于连接Docker容器和Linux Bridge。一端在容器中作为eth0网卡，另一端在Linux Bridge中作为网桥的一个端口。
+* veth pair（虚拟网络设备）  
+　　两个虚拟网卡组成的数据通道。在Docker中，用于连接Docker容器和Linux Bridge。一端在容器中作为eth0网卡，
+另一端在Linux Bridge中作为网桥的一个端口。
 
 ## 四、网络创建过程
 
@@ -48,15 +50,16 @@ tags:
 * 容器一端的虚拟接口，将放到新容器中，并修改名字为eth0，该接口只在容器的命名空间可见;
 * 从网桥可用地址段中获取一个空闲地址分配给容器的eth0（例如172.17.0.2/16），并配置默认路由网关为dokcer0的IP地址。
 
-　　完成这些配置之后，该容器就可以使用eth0虚拟网卡来连接其它容器和访问外部网络了。
-　　当该容器结束后，Docker会清空容器，容器内的网络接口eth0会随网络命名空间一起被清除，veth0ac844e接口也被自动从docker0卸载。
+　　完成这些配置之后，该容器就可以使用eth0虚拟网卡来连接其它容器和访问外部网络了。  
+　　当该容器结束后，Docker会清空容器，容器内的网络接口eth0会随网络命名空间一起被清除，veth0ac844e接口也被自动从docker0卸载。  
 
 　　另外，可以在docker运行的时候通过--net参数指定容器的网络配置，有[四个可选值](#1-单节点网络模式)。
 
 ### 【练习1】网络创建细节
 1）启动一个 /bin/bash 容器，指定 --net=none 参数
-
-    $ sudo docker run -i -t --rm --net=none busybox /bin/sh
+```
+$ sudo docker run -i -t --rm --net=none busybox /bin/sh
+```
 
 2) 在`本地主机`查找容器的进程 id，并为它创建网络命名空间。
 ```bash
@@ -78,7 +81,7 @@ $ ip addr show docker0
        valid_lft forever preferred_lft forever
 ```
 
-4) 创建一对 “veth pair” 接口 A 和 B，绑定 A 到网桥 docker0，并启用它
+4) 创建一对 "veth pair" 接口 A 和 B，绑定 A 到网桥 docker0，并启用它
 ```bash
 $ sudo ip link add A type veth peer name B
 $ sudo brctl addif docker0 A
@@ -166,11 +169,13 @@ ACCEPT     tcp  --  anywhere             172.17.0.2           tcp dpt:5000
 * 网络(Network): 使得一组端点之间能够相互直接交流的，实现可以是Linux网桥或重叠
 
 ### 与Docker Links对比
-与Docker Links进行简单对比，Docker Links允许容器之间互相发现，并使用容器名作为别名进行互相之间的通信，比DNS或服务发现更容易使用，且不用关心端口映射，但Docker Links有一些限制，比如:
+　　与Docker Links进行简单对比，Docker Links允许容器之间互相发现，并使用容器名作为别名进行互相之间的通信，
+比DNS或服务发现更容易使用，且不用关心端口映射，但Docker Links有一些限制，比如:
 * 只能在同一宿主机内使用，不能跨主机
 * 重新创建容器会移除之前的链接(Links)
 * 被链接的容器必须是一个已经启动的容器
-因此，在Docker 1.9版本之后，官方推荐使用Docker网络功能代替Docker Links。Docker容器网络模型的主要优势在于:
+
+　　因此，在Docker 1.9版本之后，官方推荐使用Docker网络功能代替Docker Links。Docker容器网络模型的主要优势在于:
 * 在某个特定网络下的所有容器能自由地相互通信
 * 多个网络有助于分散容器之间的流量传输
 * 多个端点允许一个容器加入到多个网络中
@@ -191,24 +196,31 @@ ACCEPT     tcp  --  anywhere             172.17.0.2           tcp dpt:5000
 ### 1-单节点网络模式
 
 #### 1-1.bridge模式
-使用--net=bridge指定
-该模式中，Docker守护进程创建一个虚拟以太网桥docker0，附加在其上的任何网卡之间都能自动转发数据包。默认情况下，守护进程会创建一对对等接口，将其中一个接口设置为容器的eth0接口，另一个接口放置在宿主机的命名空间中，从而将宿主机上的所有容器都连接到这个内部网络上。同时，守护进程还会从网桥的私有地址空间中分配一个IP地址和子网给该容器。
+　　使用--net=bridge指定  
+　　该模式中，Docker守护进程创建一个虚拟以太网桥docker0，附加在其上的任何网卡之间都能自动转发数据包。默认情况下，
+守护进程会创建一对对等接口，将其中一个接口设置为容器的eth0接口，另一个接口放置在宿主机的命名空间中，
+从而将宿主机上的所有容器都连接到这个内部网络上。同时，守护进程还会从网桥的私有地址空间中分配一个IP地址和子网给该容器。
 
 #### 1-2.host模式
-使用--net=host指定
-该模式将禁用Docker容器的网络隔离。因为容器共享了宿主机的网络命名空间，直接暴露在公共网络中。因此，你需要通过端口映射（port mapping）来进行协调。
+　　使用--net=host指定  
+　　该模式将禁用Docker容器的网络隔离。因为容器共享了宿主机的网络命名空间，直接暴露在公共网络中。因此，
+你需要通过端口映射（port mapping）来进行协调。
 
-当使用host模式网络时，容器实际上继承了宿主机的IP地址。该模式比bridge模式更快（因为没有路由开销），但是它将容器直接暴露在公共网络中，是有安全隐患的。
+　　当使用host模式网络时，容器实际上继承了宿主机的IP地址。该模式比bridge模式更快（因为没有路由开销），
+但是它将容器直接暴露在公共网络中，是有安全隐患的。
 
 #### 1-3.container模式
-使用--net=container指定
-该模式会重用另一个容器的网络命名空间。通常来说，当你想要自定义网络栈时，该模式是很有用的。实际上，该模式也是Kubernetes使用的网络模式。
+　　使用--net=container指定  
+　　该模式会重用另一个容器的网络命名空间。通常来说，当你想要自定义网络栈时，该模式是很有用的。
+实际上，该模式也是Kubernetes使用的网络模式。
 
 #### 1-4.none模式
-使用--net=none指定
-该模式将容器放置在它自己的网络栈中，但是并不进行任何配置。实际上，该模式关闭了容器的网络功能，在以下两种情况下是有用的：容器并不需要网络（例如只需要写磁盘卷的批处理任务）；你希望自定义网络。
+　　使用--net=none指定  
+　　该模式将容器放置在它自己的网络栈中，但是并不进行任何配置。实际上，该模式关闭了容器的网络功能，在以下两种情况下是有用的：
+* 容器并不需要网络（例如只需要写磁盘卷的批处理任务）；
+* 你希望自定义网络。
 
-####【练习2】单主机创建网络
+#### 【练习2】单主机创建网络
 1) 创建`web`网络，并创建一个基于`web`网络的容器`web_container`
 ```bash
 $ docker network create web
@@ -538,7 +550,7 @@ vagrant@vagrant:~$ docker inspect -f {{.NetworkSettings.Networks.net_overlay.IPA
 
 ## 最后
 　　本篇文章主要是讲述Docker网络相关的内容，包括Docker的网络实现、网络创建过程、网络模型组件与优势、网络模式（单节点、多节点）等。  
-　　[下一篇](http://zhangyuyu.github.io/2017/07/20/Docker-workshop-6-Docker%E5%AE%89%E5%85%A8/)将讲述Docker的安全。
+　　[下一篇](http://zhangyuyu.github.io/docker-workshop-6-docker-security/)将讲述Docker的安全。
 
 ## References
 * [Docker网络模式](http://dockone.io/article/1261)

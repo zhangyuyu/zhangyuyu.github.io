@@ -337,7 +337,7 @@ tags:
 
 #### 4. Fake
 
-　　Fake Object 和 Test Stub 很类似，都是依赖组件的代替，区别就在于Fake Object 更“轻量级”。“轻量级”是指Fake Object 仅仅提供和依赖组件一样的功能接口保证待测系统正常工作，让待测系统认为 Fake Object 就是“真的”依赖组件，实现细节可以非常简单，不需要具有真实依赖组件的很多特性，也不需要像Test Stub那样接受测试的需求，返回特定response给待测系统。
+　　Fake Object 和 Test Stub 很类似，都是依赖组件的代替，区别就在于Fake Object 更"轻量级"。"轻量级"是指Fake Object 仅仅提供和依赖组件一样的功能接口保证待测系统正常工作，让待测系统认为 Fake Object 就是"真的"依赖组件，实现细节可以非常简单，不需要具有真实依赖组件的很多特性，也不需要像Test Stub那样接受测试的需求，返回特定response给待测系统。
 
 　　![](/assets/img/test-double-fake.png)
 

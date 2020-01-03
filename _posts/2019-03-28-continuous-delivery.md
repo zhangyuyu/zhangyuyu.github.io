@@ -203,7 +203,7 @@ Note: 版本控制的时候，通常采用七步提交法
 
 　　测试不是一个阶段，当然也不应该开发结束之后开始。测试不纯粹或者主要是测试人员的领域。
 
-### 6. 原则六：“Done”意味着“已发布”
+### 6. 原则六："Done"意味着"已发布"
 　　团队应该统一定义`Done`的含义，开发完成和测试完成并不是真正意义的Done，只能算成是Completed。
    ![](/assets/img/continuous-delivery-done-wall.png){: .img-large}
 

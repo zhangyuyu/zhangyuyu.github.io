@@ -129,7 +129,7 @@ Spring将会扫描所有用@Component注释过得组件。
 ### 四、Spring Filter Components —— 在自动扫描中过滤组件
 
 #### 1、Filter Component——include
-　　用“filter”自动扫描注册组件，这些组件只要匹配定义的“regex”的命名规则，Clasee前就不需要用@Component进行注释。
+　　用"filter"自动扫描注册组件，这些组件只要匹配定义的"regex"的命名规则，Clasee前就不需要用@Component进行注释。
 
 ##### （1）DAO层，在CustomerDAO.java中
 ```java
@@ -197,7 +197,7 @@ public class CustomerService
             expression="org.springframework.stereotype.Service" />        
 </context:component-scan>
 ```
-以下配置排除包含“DAO”关键字的组件
+以下配置排除包含"DAO"关键字的组件
 ```xml
 <context:component-scan base-package="com.lei" >
     <context:exclude-filter type="regex" expression="com.mkyong.customer.dao.*DAO.*" />        

@@ -9,18 +9,18 @@ tags:
 - docker
 ---
 ## 一、前言
-　　[《Docker in Production》 workshop](https://www.bagevent.com/event/828605)于2017年9月23在ThoughtWorks武汉举办，之后，有懒癌的笔者就“忘记“去接着更新这一系列了。
+　　[《Docker in Production》 workshop](https://www.bagevent.com/event/828605)于2017年9月23在ThoughtWorks武汉举办，之后，有懒癌的笔者就"忘记"去接着更新这一系列了。
 直到上次上线（OTR Diaochan Release）出现了一些问题，在寻找问题过程中，docker的日志、监控、Dashboard这一主题发挥了很重要的作用，才想起来该好好整理下这一篇文章。
 
 ## 二、背景
-　　该系列《Docker in Prodcution》内容包含如下部分：
+　　该系列《Docker in Production》内容包含如下部分：
 
-* [容器简介](http://zhangyuyu.github.io/2017/07/09/Docker-workshop-1-%E5%AE%B9%E5%99%A8%E7%AE%80%E4%BB%8B/)
-* [Docker简介](http://zhangyuyu.github.io/2017/07/10/Docker-workshop-2-Docker%E7%AE%80%E4%BB%8B/)
-* [Docker的基本操作](http://zhangyuyu.github.io/2017/07/11/Docker-workshop-3-Docker%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/)
-* [Docker数据存储](http://zhangyuyu.github.io/2017/07/13/Docker-workshop-4-Docker%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/)
-* [Docker网络](http://zhangyuyu.github.io/2017/07/17/Docker-workshop-5-Docker%E7%BD%91%E7%BB%9C/)
-* [Docker安全](http://zhangyuyu.github.io/2017/07/20/Docker-workshop-6-Docker%E5%AE%89%E5%85%A8/)
+* [容器简介](http://zhangyuyu.github.io/docker-workshop-1-container/)
+* [Docker简介](http://zhangyuyu.github.io/docker-workshop-2-docker-brief/)
+* [Docker的基本操作](http://zhangyuyu.github.io/docker-workshop-3-docker-operation/)
+* [Docker数据存储](http://zhangyuyu.github.io/docker-workshop-4-docker-volume/)
+* [Docker网络](http://zhangyuyu.github.io/docker-workshop-5-docker-network/)
+* [Docker安全](http://zhangyuyu.github.io/docker-workshop-6-docker-security/)
 * 多主机部署
 * 服务发现
 * **日志、监控、Dashboard**
@@ -61,7 +61,7 @@ tags:
 LogDriver就是Docker用来处理容器标准输出的一个模块，Docker支持很多种不同的处理方式，如下表所示：
 
 |Driver    |Description|
-|:--------:|:---------:|
+|:--------|:---------|
 |none      |丢弃容器输出，docker logs命令也看不到任何内容|
 |json-file |默认驱动，使用json文件保存日志|
 |syslog    |将日志写入syslog里，syslog必须在机器上启动|

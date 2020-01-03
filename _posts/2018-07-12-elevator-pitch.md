@@ -58,7 +58,7 @@ tags:
 ## <span id="理解Elevator Pitch">四、理解Elevator Pitch</span>
 
 ### 1. 什么是Elevator Pitch
-　　一般情况下，Elevator Pitch（电梯法则），是指“麦肯锡30秒电梯理论”，即用极具吸引力的方式简明扼要地阐述自己的观点，例如你在电梯里，只有30秒的时间来向一位关系公司前途的大客户推广产品且必须成功。
+　　一般情况下，Elevator Pitch（电梯法则），是指"麦肯锡30秒电梯理论"，即用极具吸引力的方式简明扼要地阐述自己的观点，例如你在电梯里，只有30秒的时间来向一位关系公司前途的大客户推广产品且必须成功。
 
 　　![](/assets/img/elevator-pitch.png)
 
@@ -92,7 +92,7 @@ g. What are the product's **UNIQUE DIFFERENTIATORS**?
 
 ### 4. 接下来让大家进行讨论，选出让大家觉得最能认可的答案（可能会多个）。
 
-### 5. 按照模板，一起或分组完成一个“Elevator Pitch”
+### 5. 按照模板，一起或分组完成一个"Elevator Pitch"
 ![](/assets/img/elevator-pitch-template.png)
 
 ### 6. 对照所得到的结果，再进行讨论、提炼，到大家都基本满意为止。

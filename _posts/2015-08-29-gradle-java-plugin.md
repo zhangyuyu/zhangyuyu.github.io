@@ -42,7 +42,7 @@ sourceSets {
 }
 ```
 　　Gradle会自动地为每一个新创建的source set创建相应的Task。对于名为mySourceSet的source set，Gradle将为其创建compile<mySourceSet>Java、process<mySourceSet>Resources和<mySourceSet>Classes这3个Task。对于这里api而言，Gradle会为其创建名为compileApiJava、processApiResource和apiClasses Task。我们可以在命令行中执行"gradle apiClasses"。<br>
->注意，对于main而言，Gradle并没有相应的compileMainJava，原因在于：由于main是Gradle默认创建的source set，并且又是及其重要的source set，Gradle便省略掉了其中的“Main”，而是直接使用了compileJava作为main的编译Task。对于test来说，Gradle依然采用了compileTestJava。
+>注意，对于main而言，Gradle并没有相应的compileMainJava，原因在于：由于main是Gradle默认创建的source set，并且又是及其重要的source set，Gradle便省略掉了其中的"Main"，而是直接使用了compileJava作为main的编译Task。对于test来说，Gradle依然采用了compileTestJava。
 
 　　通常的情况是，我们自己创建的名为api的source set会被其他source set所依赖，比如main中的类需要实现api中的某个接口等。此时我们需要做两件事情。
 　　* 第一，我们需要在编译main之前对api进行编译，即编译main中Java源文件的Task应该依赖于api中的Task：`classes.dependsOn apiClasses`

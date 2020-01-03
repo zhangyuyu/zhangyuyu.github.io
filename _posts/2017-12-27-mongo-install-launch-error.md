@@ -8,7 +8,7 @@ tags:
 - mongo
 ---
 ## 一、背景
-　　笔者最近换了电脑，从MacBook Pro 13”换成了MacBook Pro 15”，相关的工具软件全部得重新装。
+　　笔者最近换了电脑，从MacBook Pro 13"换成了MacBook Pro 15"，相关的工具软件全部得重新装。
 再重新装Mongo的时候遇到了一些问题，特此记录。
 
 ## 二、安装异常

@@ -127,7 +127,7 @@ sh-4.2$
 * Components，只能看到Jar
 
 ### 2. Server Adminstration And configuration
-　　看到这选项是要进行登录的，在右上角点击“Sign In”的登录按钮，输入`admin/admin123`,登录成功之后，即可看到此功能，如图所示：
+　　看到这选项是要进行登录的，在右上角点击"Sign In"的登录按钮，输入`admin/admin123`,登录成功之后，即可看到此功能，如图所示：
 ![](/assets/img/nexus-功能-server-adminstration-configuration.png)
 
 #### 2.1 Repository

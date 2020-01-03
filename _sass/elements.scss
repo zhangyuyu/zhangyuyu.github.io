@@ -218,3 +218,17 @@ kbd {
     font-weight: 300;
     margin-bottom: 10px;
 }
+
+// table
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    border:1px solid #dcdcdc;
+}
+
+td {
+    border:1px solid #dcdcdc;
+}

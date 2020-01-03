@@ -14,7 +14,7 @@ tags:
 1 Step = 1 READ-PROCESS-WRITE or 1 Tasklet.
 Job = {Step 1 -> Step 2 -> Step 3} (Chained together)
 
-　　从DB或是文件中取出数据的时候，read操作每次只读取一条记录，之后将读取的这条数据传递给processor(item)处理，框架将重复做这两步操作，直到读取记录的件数达到batch配置信息中”commin-interval”设定值的时候，就会调用一次write操作。然后再重复以上处理，直到处理完所有的数据。当这个Step的工作完成以后，或是跳到其他Step，或是结束处理。
+　　从DB或是文件中取出数据的时候，read操作每次只读取一条记录，之后将读取的这条数据传递给processor(item)处理，框架将重复做这两步操作，直到读取记录的件数达到batch配置信息中"commin-interval"设定值的时候，就会调用一次write操作。然后再重复以上处理，直到处理完所有的数据。当这个Step的工作完成以后，或是跳到其他Step，或是结束处理。
 
 ### 二、Spring Batch Jobs
 #### 1、content.xml

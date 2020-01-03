@@ -56,7 +56,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 　　![](/assets/img/nexus-jenkins-unlock.png){: .img-medium}
 
 * 自定义安装插件
-　　建议在下图中，选择“select plugins to install”，然后不要选择太多的插件，等到要用的时候再去安装。笔者在本次使用中只选择了`Git plugin`和`Gradle Plugin`。
+　　建议在下图中，选择"select plugins to install"，然后不要选择太多的插件，等到要用的时候再去安装。笔者在本次使用中只选择了`Git plugin`和`Gradle Plugin`。
 
     * Git插件:用于从git仓库获取代码
     * Gradle插件:用于打包gradle项目
