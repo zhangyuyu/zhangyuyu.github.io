@@ -4,7 +4,7 @@ bio:                '行是知之使，知是行之成.'
 description:        "一点随笔，一丝感悟，一些记录，一种成长。"
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/logo.png'
+logo:               'assets/img/favicons/avator.jpg'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
@@ -18,7 +18,7 @@ kramdown:
   auto_ids:         true
   footnote_nr:      1
   entity_output:    as_char
-  toc_levels:       1..6
+  toc_levels:       1..4
   enable_coderay:   false
   input:            GFM
 mathjax:            true
