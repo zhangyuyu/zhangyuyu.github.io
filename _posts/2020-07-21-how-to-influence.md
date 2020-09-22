@@ -7,6 +7,8 @@ tags:
 - reading
 comments: true
 ---
+*  目录
+{:toc}
 
 ## 一、前言
 　　《人性的弱点》这本书，英文名称是How to win friends & influence people，直译起来似乎是一本工具书。

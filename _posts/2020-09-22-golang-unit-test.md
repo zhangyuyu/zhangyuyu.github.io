@@ -8,7 +8,9 @@ tags:
 comments: true
 ---
 
-[toc]
+*  目录
+{:toc}
+
 # 一、前言
 　　本篇文章站在测试的角度，旨在给行业平台乃至其他团队的开发同学，进行一定程度的单元测试指引，
 让其能够快速的明确单元测试的方式方法。      
@@ -123,8 +125,7 @@ iwiki和km上，这里只是再做一次记录。
 
 　　边界值测试在软件变得复杂的时候也会变得不实用。边界值测试对于非向量类型的值(如枚举类型的值)也没有意义。
 
-　　例如，和**4.1**相同的需求：
-划分(ii)的边界为0和最大正实数；划分(i)的边界为最小负实数和0。由此得到以下测试用例：
+　　例如，和**4.1**相同的需求，划分(ii)的边界为0和最大正实数；划分(i)的边界为最小负实数和0。由此得到以下测试用例：
 - 输入 {最小负实数}
 - 输入 {绝对值很小的负数}
 - 输入 0
@@ -133,7 +134,7 @@ iwiki和km上，这里只是再做一次记录。
 
 ### 4.4 基本路径测试法
 
-**基本路径测试法**是在程序控制流图的基础上，通过分析控制构造的环路复杂性，导出基本可执行路径集合，从而设计测试用例的方法。设计出的测试用例要保证在测试中程序的每个可执行语句至少执行一次。
+　　**基本路径测试法**是在程序控制流图的基础上，通过分析控制构造的环路复杂性，导出基本可执行路径集合，从而设计测试用例的方法。设计出的测试用例要保证在测试中程序的每个可执行语句至少执行一次。
 
 　　基本路径测试法的基本步骤：
 
@@ -163,7 +164,7 @@ iwiki和km上，这里只是再做一次记录。
 
 　　`testing` 为 Go 语言 package 提供自动化测试的支持。通过 `go test` 命令，能够自动执行如下形式的任何函数：
 
-```Go
+```
 func TestXxx(*testing.T)
 ```
 
@@ -175,9 +176,9 @@ func TestXxx(*testing.T)
 
 ### 1.1 第一个例子
 
-被测代码：
+　　被测代码：
 
-```Go
+```
 func Fib(n int) int {
         if n < 2 {
                 return n
@@ -186,9 +187,9 @@ func Fib(n int) int {
 }
 ```
 
-测试代码：
+　　测试代码：
 
-```Go
+```
 func TestFib(t *testing.T) {
     var (
         in       = 7
@@ -200,15 +201,15 @@ func TestFib(t *testing.T) {
     }
 }
 ```
-执行  `go test .` ，输出：
+　　执行  `go test .` ，输出：
 ```Shell
 $ go test .
 ok      chapter09/testing    0.007s
 ```
-表示测试通过。
-我们将  `Sum`  函数改为：
+　　表示测试通过。
+　　我们将  `Sum`  函数改为：
 
-```Go
+```
 func Fib(n int) int {
         if n < 2 {
                 return n
@@ -216,7 +217,7 @@ func Fib(n int) int {
         return Fib(n-1) + Fib(n-1)
 }
 ```
-再执行  `go test .` ，输出：
+　　再执行  `go test .` ，输出：
 
 ```
 $ go test .
@@ -228,8 +229,8 @@ FAIL    chapter09/testing    0.009s
 
 ### 1.2 Table-Driven测试
 
-Table-Driven 的方式将多个case在同一个测试函数中测到：
- ```Go
+　　Table-Driven 的方式将多个case在同一个测试函数中测到：
+ ```
  func TestFib(t *testing.T) {
     var fibTests = []struct {
         in       int // input
@@ -257,21 +258,21 @@ Table-Driven 的方式将多个case在同一个测试函数中测到：
 
 # 2. GoConvey：简单断言
 
-Convey适用于书写单元测试用例，并且可以兼容到testing框架中，`go test`命令或者使用`goconvey`命令访问`localhost:8080`的Web测试界面都可以查看测试结果。
+　　Convey适用于书写单元测试用例，并且可以兼容到testing框架中，`go test`命令或者使用`goconvey`命令访问`localhost:8080`的Web测试界面都可以查看测试结果。
 
-```Go
+```
 Convey("Convey return : ", t, func() {
         So(...)
 }) 
 ```
 
-一般Convey用`So`来进行断言，断言的方式可以传入一个函数，或者使用自带的`ShouldBeNil`、`ShouldEqual`、`ShouldNotBeNil`函数等。
+　　一般Convey用`So`来进行断言，断言的方式可以传入一个函数，或者使用自带的`ShouldBeNil`、`ShouldEqual`、`ShouldNotBeNil`函数等。
 
 ### 2.1. 基本用法
 
-被测代码：
+　　被测代码：
 
-```Go
+```
 func StringSliceEqual(a, b []string) bool {
     if len(a) != len(b) {
         return false
@@ -290,9 +291,9 @@ func StringSliceEqual(a, b []string) bool {
 }
 ```
 
-测试代码
+　　测试代码
 
-```Go
+```
 import (
     "testing"
     . "github.com/smartystreets/goconvey/convey"
@@ -309,7 +310,7 @@ func TestStringSliceEqual(t *testing.T) {
 
 ### 2.2. 双层嵌套
 
-```Go
+```
 import (
     "testing"
     . "github.com/smartystreets/goconvey/convey"
@@ -330,7 +331,7 @@ func TestStringSliceEqual(t *testing.T) {
 }
 ```
 
-内层的Convey不需要再传入t *testing.T参数
+　　内层的Convey不需要再传入t *testing.T参数
 
 [GoConvey的更多用法](https://www.jianshu.com/p/e3b2b1194830)
 
@@ -340,7 +341,7 @@ func TestStringSliceEqual(t *testing.T) {
 
 ### 3.1. assert
 
-```Go
+```
 func TestSomething(t *testing.T) {
 
   //断言相等
@@ -365,7 +366,7 @@ func TestSomething(t *testing.T) {
 
 ### 3.3. 常用的函数
 
-```Go
+```
 func Equal(t TestingT, expected, actual interface{}, msgAndArgs ...interface{}) bool
 func NotEqual(t TestingT, expected, actual interface{}, msgAndArgs ...interface{}) bool
 
@@ -422,39 +423,39 @@ func DirExists(t TestingT, path string, msgAndArgs ...interface{}) bool
 
 ### 1.1. 为一个全局变量打桩
 
-假设num为被测函数中使用的一个全局整型变量，当前测试用例中假定num的值大于100，比如为150，则打桩的代码如下：
+　　假设num为被测函数中使用的一个全局整型变量，当前测试用例中假定num的值大于100，比如为150，则打桩的代码如下：
 
-```Go
+```
 stubs := Stub(&num, 150)
 defer stubs.Reset()
 ```
 
-stubs是GoStub框架的函数接口Stub返回的对象，该对象有Reset操作，即将全局变量的值恢复为原值。
+　　stubs是GoStub框架的函数接口Stub返回的对象，该对象有Reset操作，即将全局变量的值恢复为原值。
 
 ### 1.2. 为一个函数打桩
 
-假设我们产品的既有代码中有下面的函数定义：
+　　假设我们产品的既有代码中有下面的函数定义：
 
-```Go
+```
 func Exec(cmd string, args ...string) (string, error) {
     ...
 }
 ```
 
-我们可以对Exec函数打桩，代码如下所示：
+　　我们可以对Exec函数打桩，代码如下所示：
 
-```Go
+```
 stubs := StubFunc(&Exec,"xxx-vethName100-yyy", nil)
 defer stubs.Reset()
 ```
 
 ### 1.3. 为一个过程打桩
 
-当一个函数没有返回值时，该函数我们一般称为过程。很多时候，我们将资源清理类函数定义为过程。
+　　当一个函数没有返回值时，该函数我们一般称为过程。很多时候，我们将资源清理类函数定义为过程。
 
 　　我们对过程DestroyResource的打桩代码为：
 
-```Go
+```
 stubs := StubFunc(&DestroyResource)
 defer stubs.Reset()
 ```
@@ -471,7 +472,7 @@ defer stubs.Reset()
 
 　　Repository是领域驱动设计中战术设计的一个元素，用来存储领域对象，一般将对象持久化在数据库中，比如Aerospike，Redis或Etcd等。对于领域层来说，只知道对象在Repository中维护，并不care对象到底在哪持久化，这是基础设施层的职责。微服务在启动时，根据部署参数实例化Repository接口，比如AerospikeRepository，RedisRepository或EtcdRepository。
 
-```Go
+```
 package db
 
 type Repository interface {
@@ -496,13 +497,13 @@ mockgen -source=foo.go [other options]
 　　反射模式通过构建一个程序用反射理解接口生成一个mock类文件，它通过两个非标志参数生效：导入路径和用逗号分隔的符号列表（多个interface）。
 举例：
 
-```Go
+```
 mockgen database/sql/driver Conn,Driver
 ```
 
-生成的mock_repository.go文件：
+　　生成的mock_repository.go文件：
 
-```Go
+```
 // Automatically generated by MockGen. DO NOT EDIT!
 // Source: infra/db (interfaces: Repository)
 
@@ -548,7 +549,7 @@ func (_m *MockRepository) Create(_param0 string, _param1 []byte) error {
 
 #### 2.3.1. 导入mock相关的包
 
-```Go
+```
 import (
     "testing"
     . "github.com/golang/mock/gomock"
@@ -564,13 +565,13 @@ import (
 
 　　控制器的代码如下所示：
 
-```Go
+```
 ctrl := NewController(t)
 defer ctrl.Finish()
 ```
 　　mock对象创建时需要注入控制器，如果有多个mock对象则注入同一个控制器，如下所示：
 
-```Go
+```
 ctrl := NewController(t)
 defer ctrl.Finish()
 mockRepo := mock_db.NewMockRepository(ctrl)
@@ -583,7 +584,7 @@ mockHttp := mock_api.NewHttpMethod(ctrl)
 
 　　假设有这样一个场景：先Retrieve领域对象失败，然后Create领域对象成功，再次Retrieve领域对象就能成功。这个场景对应的mock对象的行为注入代码如下所示：
 
-```Go
+```
 mockRepo.EXPECT().Retrieve(Any()).Return(nil, ErrAny)
 mockRepo.EXPECT().Create(Any(), Any()).Return(nil)
 mockRepo.EXPECT().Retrieve(Any()).Return(objBytes, nil)
@@ -591,7 +592,7 @@ mockRepo.EXPECT().Retrieve(Any()).Return(objBytes, nil)
 
 　　objBytes是领域对象的序列化结果，比如：
 
-```Go
+```
 obj := Movie{...}
 objBytes, err := json.Marshal(obj)
 ...
@@ -599,13 +600,13 @@ objBytes, err := json.Marshal(obj)
 
 　　当批量Create对象时，可以使用Times关键字：
 
-```Go
+```
 mockRepo.EXPECT().Create(Any(), Any()).Return(nil).Times(5)
 ```
 
 　　当批量Retrieve对象时，需要注入多次mock行为:
 
-```Go
+```
 mockRepo.EXPECT().Retrieve(Any()).Return(objBytes1, nil)
 mockRepo.EXPECT().Retrieve(Any()).Return(objBytes2, nil)
 mockRepo.EXPECT().Retrieve(Any()).Return(objBytes3, nil)
@@ -629,7 +630,7 @@ mockRepo.EXPECT().Retrieve(Any()).Return(objBytes5, nil)
 1. 方法（成员函数）无法通过GoStub框架打桩，当产品代码的OO设计比较多时，打桩点可能离被测函数比较远，导致UT用例写起来比较痛
 2. 过程或函数通过GoStub框架打桩时，对产品代码有侵入性
 
-Monkey是Golang的一个猴子补丁（monkeypatching）框架，在运行时通过汇编语句重写可执行文件，将待打桩函数或方法的实现跳转到桩实现，原理和热补丁类似。通过Monkey，我们可以解决函数或方法的打桩问题，但Monkey不是线程安全的，不要将Monkey用于并发的测试中。
+　　Monkey是Golang的一个猴子补丁（monkeypatching）框架，在运行时通过汇编语句重写可执行文件，将待打桩函数或方法的实现跳转到桩实现，原理和热补丁类似。通过Monkey，我们可以解决函数或方法的打桩问题，但Monkey不是线程安全的，不要将Monkey用于并发的测试中。
 
 　　Monkey框架的使用场景很多，依次为：
 
@@ -643,7 +644,7 @@ Monkey是Golang的一个猴子补丁（monkeypatching）框架，在运行时通
 
 　　Exec是infra层的一个操作函数，实现很简单，代码如下所示：
 
-```Go
+```
 func Exec(cmd string, args ...string) (string, error) {
     cmdpath, err := exec.LookPath(cmd)
     if err != nil {
@@ -662,9 +663,9 @@ func Exec(cmd string, args ...string) (string, error) {
 }
 ```
 
-Monkey的API非常简单和直接，我们直接看打桩代码：
+　　Monkey的API非常简单和直接，我们直接看打桩代码：
 
-```Go
+```
 import (
     "testing"
     . "github.com/smartystreets/goconvey/convey"
@@ -702,7 +703,7 @@ func TestExec(t *testing.T) {
 　　当一个函数没有返回值时，该函数我们一般称为过程。很多时候，我们将资源清理类函数定义为过程。
 我们对过程DestroyResource的打桩代码为：
 
-```Go
+```
 guard := Patch(DestroyResource, func(_ string) {
 
 })
@@ -714,7 +715,7 @@ defer guard.Unpatch()
 
 　　我们用类Etcd的方法Get来模拟获取任务列表的功能，入参为instanceId：
 
-```Go
+```
 type Etcd struct {
 
 }
@@ -725,9 +726,9 @@ func (e *Etcd) Get(instanceId string) []string {
     return taskList
 ```
 
-我们对Get方法的打桩代码如下：
+　　我们对Get方法的打桩代码如下：
 
-```Go
+```
 var e *Etcd
 guard := PatchInstanceMethod(
 	reflect.TypeOf(e), 
@@ -752,7 +753,7 @@ defer guard.Unpatch()
 
 ## 1. 实例函数Mock：Monkey
 
-Monkey用于对依赖的函数进行Mock替换，从而可以完成仅针对当前模块的单元测试。
+　　Monkey用于对依赖的函数进行Mock替换，从而可以完成仅针对当前模块的单元测试。
 
 例子：
 
@@ -761,7 +762,7 @@ Monkey用于对依赖的函数进行Mock替换，从而可以完成仅针对当�
 
 `test.go`:
 
-```Go
+```
 package test
 
 import "fmt"
@@ -781,7 +782,7 @@ func (*SumTest)PrintSum(a, b uint32) string {
 
 `mock_test.go`:
 
-```Go
+```
 package mock_test
 
 import "fmt"
@@ -799,7 +800,7 @@ func PrintSum(_ *test.SumTest, a, b uint32) string {
 
 `main.go`:
 
-```Go
+```
 func test1() {
      monkey.Patch(test.PrintAdd, mock_test.PrintAdd)
      p := test.PrintAdd(1, 2)
@@ -830,7 +831,7 @@ func test2() {
 
 　　假如现在要测试这个场景，在所有类都实现的情况下，测试应该是这样的：
 
-```Go
+```
 //正常测试
 func TestCompany_Meeting(t *testing.T) {
 //直接调用Person类的New方法，创建一个Person对象
@@ -844,7 +845,7 @@ func TestCompany_Meeting(t *testing.T) {
 
 　　定义一个`Talker.go`
 
-```Go
+```
 package pojo
 
 type Talker interface {
@@ -852,7 +853,7 @@ type Talker interface {
 }
 ```
 
-根据该接口，用`mockgen`命令生成一个Mock对象
+　　根据该接口，用`mockgen`命令生成一个Mock对象
 
 ```bash
 mockgen [-source] [-destination] [-package] ... Talker.go
@@ -866,7 +867,7 @@ mockgen [-source] [-destination] [-package] ... Talker.go
 4. 之前Mock建立的对象传入到待测方法当中
 5. 测试结果通过testing框架返回
 
-```Go
+```
 //通过Mock测试
 func TestCompany_Meeting2(t *testing.T) {
 
@@ -894,7 +895,7 @@ func TestCompany_Meeting2(t *testing.T) {
 
 　　`monkey.Patch(json.Unmarshal, mockUnmarshal)`，用Monkey的patch来mock系统内置函数
 
-```Go
+```
 func mockUnmarshal(b []byte, v interface{}) error{
    v = &Common.LoginMessage{
       UserId: 1,
@@ -905,16 +906,16 @@ func mockUnmarshal(b []byte, v interface{}) error{
 }
 ```
 
-如果需要取消替换，可以使用
+　　如果需要取消替换，可以使用
 
-```Go
+```
 monkey.UnPatch(target interface{})	//解除单个Patch
 monkey.UnPatchAll()    				//解除所有Patch
 ```
 
 ## 4. 数据库行为Mock
 
-```Go
+```
 func TestSql(t *testing.T) {
    db, mock, err := sqlmock.New(sqlmock.QueryMatcherOption(sqlmock.QueryMatcherEqual))
    if err != nil {
@@ -947,7 +948,7 @@ func TestSql(t *testing.T) {
 
 　　使用net/http/httptest模拟服务器行为
 
-```Go
+```
 func TestHttp(t *testing.T) {
    handler := func(w http.ResponseWriter, r *http.Request) {
       io.WriteString(w, "{ \"status\": \"expected service response\"}")
@@ -975,18 +976,18 @@ func PatchInstanceMethod(target reflect.Type, methodName string, replacement int
 - `methodName`是待测实例对象的函数名
 - `replacement`是用于替换的函数
 
-实现如下：
+　　实现如下：
 
-```Go
+```
 var ts *utils.Transfer
 monkey.PatchInstanceMethod(reflect.TypeOf(ts), "WritePkg", func(_ *utils.Transfer, _ []byte) error {
       return nil
 })
 ```
 
-假设有如下一个函数`ServerProcessLogin`，用于接收用户名密码，向当前连接的服务器请求登陆，测试如下：
+　　假设有如下一个函数`ServerProcessLogin`，用于接收用户名密码，向当前连接的服务器请求登陆，测试如下：
 
-```Go
+```
 func TestServerProcessLogin(t *testing.T) {
    mess := &Common.Message{
       Type: Common.LoginMesType,
@@ -1065,13 +1066,16 @@ func mockMarshal(v interface{}) ([]byte, error) {
     └─utils
 ```
 
-　　预期目的：对实现的功能模块补充单元测试代码，度量确保每一个模块的功能的正确性、完整性、健壮性，并在未来修改代码后也能第一时间自测验收。
+　　预期目的：对实现的功能模块补充单元测试代码，度量确保每一个模块的功能的正确性、完整性、健壮性，
+并在未来修改代码后也能第一时间自测验收。
 
 　　单元测试应包括模块接口测试、模块局部数据结构测试、模块异常处理测试。
 
-　　对于接口测试，应对接口的传入参数测试样例设计进行全面的考察，判断每一个参数是否有是有必要的，参数间有没有冗余，进入函数体前引用的指针是否有错等等。
+　　对于接口测试，应对接口的传入参数测试样例设计进行全面的考察，判断每一个参数是否有是有必要的，
+参数间有没有冗余，进入函数体前引用的指针是否有错等等。
 
-　　对于局部数据结构测试，应检查局部数据结构是为了保证临时存储在模块内的数据在程序执行过程中完整性、正确性。局部数据结构往往是错误的根源，应仔细设计测试用例。
+　　对于局部数据结构测试，应检查局部数据结构是为了保证临时存储在模块内的数据在程序执行过程中完整性、
+正确性。局部数据结构往往是错误的根源，应仔细设计测试用例。
 
 　　对于异常处理，主要有如下几种常见错误
 
@@ -1080,17 +1084,22 @@ func mockMarshal(v interface{}) ([]byte, error) {
 3. 出错信息与实际不相符
 4. 出错信息中未能准确定位出错信息
 
-　　以上几种错误，都是模块中经常会出现的错误，要针对这些错误来进行边界条件测试检查，只有异常处理机制正确，日后软件的维护和迭代才会更加高效。
+　　以上几种错误，都是模块中经常会出现的错误，要针对这些错误来进行边界条件测试检查，只有异常处理机制正确，
+日后软件的维护和迭代才会更加高效。
 
-　　在本案例中，Model层对服务层提供的接口不多，就`WritePkg`，`ReadPkg`两个核心函数，在服务层对其进行封装抽象为具体的业务逻辑。由于涉及网络连接，所以对其进行的测试必须编写桩函数。在服务层，涉及到对多个网络连接调用、数据库调用其它模块依赖，所以也要为其进行Mock。
+　　在本案例中，Model层对服务层提供的接口不多，就`WritePkg`，`ReadPkg`两个核心函数，在服务层对其进行
+封装抽象为具体的业务逻辑。由于涉及网络连接，所以对其进行的测试必须编写桩函数。在服务层，涉及到对多个网络
+连接调用、数据库调用其它模块依赖，所以也要为其进行Mock。
 
-　　由于涉及Mock和桩函数编写，可以使用`GoStub`、`Monkey`两个包进行这些工作，它们较简洁地实现了很多实用的测试方式，只需要用户编写依赖的接口文件、用于替换的Mock函数，就可以仅在测试过程中替换掉系统函数或者其它依赖的功能模块，使得单元测试起到它应有的作用。
+　　由于涉及Mock和桩函数编写，可以使用`GoStub`、`Monkey`两个包进行这些工作，它们较简洁地实现了很多
+实用的测试方式，只需要用户编写依赖的接口文件、用于替换的Mock函数，就可以仅在测试过程中替换掉系统函数或者
+其它依赖的功能模块，使得单元测试起到它应有的作用。
 
 ## 2. Model层、数据库相关测试
 
 　　由于是单元测试，所以需要获取一个Mock数据库实例，测试增删改查SQL语句是否可执行。`userDao_test.go`代码如下：
 
-```Go
+```
 const (
    sql1 = "SELECT id, pwd FROM users"
    sql2 = "DELETE FROM users where id > 600 and id < 700"
@@ -1149,9 +1158,10 @@ func TestGetUserById(t *testing.T) {
 
 ## 3. 私聊功能测试
 
-　　由于涉及底层数据库交互时需要发送JSON转码字符串（`WritePkg`函数），因此将其Mock处理，只需关注本函数逻辑是否正确即可。`smsProcess_test.go`如下：
+　　由于涉及底层数据库交互时需要发送JSON转码字符串（`WritePkg`函数），因此将其Mock处理，
+只需关注本函数逻辑是否正确即可。`smsProcess_test.go`如下：
 
-```Go
+```
 func TestSmsProcess_SendOnePerson(t *testing.T) {
    var conn net.Conn
    tf := &utils.Transfer{
@@ -1172,7 +1182,7 @@ func TestSmsProcess_SendOnePerson(t *testing.T) {
 
 　　登录涉及服务器连接操作，服务器的连接逻辑可通过`httptest`包来进行检测，Mock一个HTTP连接，示例代码如下：
 
-```Go
+```
 func TestHttp(t *testing.T) {
    handler := func(w http.ResponseWriter, r *http.Request) {
       // here we write our expected response, in this case, we return a
@@ -1194,7 +1204,7 @@ func TestHttp(t *testing.T) {
 
 　　为登录模块编写用于测试替换的函数以及单元测试主体，`userProcess_test.go`代码如下：
 
-```Go
+```
 func mockUnmarshal(b []byte, v interface{}) error {
    v = &Common.LoginMessage{
       UserId:   1,
@@ -1252,7 +1262,7 @@ func TestServerProcessLogin(t *testing.T) {
 
 `utils_test.go`
 
-```Go
+```
 func mockRead(conn net.Conn, _ []byte) (int, error) {
    return 4, nil
 }
@@ -1319,7 +1329,7 @@ func TestTransfer_WritePkg(t *testing.T) {
 
 　　Go单元测试框架是相当易用的，其它的第三方库基本都是建立在testing原生框架的基础上进行的增补扩充，在日常开发中，原生包可以满足基本需求，但同样也有缺陷，原生包不提供断言的语法使得代码中的这种片段非常多：
 
-```Go
+```
 if err != nil{
 	//...
 }
@@ -1327,7 +1337,9 @@ if err != nil{
 
 　　所以引入了convey、assert包的断言语句，用于简化判断逻辑，使得程序更加易读。
 
-　　在完成项目单测时，遇到了不少问题，比较重要的比如由于架构分层不够清晰，还是有部分耦合代码，导致单测时需要屏蔽的模块太多，代码写起来不便。因此还是需要倒推到开发模块之前，就要设计更好的结构，在开发的过程中遵循相应的规则，通过测试先行的思想，使开发的工程具有更好的可测试性。
+　　在完成项目单测时，遇到了不少问题，比较重要的比如由于架构分层不够清晰，还是有部分耦合代码，导致单测时需要
+屏蔽的模块太多，代码写起来不便。因此还是需要倒推到开发模块之前，就要设计更好的结构，在开发的过程中遵循相应的规则，
+通过测试先行的思想，使开发的工程具有更好的可测试性。
 
 　　开发过程中遇到的场景肯定不局限于本文所讨论的范围，有关更丰富的最佳实践案例可以参照：
 
