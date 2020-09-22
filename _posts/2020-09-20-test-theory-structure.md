@@ -2,9 +2,9 @@
 layout: post
 title: "测试结构体系"
 date: 2020-09-20
-categories: devops
+categories: 测试
 tags:
-- devops
+- 测试
 comments: true
 ---
 

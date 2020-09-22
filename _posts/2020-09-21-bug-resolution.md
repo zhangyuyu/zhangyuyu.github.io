@@ -2,9 +2,9 @@
 layout: post
 title: "BUG根因分析"
 date: 2020-09-21
-categories: devops
+categories: 测试
 tags:
-- devops
+- 测试
 comments: true
 ---
 
