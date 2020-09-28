@@ -5,7 +5,6 @@ date: 2017-12-27 11:35:21
 categories: db
 tags:
 - db
-- mongo
 ---
 ## 一、背景
 　　笔者最近换了电脑，从MacBook Pro 13"换成了MacBook Pro 15"，相关的工具软件全部得重新装。

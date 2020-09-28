@@ -2,9 +2,9 @@
 layout: post
 title: "Test Double"
 date: 2018-06-24 07:42:53
-categories: method
+categories: 测试
 tags: 
-- test
+- 测试
 ---
 ### 前言
 >本文的主要观点、代码片段、图片均源自《Test Double – xUnit Test Patterns》书的_Test Double_章节

@@ -2,9 +2,9 @@
 layout: post
 title: "我的第一个IoT项目"
 date: 2018-06-25 09:12:00
-categories: life
+categories: team
 tags:
-- life
+- team
 - germany
 - iot
 ---

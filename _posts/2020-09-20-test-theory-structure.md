@@ -285,12 +285,15 @@ Q2Q4的对角，体现了测试分析的重要性，Q2面向业务驱动构建�
 - 智能筛选回归用例集，根据代码的变动范围来直接精确的定位需要回归的用例，这样使回归测试所需的时间更短，回归的范围更准确。
 - 测试覆盖率精确分析，精准测试覆盖率形式多样，最高支持标准MC/DC（修订的条件/判定覆盖）的100%覆盖率要求。
 - 软件缺陷快速定位，根据缺陷与用例的对应关系，快速找到执行用例对应的代码行。
-　　
+
+
 ## 九、测试工具
-测试工具主要有：接口测试、压力测试、抓包工具等。
-接口测试：一般主要是Curl命令，Postman，Postwomen，Swagger UI, Yapi等
-压力测试：Jmeter，SoupUI等
-抓包工具：Fiddler，Charles，Wireshark，Whitle等
+
+测试工具主要有：接口测试、压力测试、抓包工具等。  
+
+- 接口测试：一般主要是Curl命令，Postman，Postwomen，Swagger UI, Yapi等  
+- 压力测试：Jmeter，SoupUI等  
+- 抓包工具：Fiddler，Charles，Wireshark，Whitle等
 
 一般大型公司内部，也会有自己搭建的内部平台。比如腾讯的星海、QTA等。
 

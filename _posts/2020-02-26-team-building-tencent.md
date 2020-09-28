@@ -2,9 +2,9 @@
 layout: post
 title: "团建之青甘小环线"
 date: 2020-08-26
-categories: life
+categories: team
 tags:
-- life
+- team
 comments: true
 ---
 

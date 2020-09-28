@@ -2,9 +2,9 @@
 layout: post
 title: "Tencent试用期间前后的所思所想"
 date: 2020-09-15
-categories: life
+categories: team
 tags:
-- life
+- team
 comments: true
 ---
 

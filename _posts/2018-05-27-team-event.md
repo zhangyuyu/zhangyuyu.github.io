@@ -2,7 +2,7 @@
 layout: post
 title: "Team Event"
 date: 2018-05-27 11:20:27
-categories: agile
+categories: devops
 tags: 
 - agile
 - team

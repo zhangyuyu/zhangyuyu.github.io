@@ -2,9 +2,9 @@
 layout: post
 title: "我在TW的第一周"
 date: 2015-08-15 21:16:18
-categories: life
+categories: team
 tags:
-- life
+- team
 ---
 ### 关于旅程
 &emsp;&emsp;以前"看天上云卷云舒"，如今第一次坐飞机，感受着穿梭、萦绕、凌驾的快感，体会由低至高不一样的感观与享受。

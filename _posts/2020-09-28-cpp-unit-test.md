@@ -72,6 +72,7 @@ for (int i = 0; i < x.size(); ++i) {
 |--- |--- |--- |
 |ASSERT_TRUE(condition);|EXPECT_TRUE(condition);|condition为真|
 |ASSERT_FALSE(condition);|EXPECT_FALSE(condition);|condition为假|
+
 　　例如：在`ASSERT_TRUE(condition)`中，当`condition`为`true`时，符合断言，不影响执行；当`condition`
 为`false`时，不符合断言，且由于是`ASSERT`，当前执行中断。
 
