@@ -20,11 +20,14 @@ comments: true
 并以具体代码示例进行说明，最后列举了一些常见问题。
 
 # 一、常用C++单测框架
-| Google Test | Catch 2 |CppUTest |
-| :--- | :---  | :---  | :--- |
-| 特点 | <ul><li>成熟、兼容性好</li><li>简洁、有效率</li><li>常用、学习资源多</li></ul> | <ul><li>框架只有一个<code>catch.hpp</code>、集成轻松</li><li>有Given-When-Then分区，适合BDD行为驱动开发</li><li>无自带Mock框架</li></ul> |<ul><li>可以检测内存泄露</li><li>输出更简洁</li><li>适合在嵌入式系统项目中使用</li></ul>|
+　　常用的C++单测对比如下：
+
+|Google Test|Catch 2|CppUTest|
+|:--- |:--- |:--- |
+|特点|<ul><li>成熟、兼容性好</li><li>简洁、有效率</li><li>常用、学习资源多</li></ul>|<ul><li>框架只有一个<code>catch.hpp</code>、集成轻松</li><li>有Given-When-Then分区，适合BDD行为驱动开发</li><li>无自带Mock框架</li></ul>|<ul><li>可以检测内存泄露</li><li>输出更简洁</li><li>适合在嵌入式系统项目中使用</li></ul>|
 |Mock框架|Google Mock|无自带Mock框架|CppUMock|
 |推荐指数|★★★★★|★★★☆☆|★★☆☆☆|
+
 　　一般情况下，我们推荐使用Google Test搭配Google Mock。如果项目有特殊需求或更适合其他框架，也可以考虑。
 
 　　根据实际使用频率，在以下部分，Google Test和Google Mock的介绍更为详细；对于其他框架，这里介绍它们的主要特点，
@@ -64,6 +67,7 @@ for (int i = 0; i < x.size(); ++i) {
 
 ### 2.1. 基本断言
 　　`condition` 是返回`true`/`false`的变量、布尔表达式、函数调用等，以下断言对其进行验证。
+
 |失败时中断执行的断言|失败时不中断执行的断言|断言成功情况|
 |--- |--- |--- |
 |ASSERT_TRUE(condition);|EXPECT_TRUE(condition);|condition为真|
@@ -73,6 +77,7 @@ for (int i = 0; i < x.size(); ++i) {
 
 ### 2.2. 普通比较型断言
 　　`val1`和`val2`是两个可用`==`、`!=`、`>`、`<`等运算符进行比较的值，以下断言对其进行比较。
+
 |失败时中断执行的断言|失败时不中断执行的断言|断言成功情况|
 |--- |--- |--- |
 |ASSERT_EQ(val1, val2);|EXPECT_EQ(val1, val2);|val1 == val2|
