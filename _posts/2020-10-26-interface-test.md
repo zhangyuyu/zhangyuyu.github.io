@@ -276,7 +276,8 @@ def build_header(host, CanonicalURI, method, param, body, service_curr, request_
 请求场景：
 
 - 覆盖所有必填参数
-- 组合所有可选参数
+- 组合所有可选参数，比如某两参数，只要有一个存在即可
+- 参数可选值枚举，比如type可选为day和hour
 - 参数名称是否对应，比如username和name不对应
 - 参数有、无、NULL、空
 - 参数个数、类型
@@ -296,8 +297,157 @@ def build_header(host, CanonicalURI, method, param, body, service_curr, request_
 - 如果有多个断言点，确定断言顺序、依赖关系，比如如果某个字段出现，再去验证其值是否正确
 - 如果响应没有内容，需要进一步验证效果
 
+# 五、具体星海案例
 
-# 五、思考
+## 1. 概览
+
+以行业平台为案例，用户可以创建机器人，然后给自己的机器人，添加对应的问答对，支持添加一个标准问题和一系列的相似问题。
+
+机器人的增删改查，也是需要测试的，有单独的测试用例覆盖到，下面主要以测试问答对的增删改查接口作为示例：
+
+
+## 2. 问答对的接口测试
+
+### 2.1 增
+
+2.1.1 入口执行方法
+包含了准备工作、测试逻辑、清理工作，为了与add_product和delete_product的方法区分开，测试核心部分以`test__`开头。
+
+```python
+def execute(context):
+    # set up 添加一个产品
+    product_id = add_product(context)
+    
+    # 测试核心
+    test__add_qa_pairs(context, product_id)
+    
+    # clean up 删除产品
+    delete_product(context, product_id)
+   
+```
+
+2.1.2 测试逻辑方法
+
+分为如下几个部分：
+
+- 明确请求方法URL
+- 构造请求参数、请求体
+- 构造请求头
+- 发送请求
+- 验证结果
+  其中请求体部分引入了random_str，防止重复添加。请求头`build_header`单独抽取成了一个方法。验证结果部分需要对响应中的每一个字段进行校验，而不仅仅是状态码。
+
+![](/assets/img/2020/20201026_问答对_增_逻辑方法.png)
+
+2.1.3 打印输出
+调试完成之后，去掉不必要的打印，从剩下的信息中，可以看出测试的整体逻辑和响应输出。
+![](/assets/img/2020/20201026_问答对_增_打印输出.png)
+
+### 2.2 查
+
+2.2.1 入口执行方法
+准备工作add_product之后，添加了问答对，然后测试查询的逻辑，最后删除此次的测试数据。此时add_qa_pair去掉了前缀`test__`，而由测试核心`get_qa_pair`加上。
+
+```python
+def execute(context):
+    # set up 添加一个产品、添加问答对
+    product_id = add_product(context)
+    qa_id = add_qa_pairs(context, product_id)
+    
+    # 测试核心
+    test__get_qa_pairs(context, product_id, qa_id)
+    
+    # clean up 删除产品
+    delete_product(context, product_id)
+```
+
+2.2.2 测试逻辑方法
+
+验证结果里面对拿到的id进行了确认，确认是开始添加的qa_id。
+
+![](/assets/img/2020/20201026_问答对_查.png)
+
+
+### 2.3 改
+
+2.3.1 入口执行方法
+准备工作add_product之后，添加了问答对，获取修改之前的问答对。然后测试修改的逻辑，最后删除此次的测试数据。此时测试核心`modify_qa_pair`加上前缀`test__`。
+
+```python
+def execute(context):
+    # set up 添加一个产品、添加问答对
+    product_id = add_product(context)
+    qa_id = add_qa_pairs(context, product_id)
+    qa = get_qa_pairs(context, product_id, qa_id)
+    
+    # 测试核心
+    test__modify_qa_pairs(context, product_id, qa_id, qa['group_id'])
+    
+    # clean up 删除产品
+    delete_product(context, product_id)
+```
+
+2.3.2 测试逻辑方法
+
+验证除了验证`modify`接口本身以外，还进一步获取修改之后的问答对，进行验证。
+
+![](/assets/img/2020/20201026_问答对_改.png)
+
+### 2.4 删
+
+2.3.1 入口执行方法
+准备工作add_product之后，添加了多个问答对。然后测试只删除前两个问答对的逻辑，最后删除此次的测试数据。
+
+```python
+def execute(context):
+    # set up 添加一个产品、添加问答对
+    product_id = add_product(context)
+    qa_id_1 = add_qa_pairs(context, product_id)
+    qa_id_2 = add_qa_pairs(context, product_id)
+    qa_id_3 = add_qa_pairs(context, product_id)
+    
+    # 测试核心
+    qa_ids = [qa_id_1, qa_id_2, qa_id_3]
+    test__delete_qa_pairs_batch(context, product_id, qa_ids)
+    
+    # clean up 删除产品
+    delete_product(context, product_id)
+```
+
+2.3.2 测试逻辑方法
+
+验证除了验证`delete`接口本身以外，还进一步获取删除之后的剩余问答对，进行验证。
+
+![](/assets/img/2020/20201026_问答对_删.png)
+
+## 3. Bad Case
+
+在review很多接口用例过程中，发现有几种常见的问题：
+
+### 3.1 断言不够
+
+下图中，只验证了响应是不是200。有不少业务代码，其实不管正常还是异常，都会返回200，其实具体的信息都在code和data里面。
+
+验证code也是不够的，还需要验证具体的业务含义的字段，可以的话，最好验证实际响应里面所有的字段，包括返回字段之间的逻辑。
+
+![](/assets/img/2020/20201026_bad_case_断言不够.png)
+
+### 3.2 方法未抽取，层次不清晰
+
+下图中，四个代码块，都在一个长方法里，不易于阅读，而且有两块代码块是重复的，不利于后面用例的维护和交接。
+
+![](/assets/img/2020/20201026_bad_case_方法未抽取.png)
+
+### 3.3 没有set up和clean up
+
+下图中的代码出现在delete方法中，数据是写死的，也就意味着，下一次执行用例的时候一定会失败，需要手动在页面创建一个问答对，获取id，才能进行删除。
+或者还有add类的方法，增加完成之后，没有清理现场，导致下一次创建会失败。
+
+因此，建议每一个测试用例的数据，最好是先提前准备相应的字段，然后进行测试工作，最后及时清理现场，不依赖环境的数据，也不对环境造成影响。
+
+![](/assets/img/2020/20201026_bad_case_无setup_cleanup.png)
+
+# 六、思考
 
 ## 1. 如何提高接口测试的ROI
 
