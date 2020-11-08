@@ -121,8 +121,10 @@ comments: true
 　　进一步推进：
 
 - 需求长期处于开发中，拉长战线，那么是否可以拆解，并对拆解后的小需求提测上线。
-  需求拆解可参考：[需求拆解](http://km.oa.com/group/544/articles/show/427032)
-  上述文章在内网，后面单独写一篇。
+  需求拆解可参考：
+  - 内网[【DevOps】从提高研发效率的角度聊聊产品需求拆解](http://km.oa.com/group/544/articles/show/427032)
+  - 本站[庖丁解牛-需求拆解的十种策略](https://zhangyuyu.github.io/break-down-product-reqirement/)
+  
 - 需求预计开发结束时间快到了，是否可以提前计划测试人力
 
 
