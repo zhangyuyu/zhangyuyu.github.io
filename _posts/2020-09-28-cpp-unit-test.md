@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++单元测试指引"
+title: "单元测试成神之路——C++篇"
 date: 2020-09-28
 categories: 测试
 tags:
@@ -13,7 +13,7 @@ comments: true
 
 # 前言
 
-　　在上一篇[GoLang单元测试指引](https://zhangyuyu.github.io/golang-unit-test/) 中，
+　　在上一篇[单元测试成神之路————GoLang篇](https://zhangyuyu.github.io/golang-unit-test/) 中，
 首先介绍了单元测试的意义和编写单元测试的一般方法。作为同系列出品，本篇文章则主要介绍如何在C++中写单元测试。
 
 　　本文直接从常用的C++单元测试框架出发，分别对几种框架进行了简单的介绍和小结，然后介绍了Mock的框架，
@@ -965,4 +965,4 @@ detach hook的函数，防止干扰其他单元测试。
 　　感谢实习生钟梓轩，在暑假实习期间，主导整理了C++单测的代码示例和部分文章内容。
 
 ## 3. 相关阅读
-- [GoLang单元测试指引](https://zhangyuyu.github.io/golang-unit-test/)
+- [单元测试成神之路——GoLang篇](https://zhangyuyu.github.io/golang-unit-test/)

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Golang单元测试指引"
+title: "单元测试成神之路——Golang篇"
 date: 2020-09-22
 categories: 测试
 tags:
@@ -16,7 +16,7 @@ comments: true
 让其能够快速的明确单元测试的方式方法。      
 　　本文主要从单元测试出发，对Golang的单元测试框架、Stub/Mock框架进行简单的介绍和选型推荐，
 列举出几种针对于Mock场景的最佳实践，并以具体代码示例进行说明。  
-　　本系列文章，还有一篇[C++单元测试指引](https://zhangyuyu.github.io/cpp-unit-test/)
+　　本系列文章，还有一篇[单元测试成神之路——C++篇](https://zhangyuyu.github.io/cpp-unit-test/)
 
 # 二、背景
 「INIT」
