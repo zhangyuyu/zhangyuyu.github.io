@@ -21,6 +21,7 @@ kramdown:
   toc_levels:       1..4
   enable_coderay:   false
   input:            GFM
+  syntax_highlighter: rouge
 mathjax:            true
 sass:
   sass_dir:         _sass
