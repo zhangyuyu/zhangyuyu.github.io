@@ -2,9 +2,7 @@
 
 - title: Achieve
   url: /achieve/
-- title: Posts
-  url: /posts/
-- title: Tags
-  url: /tags/
-- title: Categories
+- title: Category
   url: /categories/
+- title: Tag
+  url: /tags/
