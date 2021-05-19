@@ -19,7 +19,7 @@ tags:
 
 ### 2. 安装Kitematic
 　　直接点击Docker for mac，选择Kitematic即可下载安装。
-![](/assets/img/nexus-install-kitematic.png){: .img-small}
+![](/assets/img/2018/nexus-install-kitematic.png){: .img-small}
 
 ### 3. 创建nexus容器
 　　在Kitematic上搜索nexus，选择nexus3，点击create，即可下载镜像，创建容器。
@@ -32,7 +32,7 @@ $HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux
 
 #### 3.2 docker container
 　　配置端口号如下：
-![](/assets/img/nexus-container-configure.png){: .img-large}
+![](/assets/img/2018/nexus-container-configure.png){: .img-large}
 
 #### 4. 访问nexus
 　　访问 http://localhost:32768/ ，登录用户名`admin`，密码`admin123`。
@@ -41,7 +41,7 @@ $HOME/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux
 　　点击`Server Adminstration And configuration`，进入[配置页面](http://localhost:32768/#admin/repository/repositories)；选择repositories，并选择[maven-central](http://localhost:32768/#admin/repository/repositories:maven-central)。
 
 默认配置如下：
-![](/assets/img/nexus-repostories-maven-center.png)
+![](/assets/img/2018/nexus-repostories-maven-center.png)
 
 　　如果没有改代理仓库，可自己创建一个maven central的代理仓库，并配置如上图。
 r-workshop-4-docker-volume.md
@@ -190,11 +190,11 @@ remote maven central -> nexus私服的nexus data -> 本地宿主机的~/.gradle
 
 * 在`http://localhost:32768/#browse/browse:maven-central`可以看到：
 
-![](/assets/img/nexus-jar-files.png){: .img-large}
+![](/assets/img/2018/nexus-jar-files.png){: .img-large}
 
 * 关闭电脑的网络，手动点击右侧的path，可以下载jar文件
 
-![](/assets/img/nexus-jar-path.png){: .img-medium}
+![](/assets/img/2018/nexus-jar-path.png){: .img-medium}
 
 * 手动删除宿主机上nexus-data/blob/default/content的内容，再次下载时候，会报错502。
 

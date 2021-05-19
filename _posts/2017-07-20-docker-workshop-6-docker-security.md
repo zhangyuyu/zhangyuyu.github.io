@@ -142,16 +142,16 @@ drwx------   3 root root  4096 Sep 14 08:08 volumes/
 * 使用强制权限控制系统 AppArmor 和 Linux安全增强工具 SELinux 保证额外的安全层
 
 　　更多详情，可以参考[Security Benchmarks](https://learn.cisecurity.org/benchmarks)制定的容器的安全基准。下面截取了其中的一部分目录：
-![](/assets/img/docker-security-host.png)
+![](/assets/img/2017/docker-security-host.png)
 <center>主机</center>
 
-![](/assets/img/docker-security-images.png)
+![](/assets/img/2017/docker-security-images.png)
 <center>镜像</center>
 
-![](/assets/img/docker-security-daemon.png)
+![](/assets/img/2017/docker-security-daemon.png)
 <center>守护进程</center>
 
-![](/assets/img/docker-security-container-runtime.png)
+![](/assets/img/2017/docker-security-container-runtime.png)
 <center>容器运行时</center>
 
 ### 六、构建容器平台时候的安全问题

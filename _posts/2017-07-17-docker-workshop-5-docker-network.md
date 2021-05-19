@@ -43,7 +43,7 @@ tags:
 
 ## 四、网络创建过程
 
-![](/assets/img/docker-network-implement.png)
+![](/assets/img/2017/docker-network-implement.png)
 　　Docker创建一个容器的时候，会具体执行如下操作：
 * 创建一对虚拟接口，即veth pair，分别放到宿主机和容器中;
 * 本地主机一端的虚拟接口，连接到默认的docker0网桥或指定网桥上，并具有一个以veth开头的唯一的名字，如veth0ac844e;
@@ -161,7 +161,7 @@ ACCEPT     tcp  --  anywhere             172.17.0.2           tcp dpt:5000
 
 ### 基本组件
 　　在容器网络模型中，通常会包括容器(Container)、沙箱(Sandbox)、端点(Endpoint)、网络(Network)等组件，其中，网络会涉及桥接网(Bridge Network)或重叠网(Overlay Network)。
-![](/assets/img/docker-network-concept.png)
+![](/assets/img/2017/docker-network-concept.png)
 
 * 容器(Container): 容器能够作为任意一个或多个网络的一部分，能够同时对接桥接网和重叠网网络。
 * 沙箱(Sandbox): 包含容器网络堆栈配置信息，是一个隔离的环境，可能包含多网络的多个端点。

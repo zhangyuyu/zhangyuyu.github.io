@@ -280,4 +280,4 @@ HelloAroundMethod : Throw exception ,hello!
 ```
 
 ### 三、目录结构
-![](/assets/img/spring-aop-advice.png){: .img-medium}
+![](/assets/img/2015/spring-aop-advice.png){: .img-medium}

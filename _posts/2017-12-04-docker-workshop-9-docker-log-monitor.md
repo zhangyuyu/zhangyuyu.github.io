@@ -53,7 +53,7 @@ tags:
     - stdout、stderr 标准输出
     - 日志文件记录
 
-![](/assets/img/docker-log-driver.png){: .img-medium}
+![](/assets/img/2017/docker-log-driver.png){: .img-medium}
 
 　　标准输出日志，其原理在于，当在启动进程的时候，进程之间有一个父子关系，父进程可以拿到子进程的标准输出。拿到子进程标准输出的后，父进程可以对标准输出做所有希望的处理。
 
@@ -91,7 +91,7 @@ LogDriver就是Docker用来处理容器标准输出的一个模块，Docker支�
 * 3.当一个容器里面好多个进程的时候，对于容器的资源管理，会干扰你对容器的资源使用的判断，包括对于在做资源分配和监控的时候，都会有一些这样的干扰。
 
 目前最流行的日志聚合解决方案是ELK（Logstash、Elasticsearch、Kibana）：
-![](/assets/img/docker-log-elk.png)
+![](/assets/img/2017/docker-log-elk.png)
 
 * Shipper - logstash forward是一个Shipper，用来放到各个主机中收集指定位置的日志，将收集到日志发送到 Logstash。
 * Logstash - Logstash用来收集、过滤、转发日志。

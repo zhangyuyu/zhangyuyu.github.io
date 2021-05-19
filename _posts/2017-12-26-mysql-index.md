@@ -2,7 +2,7 @@
 layout: post
 title: "MYSQL - 索引概述"
 date: 2017-12-26 15:23:35
-categories: db
+categories: tech
 tags:
 - db
 ---
@@ -20,7 +20,7 @@ SQL索引的知识点，进行整理如下。
 
 索引是这样的一种数据结构：
 它以一个或多个字段的值为输入，并能"快速地"找出具有该值得记录。
-![](/assets/img/mysql-index-definition.jpg){: .img-medium}
+![](/assets/img/2017/mysql-index-definition.jpg){: .img-medium}
 
 　　我们都希望查询数据的速度能尽可能的快，因此数据库系统的设计者会从查询算法的角度进行优化。最基本的查询算法当然是
 顺序查找（linear search），这种复杂度为O(n)的算法在数据量很大时显然是糟糕的，好在计算机科学的发展提供了很多更优秀的查找算法，
@@ -86,12 +86,12 @@ SQL索引的知识点，进行整理如下。
 
 ### 2. 稠密索引
 　　稠密文件为数据文件的每个记录设一个键-指针对。
-　　![](/assets/img/mysql-index-dense.png){: .img-medium}
+　　![](/assets/img/2017/mysql-index-dense.png){: .img-medium}
 
 ### 3. 稀疏索引
 　　稀疏索引职位数据文件的每个存储块设一个键-指针对，它比稠密索引节省了更多的存储空间，但查找给定的记录需要更多的时间。
 只有当数据文件是按照某个查找键排序时，在该查找键上建立的稀疏索引才能被使用，而稠密索引则可应用在任何的查找键。
-　　![](/assets/img/mysql-index-sparse.png){: .img-medium}
+　　![](/assets/img/2017/mysql-index-sparse.png){: .img-medium}
 
 ### 4. 多级索引
 　　索引文件可能占据多个存储块，即便我们能定位索引存储块，并且能够使用二分法找到所需索引项，我们仍可能需要执行多次I/O操作才能获取所需记录。
@@ -99,11 +99,11 @@ SQL索引的知识点，进行整理如下。
 同样多的键-指针对，即同样的存储空间。
 然而，这种做法有它的局限，与其建立多级索引，我们宁愿考虑下文中的**B-树**。
 
-　　![](/assets/img/mysql-index-multi-level.png){: .img-medium}
+　　![](/assets/img/2017/mysql-index-multi-level.png){: .img-medium}
 
 ### 5. 非聚集索引（辅助索引）
 　　非聚集索引并不决定数据文件中记录的存放位置。
-![](/assets/img/mysql-index-non-cluster.png){: .img-medium}
+![](/assets/img/2017/mysql-index-non-cluster.png){: .img-medium}
 
 ### 6. 非聚集索引（辅助索引）中的间接
 　　上图所示结构存在空间浪费，假如某个索引值键在数据文件中出现n次，那么这个键值在索引文件中就要写n次，好的做法是只为指向该键值的所有
@@ -111,7 +111,7 @@ SQL索引的知识点，进行整理如下。
 
 　　避免键值重复的一种简便方法是使用一个称为桶（Bucket）的间接层。
 
-![](/assets/img/mysql-index-non-cluster-bucket.png){: .img-medium}
+![](/assets/img/2017/mysql-index-non-cluster-bucket.png){: .img-medium}
 
 　　此外，该间接层还有另外一个好处，我们可以在不访问数据文件的前提下，利用桶的指针帮助回答一些查询。比如，查询多个条件时，
 若每个条件都有一个可用的辅助索引，我们可以再主存中将指针集合求交来找到满足所有条件的指针，然后只需要访问检索交集指针所指向为记录，
@@ -130,10 +130,10 @@ SQL索引的知识点，进行整理如下。
 
 ### 1. B-树
 B-树，即B树，不能读成"B减树"。
-![](/assets/img/mysql-index-B-Tree.jpg)
+![](/assets/img/2017/mysql-index-B-Tree.jpg)
 
 ### 2. B+树
-![](/assets/img/mysql-index-B+Tree.jpg)
+![](/assets/img/2017/mysql-index-B+Tree.jpg)
 
 ## 七、散列索引
 

@@ -25,7 +25,7 @@ xUnit Test Patterns一书中对此进行了统称`Test Double`，并清晰的说
 
 　　在开始步入正题 Test Double 之前，我们先大致看一下测试的 Four Phrase，以便我们可以on same page，不至于因为术语不同产生歧义。
 
-　　![](/assets/img/test-double-four-phase-test.png)
+　　![](/assets/img/2018/test-double-four-phase-test.png)
 
 * 第一阶段，可以理解为做`GIVEN`，做一些准备工作，其中可以包括创建test fixture以及设置 expectation。
 * 第二阶段，可以理解为`WHEN`，即和 SUT 进行交互。
@@ -37,7 +37,7 @@ xUnit Test Patterns一书中对此进行了统称`Test Double`，并清晰的说
 　　有时候，测试被测系统（System under test, SUT）非常困难，因为它依赖于其他组件，而这些组件在测试环境中无法使用。
 这可能是因为这些组件不可用，亦或者是执行它们会产生副作用。在其他情况下，我们的测试策略要求我们对SUT的内部行为有更多的控制权或可见性。
 
-　　![](/assets/img/test-double-for-sut.png)
+　　![](/assets/img/2018/test-double-for-sut.png)
 
 　　在编写测试时候，我们不能（或者不选择）使用一个真正的依赖组件（ Depended-On Component，DOC），我们会用 Test Double
 代替它。Test Double 不用有像真正的 DOC 一样的行为，只需要提供和真实的 API 相同的 API即可，这样SUT可以认为该 Test Double 
@@ -69,13 +69,13 @@ Test Double是这些对象或过程的通用术语。
 * Fake Object，假对象，可以真正使用的实现，通常利用一些捷径，不适合在生产环境中使用，比如内存数据库（InMemoryTestDatabase）。
 * Dummy Object，哑对象，是指那些被传递但不被真正使用的对象。通常用于添充参数列表。
 
-　　![](/assets/img/test-double-type.png)
+　　![](/assets/img/2018/test-double-type.png)
 
 #### 1. Stub
 　　Test Stub是指一个完全代替待测系统依赖组件的对象，这个对象按照我们设计的输出与待测系统进行交互。这个桩既不会与
 测试用例(代码)交互，也不会在待测系统内部进行验证。
 
-　　![](/assets/img/test-double-stub.png)
+　　![](/assets/img/2018/test-double-stub.png)
 
 ##### 1.1 特点
 
@@ -199,7 +199,7 @@ public Calendar getTime() {
 　　Test Spy是指一个待测系统依赖组件的替身，并且会捕捉和保存待测对象对依赖系统的输出，这个输出会用于测试代码中的验证。
 Test Spy主要用于记录和验证待测对象对依赖系统的输出。
 
-![](/assets/img/test-double-spy.png)
+![](/assets/img/2018/test-double-spy.png)
 
 ##### 2.1 特点：
 
@@ -293,7 +293,7 @@ public class AuditLogSpy implements AuditLog {
 
 　　它类似于Test Spy，安插在待测系统内部，获取到待测系统内部的间接输出，一般根据调用者输入，按照约定执行操作，
 然后返回调用者事先编码写好的预期结果。
-![](/assets/img/test-double-mock.png)
+![](/assets/img/2018/test-double-mock.png)
 
 ##### 3.1 特点
 
@@ -360,7 +360,7 @@ public void testRemoveFlight_Mock() throws Exception {
 仅仅提供和依赖组件一样的功能接口保证待测系统正常工作，让待测系统认为 Fake Object 就是"真的"依赖组件，实现细节可以非常简单，
 不需要具有真实依赖组件的很多特性，也不需要像Test Stub那样接受测试的需求，返回特定response给待测系统。
 
-　　![](/assets/img/test-double-fake.png)
+　　![](/assets/img/2018/test-double-fake.png)
 
 ##### 4.1 特点
 

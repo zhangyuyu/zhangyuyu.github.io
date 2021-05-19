@@ -23,7 +23,7 @@ tags:
 ## <span id="了解项目愿景">三、了解项目愿景</span>
 
 ### 1. 什么是项目愿景
-　　![](/assets/img/elevator-pitch-vision.png)
+　　![](/assets/img/2018/elevator-pitch-vision.png)
 
 　　愿景，希望看到的情景。项目愿景是将项目的可交付成果描绘为所述需求或问题的解决方案。
 
@@ -60,7 +60,7 @@ tags:
 ### 1. 什么是Elevator Pitch
 　　一般情况下，Elevator Pitch（电梯法则），是指"麦肯锡30秒电梯理论"，即用极具吸引力的方式简明扼要地阐述自己的观点，例如你在电梯里，只有30秒的时间来向一位关系公司前途的大客户推广产品且必须成功。
 
-　　![](/assets/img/elevator-pitch.png)
+　　![](/assets/img/2018/elevator-pitch.png)
 
 　　但是这个规则应用很广泛，比如推销产品、求职自我介绍、职场管理沟通效率提升小工具、吸引投资人注意力等等。因此Elevator Pitch（电梯法则）、Elevator speech（电梯演讲）或者Elevator Statement（电梯声明），是对想法、产品、公司或者个人的简短描述，以使得任何收听者能够在短时间内理解它的方式解释该概念。
 
@@ -93,13 +93,13 @@ g. What are the product's **UNIQUE DIFFERENTIATORS**?
 ### 4. 接下来让大家进行讨论，选出让大家觉得最能认可的答案（可能会多个）。
 
 ### 5. 按照模板，一起或分组完成一个"Elevator Pitch"
-![](/assets/img/elevator-pitch-template.png)
+![](/assets/img/2018/elevator-pitch-template.png)
 
 ### 6. 对照所得到的结果，再进行讨论、提炼，到大家都基本满意为止。
 
 ## <span id="Elevator Pitch模板">六、Elevator Pitch模板</span>
 
-![](/assets/img/elevator-pitch-template-picture.png)
+![](/assets/img/2018/elevator-pitch-template-picture.png)
 
 ### 1. 模板
 

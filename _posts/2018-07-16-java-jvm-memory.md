@@ -34,7 +34,7 @@ tags:
 
 　　Java 虚拟机在执行Java 程序的过程中，会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建个销毁的时间，有的区域随着虚拟机进程的启动而存在，有的区域则依赖于用户线程的启动和结束而建立和销毁。
 
-![](/assets/img/java-jvm-memory-structure.png)
+![](/assets/img/2018/java-jvm-memory-structure.png)
 
 ### 1. 程序计数器（Program Counter Register）
 　　程序计数器是一个比较小的内存区域，用于指示当前线程所执行的字节码执行到了第几行， 可以理解为是**当前线程的行号指示器**。字节码解释器在工作时，会通过改变这个计数器的值来取下一条语句指令。
@@ -90,10 +90,10 @@ tags:
 　　上面在运行时数据区域的各部分介绍里，说明了线程共享情况和异常情况。
 
 　　根据线程共享可以归类如下：
-　　![](/assets/img/java-jvm-memory-thread.png){: .img-medium}
+　　![](/assets/img/2018/java-jvm-memory-thread.png){: .img-medium}
 
 　　根据异常可以归类如下：
-　　![](/assets/img/java-jvm-memory-error.png){: .img-large}
+　　![](/assets/img/2018/java-jvm-memory-error.png){: .img-large}
 
 ## 最后
 　　本篇主要是针对JVM 内存结构的各个区域（程序计数器、Java 虚拟机栈、本地方法栈、Java 堆、方法区、运行时常量池）进行介绍，其中程序计数器、Java 虚拟机栈、本地方法栈是线程私有的，Java 堆、方法区、运行时常量池是线程共享的。程序计数器是唯一一个在Java虚拟机规范中没有规定任何`OutOfMemoryError`情况的区域。

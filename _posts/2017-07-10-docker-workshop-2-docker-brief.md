@@ -118,7 +118,7 @@ Docker主要包括两个大组件：
 　　Docker 采用的是 Client/Server 架构。客户端向服务器发送请求，服务器负责构建、运行和分发容器。客户端和服务器可以运行
 在同一个 Host 上，客户端也可以通过 socket 或 REST API 与远程的服务器通信。
 
-![](/assets/img/docker-architecture.svg)
+![](/assets/img/2017/docker-architecture.svg)
 
 　　Docker的核心组件：
 
@@ -165,12 +165,12 @@ Docker主要包括两个大组件：
 
 ## 九、Docker核心技术
 
-![](/assets/img/docker-core-tech.png){: .img-medium}
+![](/assets/img/2017/docker-core-tech.png){: .img-medium}
 
 　　Docker核心是一个操作系统级虚拟化方法, 理解起来可能并不像VM那样直观。我们从虚拟化方法的四个方面：隔离性、可配额/可度量、
 便携性、安全性来详细介绍Docker的技术细节。
 
-![](/assets/img/docker-core-engine.png){: .img-medium}
+![](/assets/img/2017/docker-core-engine.png){: .img-medium}
 
 ### 1. 隔离性: namespace资源隔离
 * pid：每个容器都运行在自己的进程环境中；
@@ -182,7 +182,7 @@ Docker主要包括两个大组件：
 
 　　例如：在主机和docker容器里，都可以拥有自己的init进程（PID=1），init进程是所有其他进程的祖先进程，docker容器其实是
 主机里的一个进程。
-![](/assets/img/docker-namespace-pid.png){: .img-medium}
+![](/assets/img/2017/docker-namespace-pid.png){: .img-medium}
 
 ### 2. 可配额/可度量：cgroups资源限制
 　　`cgroups`是Linux内核提供的一种机制，用来限制、控制与分离一个进程组群的资源（如CPU、Memory、IO等）
@@ -209,10 +209,10 @@ Docker在内部通过graphdriver机制这种可扩展的方式来实现对不同
 　　典型的Linux文件系统由bootfs和rootfs两部分组成，bootfs(boot file system)主要包含 bootloader和kernel，
 bootloader主要是引导加载kernel，当kernel被加载到内存中后 bootfs就被umount了。 rootfs (root file system) 包含的就是典型Linux
 系统中的/dev，/proc，/bin，/etc等标准目录和文件。
-![](/assets/img/docker-aufs1.png){: .img-medium}
+![](/assets/img/2017/docker-aufs1.png){: .img-medium}
 
 　　对于不同的linux发行版，bootfs基本是一致的，但rootfs会有差别，因此不同的发行版可以公用bootfs:
-![](/assets/img/docker-aufs2.png){: .img-medium}
+![](/assets/img/2017/docker-aufs2.png){: .img-medium}
 
 ### 4. 安全性: AppArmor, SELinux, GRSEC
 　　安全永远是相对的，这里有三个方面可以考虑Docker的安全特性:

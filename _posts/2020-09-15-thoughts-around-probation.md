@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "Tencent试用期间前后的所思所想"
+title: "Tencent|试用期间前后之所思所想"
 date: 2020-09-15
-categories: team
+categories: life
 tags:
 - team
+- tencent
 comments: true
 ---
 

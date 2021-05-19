@@ -32,10 +32,10 @@ docker hosted、docker group仓库。（创建blob的步骤略）
 #### 1.1 各项配置
 
 * Repository Connectors
-　　![](/assets/img/nexus-docker-proxy-repository-connectors.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-proxy-repository-connectors.png){: .img-large}
 
 * Docker Registry API Support 
-　　![](/assets/img/nexus-docker-proxy-registry-api.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-proxy-registry-api.png){: .img-large}
 
 >　　Generally V1 support is only needed for repository groups that will be used for command line-based searches,
 > when any client side tools in use require V1 or when a upstream proxy repository requires V1. 
@@ -47,10 +47,10 @@ docker hosted、docker group仓库。（创建blob的步骤略）
 不激活反而会造成一些错误。
 
 * Proxy
-　　![](/assets/img/nexus-docker-proxy-proxy.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-proxy-proxy.png){: .img-large}
 
 * Storage
-　　![](/assets/img/nexus-docker-proxy-storage.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-proxy-storage.png){: .img-large}
 
 #### 1.2 从远程docker hub获取base image `tomcat:8.0-jre8-alpine`
 
@@ -104,7 +104,7 @@ localhost:50000/tomcat   8.0-jre8-alpine     5b01f7b2f446        3 weeks ago    
 ```
 
 ##### 1.2.3 查看nexus docker proxy 仓库
-　　![](/assets/img/nexus-browse-docker-proxy.png){: .img-large}
+　　![](/assets/img/2018/nexus-browse-docker-proxy.png){: .img-large}
 　　可以看到`tomcat:8.0-jre8-alpine`在我们的docker proxy仓库里也存下来了。
 
 #### 1.3 可能出现的错误
@@ -121,7 +121,7 @@ Error response from daemon: Get http://localhost:50002/v2/: dial tcp [::1]:50000
 
 * 解决办法
 　　在Docker for mac的Configure Ports处暴露端口号50002（下图暴露了50000、500001、500002供下文所用）
-![](/assets/img/nexus-docker-proxy-configure-port.png){: .img-medium}
+![](/assets/img/2018/nexus-docker-proxy-configure-port.png){: .img-medium}
 
 ##### 1.3.2. 401 Unauthorized
 * 具体错误：
@@ -160,17 +160,17 @@ Error response from daemon: Get https://localhost:50002/v2/: http: server gave H
 ```
 
 　　对于Windows or Mac，应该设置如下：
-　　![](/assets/img/nexus-docker-proxy-daemon.png){: .img-medium}
+　　![](/assets/img/2018/nexus-docker-proxy-daemon.png){: .img-medium}
 
 ### 2. 创建docker hosted仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-hosted.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-hosted.png){: .img-large}
 
 ### 3. 创建docker group仓库
 
 　　配置如下图所示：
-　　![](/assets/img/nexus-docker-group.png){: .img-large}
+　　![](/assets/img/2018/nexus-docker-group.png){: .img-large}
 
 ## 三、构建应用image上传至nexus
 
@@ -346,12 +346,12 @@ docker push localhost:50001/simple-web:1.0.0
 #### 2.2 查看[docker hosted](http://localhost:32768/#browse/browse:docker-local)仓库
 
 　　下图，可看到上传的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-local.png){: .img-large}
+　　![](/assets/img/2018/nexus-browse-docker-local.png){: .img-large}
 
 #### 2.3 查看[docker group](http://localhost:32768/#browse/browse:docker-group)仓库
 
 　　下图，可看到之前proxy中的上传的tomcat:8.0-jre8-alpine镜像，以及我们自己构建的simple-web应用的docker镜像了：
-　　![](/assets/img/nexus-browse-docker-group.png){: .img-large}
+　　![](/assets/img/2018/nexus-browse-docker-group.png){: .img-large}
 
 #### 2.4 删除本地镜像，从docker hosted仓库获取镜像
 

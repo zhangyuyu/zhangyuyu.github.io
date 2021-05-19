@@ -72,6 +72,6 @@ Building 75% > :jettyRun > Running at http://localhost:8080/spring4
 　　然后，在浏览器输入http://localhost:8080/spring4，可以看到页面。
 
 ### 四、目录结构
-![](/assets/img/spring-mvc-gradle-xml.png){: .img-medium}
+![](/assets/img/2015/spring-mvc-gradle-xml.png){: .img-medium}
 
 

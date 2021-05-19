@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "光阴的故事-字节的软件研发流程"
+title: "ByteDance|光阴的故事-字节的软件研发流程"
 date: 2020-12-07
 categories: devops
 tags:
 - devops
+- bytedance
 comments: true
 ---
 *  目录

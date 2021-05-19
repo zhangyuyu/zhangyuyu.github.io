@@ -15,13 +15,13 @@ tags:
 
 ### 1. 创建单独的blob
 
-　　![](/assets/img/nexus-create-local-blob.png){: .img-medium}
+　　![](/assets/img/2018/nexus-create-local-blob.png){: .img-medium}
 
 　　完成创建之后，可以在宿主机上看到路径`nexus-data/blobs/mvn-local-blob`的存在。
 
 ### 2. 创建hosted仓库
 　　选择maven2(hosted)的仓库，进行创建：
-　　![](/assets/img/nexus-create-maven2-hosted.png){: .img-medium}
+　　![](/assets/img/2018/nexus-create-maven2-hosted.png){: .img-medium}
 
 　　注意选择：
 
@@ -67,7 +67,7 @@ uploadArchives {
 
 1. 执行命令`./gradlew uploadArchives`上传war包到nexus hosted repo。
 2. 查看nexus上[mvn local](http://localhost:32768/#browse/browse:mvn-local)的hosted仓库，可以看到simple-web-1.0.0.war
-![](/assets/img/nexus-browse-simple-web.png)
+![](/assets/img/2018/nexus-browse-simple-web.png)
 
 ## 最后
 　　本篇利用gralde生成程序构建产物，并在nexus上创建一个hosted仓库，将构建产物打包上传到nexus。

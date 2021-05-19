@@ -59,7 +59,7 @@ tags:
 * 可达性分析（Reachability Analysis）
 　　从GC Roots开始向下搜索，搜索所走过的路径称为引用链。当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。不可达对象。
 
-　　![](/assets/img/java-jvm-gc-roots.png)
+　　![](/assets/img/2018/java-jvm-gc-roots.png)
 
 　　在Java语言中，GC Roots包括：
 
@@ -75,7 +75,7 @@ tags:
 　　Java中的堆是JVM所管理的最大的一块内存空间，主要用于存放各种类的实例对象，它被划分成两个不同的区域：新生代 (Young)、
 老年代 (Tenured)。
 
-![](/assets/img/java-jvm-hep-structure.png)
+![](/assets/img/2018/java-jvm-hep-structure.png)
 
 ##### 新生代
 　　又被划分为Eden、From Survivor、To Survivor。 
@@ -121,7 +121,7 @@ java堆中。这样可以加载多少类的元数据就不再由MaxPermSize控�
 　　`标记-清除（Mark-Sweep）算法`，算法分为"标记"和"清除"两个阶段：首先标记出所有需要回收的对象，在标记完成后
 统一回收掉所有被标记的对象。之所以说它是最基础的收集算法，是因为后续的收集算法都是基于这种思路并对其缺点进行改进而得到的。
 
-![](/assets/img/java-jvm-gc-mark-sweep.png)
+![](/assets/img/2018/java-jvm-gc-mark-sweep.png)
 
 　　它的主要缺点有两个：一个是效率问题，标记和清除过程的效率都不高；另外一个是空间问题，标记清除之后会产生大量不连续的
 内存碎片，空间碎片太多可能会导致，当程序在以后的运行过程中需要分配较大对象时无法找到足够的连续内存而不得不提前触发
@@ -131,7 +131,7 @@ java堆中。这样可以加载多少类的元数据就不再由MaxPermSize控�
 　　为了解决效率问题，`复制（Copying）算法`出现了，它将可用内存按容量划分为大小相等的两块，每次只使用其中的一块。
 当这一块的内存用完了，就将还存活着的对象复制到另外一块上面，然后再把已使用过的内存空间一次清理掉。
 
-![](/assets/img/java-jvm-gc-copying.png)
+![](/assets/img/2018/java-jvm-gc-copying.png)
 
 　　这样使得每次都是对其中的一块进行内存回收，内存分配时也就不用考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配
 内存即可，实现简单，运行高效。只是这种算法的代价是将内存缩小为原来的一半.
@@ -140,7 +140,7 @@ java堆中。这样可以加载多少类的元数据就不再由MaxPermSize控�
 　　`复制收集算法`在对象存活率较高时就要执行较多的复制操作，效率将会变低。更关键的是，如果不想浪费50%的空间，
 就需要有额外的空间进行分配担保，以应对被使用的内存中所有对象都100%存活的极端情况，所以在老年代一般不能直接选用这种算法。
 
-![](/assets/img/java-jvm-gc-mark-compact.png)
+![](/assets/img/2018/java-jvm-gc-mark-compact.png)
 
 　　根据老年代的特点，有人提出了另外一种`标记-整理（Mark-Compact）算法`，标记过程仍然与`标记-清除`算法一样，
 但后续步骤不是直接对可回收对象进行清理，而是让所有存活的对象都向一端移动，然后直接清理掉端边界以外的内存。
@@ -157,20 +157,20 @@ java堆中。这样可以加载多少类的元数据就不再由MaxPermSize控�
 　　如果说收集算法是内存回收的方法论，垃圾收集器就是内存回收的具体实现。下面将列举7种垃圾收集器，3种新生代收集器，
 3种老年代收集器，最后一种G1垃圾收集器是横跨整个堆内存的。
 
-　　![](/assets/img/java-jvm-gc-collector.png){: .img-large}
+　　![](/assets/img/2018/java-jvm-gc-collector.png){: .img-large}
 
 
 ### 1. Serial收集器
 　　串行收集器是最古老，最稳定以及效率高的收集器，可能会产生较长的停顿，只使用一个线程去回收。垃圾收集的过程中会Stop The World（服务暂停）。
 
-　　![](/assets/img/java-jvm-gc-serial.png)
+　　![](/assets/img/2018/java-jvm-gc-serial.png)
 
 　　到现在为止，它依然是虚拟机运行在client模式下的默认新生代收集器，与其他收集器相比，对于限定在单个CPU的运行环境来说，
 Serial收集器由于没有线程交互的开销，专心做垃圾回收自然可以获得最高的单线程收集效率。
 
 ### 2. ParNew收集器
 　　ParNew收集器其实就是Serial收集器的多线程版本。
-　　![](/assets/img/java-jvm-gc-parnew.png)
+　　![](/assets/img/2018/java-jvm-gc-parnew.png)
 
 ### 3. Parallel Scavenge收集器
 　　Parallel Scavenge收集器，和Parnew收集器一样，是一个新生代收集器，使用复制算法，是并行的多线程收集器，但是它更关注系统的
@@ -179,7 +179,7 @@ Serial收集器由于没有线程交互的开销，专心做垃圾回收自然�
 ### 4. Serial Old 收集器
 　　Serial Old是Serial收集器的老年代版本，它同样是一个单线程收集器，使用"标记－整理"算法。
 
-　　![](/assets/img/java-jvm-gc-serial-old.png)
+　　![](/assets/img/2018/java-jvm-gc-serial-old.png)
 
 　　这个收集器的主要意义也是被Client模式下的虚拟机使用。在Server模式下，它主要还有两大用途：一个是在JDK1.5及以前的版本中
 与Parallel Scanvenge收集器搭配使用，另外一个就是作为CMS收集器的后备预案，在并发收集发生Concurrent Mode Failure的时候使用。
@@ -187,7 +187,7 @@ Serial收集器由于没有线程交互的开销，专心做垃圾回收自然�
 ### 5. Parallel Old 收集器
 　　Parallel Old是Parallel Scavenge收集器的老年代版本，使用多线程和"标记－整理"算法。这个收集器是在JDK 1.6中才开始提供。
 
-　　![](/assets/img/java-jvm-gc-parallel-old.png)
+　　![](/assets/img/2018/java-jvm-gc-parallel-old.png)
 
 ### 6. CMS收集器
 　　CMS(Concurrent Mark Swep)收集器是一种获取最短回收停顿时间为目标的收集器，这使得它很适合用于和用户交互的业务。
@@ -198,7 +198,7 @@ Serial收集器由于没有线程交互的开销，专心做垃圾回收自然�
 * 重新标记(remark)
 * 并发清除(concurrent sweep)
 
-　　![](/assets/img/java-jvm-gc-cms.png)
+　　![](/assets/img/2018/java-jvm-gc-cms.png)
 
 　　其中**初始标记**、**重新标记**这两个步骤仍然需要"Stop The World"。`初始标记`仅仅只是标记一下GC Roots能直接关联到的对象，
 速度很快，`并发标记`阶段就是进行GC Roots Tracing的过程，而`重新标记`阶段则是为了修正`并发标记`期间，因用户程序继续运作而导致
@@ -220,7 +220,7 @@ CMS收集器的内存回收过程是与用户线程一起并发地执行。
 　　在G1之前的其他收集器进行收集的范围都是整个新生代或者老生代，而G1不再是这样。G1在使用时，Java堆的内存布局与其他收集器
 有很大区别，它将整个Java堆划分为多个大小相等的独立区域（Region），虽然还保留新生代和老年代的概念，但新生代和老年代不再是
 物理隔离的了，而都是一部分Region（不需要连续）的集合。
-　　![](/assets/img/java-jvm-gc-g1-heap-allocation.png){: .img-large}
+　　![](/assets/img/2018/java-jvm-gc-g1-heap-allocation.png){: .img-large}
 
 　　其实现思路是将整个Java堆划分为多个大小相等的独立区域（Region），将新生代老年代打乱后分配到不同的 Region，各个Region
 单独GC从而避免整个Heap的扫描，再对`Region GC`价值排序，维护一个优先列表以达到GC最高效率。每次根据优先级从列表中挑选回收
@@ -233,7 +233,7 @@ CMS收集器的内存回收过程是与用户线程一起并发地执行。
 * 最终标记（Final Marking）
 * 筛选回收（Live Data Counting and Evacuation）
 
-　　![](/assets/img/java-jvm-gc-g1.png)
+　　![](/assets/img/2018/java-jvm-gc-g1.png)
 
 　　与其他GC收集器相比，G1具备如下特点：
 

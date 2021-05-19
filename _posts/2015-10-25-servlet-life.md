@@ -13,7 +13,7 @@ tags:
 3. Servlet容器产生Servlet实例对象并调用ServletAPI中相应的方法来对Client的请求进行处理，然后将处理的相应结果返回给WEB Server。
 4. Web server将从Servlet实例中收到响应并发送回客户端。
 
-![](/assets/img/client-server.png){: .img-medium}
+![](/assets/img/2015/servlet-client-server.png){: .img-medium}
 
 ### 二、阶段流程
 　　为了细化上述过程，可分为application的deploy过程和request的发送过程来讲：
@@ -22,7 +22,7 @@ tags:
 　　以Tomcat的容器为例，真正管理Servlet的容器是Context容器。一个Context对应一个Web工程。Context容器直接管理Servlet在容器中的包装类Wrapper。  
 　　deploy过程中，首先会生成context对象，config对象。（listener、filter的初始化过程也是在此阶段先后完成的）。  
 
-　　![](/assets/img/servlet-container.png){: .img-small}
+　　![](/assets/img/2015/servlet-container.png){: .img-small}
 
 #### 2、发送request阶段
 
@@ -41,7 +41,7 @@ tags:
 　　当Web Server认为Servlet实例没有存在的必要了，比如应用重新装载，或服务器关闭，以及Servlet很长时间都没有被访问过。Web Server可以从内存中销毁该实例。Web Server必须保证在销毁Servlet实例之前调用该实例的destroy()方法，以便回收Servlet申请的资源或进行其它的重要的处理。
 >当先后发送多个request时候，init()只执行一次。servlet容器处理多个请求通过产生多个线程，每个线程执行servlet的单实例的service()方法。
 
-![](/assets/img/servletLife.png){: .img-medium}
+![](/assets/img/2015/servlet-life.png){: .img-medium}
 
 ### 三、Filter
 　　Filter不是一个servlet,它不能产生一个response,但是它能够在一个request到达servlet之前预处理request,也可以在离开servlet时处理response。

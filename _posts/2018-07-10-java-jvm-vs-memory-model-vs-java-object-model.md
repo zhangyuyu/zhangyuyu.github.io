@@ -29,7 +29,7 @@ tags:
 以及创建个销毁的时间，有的区域随着虚拟机进程的启动而存在，有的区域则依赖于用户线程的启动和结束而建立和销毁。
 《Java虚拟机规范（Java SE 8）》中描述了JVM运行时内存区域结构如下：
 
-![](/assets/img/java-jvm-memory-structure.png)
+![](/assets/img/2018/java-jvm-memory-structure.png)
 
 　　具体的各个区域的介绍，会在后续的文章中进行详细阐述。
 
@@ -42,7 +42,7 @@ tags:
 规则或规范，通过这组规范定义了程序中各个变量的访问方式。线程之间的共享变量存储在主内存中，每个线程都有一个私有的本地内存，
 本地内存中存储了改线程对共享变量的操作副本。
 
-![](/assets/img/java-memory-model.png){: .img-large}
+![](/assets/img/2018/java-memory-model.png){: .img-large}
 
 　　由于采用共享内存进行通信，在通信过程中会存在一系列如可见性、原子性、顺序性等问题，而JMM就是围绕着多线程通信以及
 与其相关的一系列特性而建立的模型。JMM定义了一些语法集，这些语法集映射到`Java`语言中就是`volatile`、`synchronized`等关键字。
@@ -52,7 +52,7 @@ tags:
 　　Java对象在JVM中的存储也是有一定的结构的，这个就是Java 对象模型。对象在堆内存的布局分为三个区域：对象头（Header）、
 实例数据（Instance Data）和对齐填充（Padding）.
 
-![](/assets/img/java-object-layout.png){: .img-large}
+![](/assets/img/2018/java-object-layout.png){: .img-large}
 
 * 对象头（Header）  
 　　包括Mark Word和元数据指针。如果对象是一个数组，那么对象头还需要有额外的空间用于存储数组的长度。  

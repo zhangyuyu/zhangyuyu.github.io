@@ -54,7 +54,7 @@ Personal Consulting style
 
 ### 2. 初始会议计划
 
-![](/assets/img/init-client-meeting-plan.png)
+![](/assets/img/2018/init-client-meeting-plan.png)
 
 
 ### 3. 会议Checklist

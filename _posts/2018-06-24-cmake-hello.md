@@ -42,20 +42,20 @@ Windows的`Visual Studio`工程或者Mac的`Xcode`工程，大大简化了跨平
 
 　　假设你有C++的跨平台项目，其代码在不同的平台/IDE共享。比如，Windows的`Visual Studio`、 OSX的`XCode`和 
 Linux 的`Makefile`：
-![](/assets/img/cmake-native-build.png)
+![](/assets/img/2018/cmake-native-build.png)
 
 　　如果要添加一个`bar.cpp`源文件，你会怎么做？你不得不将该文件添加到你所使用的每个工具中：
-![](/assets/img/cmake-native-build-add.png)
+![](/assets/img/2018/cmake-native-build-add.png)
 
 　　为了保证环境的一致性，你不得不将类似的更新操作好几次。更重要的是，你还得手动进行操作（如下图红色的箭头）。
 当然这种方式很容易出错，而且很不灵活。
 
 　　CMake 通过在开发过程中增加额外的步骤来解决这一设计缺陷。你可以在`CMakeList.txt`文件中描述项目，并使用 CMake 
 通过跨平台的 CMake 代码来生成你感兴趣的构建工具。
-![](/assets/img/cmake-generate-native-files.png)
+![](/assets/img/2018/cmake-generate-native-files.png)
 
 　　同样地，当要添加`bar.cpp`源文件的时候，就只需要一个步骤了：
-![](/assets/img/cmake-generate-native-files-add.png)
+![](/assets/img/2018/cmake-generate-native-files-add.png)
 
 　　注意，上述图表的底部并没有发生变化，你仍然可以使用你喜欢的工具，比如`Visual Studio/msbuild`, `Xcode/xcodebuild` 
 和 `Makefile/make`。
@@ -131,7 +131,7 @@ Linux 的`Makefile`：
 　　Cmake 是一个工具包（Family of tools），可以在开发者的所有阶段（`sources for developers` -> `quality control` -> 
 `installers for users`）提供帮助。下面的行为图展示了`CMake`、`CTest`和`CPack `的连接。
 
-![](/assets/img/cmake-native-build-add.png)
+![](/assets/img/2018/cmake-native-build-add.png)
 
 ## 三、CMake的特点
 
@@ -190,7 +190,7 @@ Processing CMakeLists.txt
 
 ### 2. Workflow
 
-![](/assets/img/cmake-workflow.png){: .img-large}
+![](/assets/img/2018/cmake-workflow.png){: .img-large}
 
 　　从上图中，可看出每一步的输出，`Configurting`阶段生成了`CMakeCache.txt`文件，`generating`阶段生成了构建文件
 （比如`Makefile`），而后，在`Build`阶段构建工具则可根据构建文件，生成二进制文件。

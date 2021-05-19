@@ -226,20 +226,20 @@ open /Applications/Google\ Chrome.app --args --allow-file-access-from-files --di
 	
 #### 4、输入url
 　　在**弹出**的浏览器输入`http://localhost:9000/`
-　　![](/assets/img/customer-ui.png){: .img-medium}
+　　![](/assets/img/2015/get-customer-ui.png){: .img-medium}
 
 #### 5、点击`GetByName`
 　　进入get customer by name界面如下：
-　　![](/assets/img/get-by-name.png){: .img-medium}
+　　![](/assets/img/2015/get-by-name.png){: .img-medium}
 
 　　输入name,出现CustomerApi的认证如下：
-　　![](/assets/img/authentication.png){: .img-medium}
+　　![](/assets/img/2015/get-authentication.png){: .img-medium}
 
 　　输入用户名user和密码password，得到：
-　　![](/assets/img/get-successfully.png){: .img-medium}
+　　![](/assets/img/2015/get-successfully.png){: .img-medium}
 
 　　显示通过CustomerApi获取到的Customer信息如下：
-　　![](/assets/img/get-results.png){: .img-medium}
+　　![](/assets/img/2015/get-results.png){: .img-medium}
 　　
 ### 参考
 1. [Enable cross-origin resource sharing](http://enable-cors.org/index.html)

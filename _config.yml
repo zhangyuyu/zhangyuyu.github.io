@@ -5,7 +5,7 @@ description:        "一点随笔，一丝感悟，一些记录，一种成长�
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/favicons/avator.jpg'
-background:         'assets/img/placeholder-big.jpg'
+background:         'assets/img/favicons/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://zhangyuyu.github.io

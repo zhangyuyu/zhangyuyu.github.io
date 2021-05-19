@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "我的第一个IoT项目"
+title: "TW|我的第一个IoT项目"
 date: 2018-06-25 09:12:00
-categories: team
+categories: life
 tags:
 - team
-- germany
+- tw
 - iot
 ---
 
@@ -145,15 +145,15 @@ tags:
 
 　　经常有人放蛋糕在厨房，往往是自己的生日，自己就要负责提供蛋糕，或者一些纪念日之类的。这些蛋糕很多时候都是自己烘焙的，带到公司。
 后来发现他们也会买超市的速成的，然后重新加工一下。
-![](/assets/img/team-cake1.png){: .img-medium}
-![](/assets/img/team-cake2.png){: .img-medium}
+![](/assets/img/2018/team-cake1.png){: .img-medium}
+![](/assets/img/2018/team-cake2.png){: .img-medium}
 
 * 喝酒文化
 
 　　客户现场，并没有其他吃的喝的，一般都是私人的。但是，有活动的时候，各种鸡尾酒调起来；看世界杯的时候，各种啤酒喝起来；
 难得team building的时候，约在酒吧喝起来。  
 　　在TW内部，冰箱里放满了啤酒，平常随意喝都可以，去参加awayday 的时候，火车上买了一箱啤酒喝着。  
-![](/assets/img/team-drink.png){: .img-medium}
+![](/assets/img/2018/team-drink.png){: .img-medium}
 　　上图是 TW 的照片，但是客户现场组织活动的时候，也差不多如上所示的各种酒水。
 
 ### 四、实践
@@ -200,8 +200,8 @@ tags:
 
 　　带着好奇，和想融入客户的想法报名参加了这个所谓的Hacknight。我们主要是玩的fischertechnik，用他们给我解释的话说，
 就是一种Technical 的乐高。
-![](/assets/img/team-hacknight1.png){: .img-medium}
-![](/assets/img/team-hacknight2.png){: .img-medium}
+![](/assets/img/2018/team-hacknight1.png){: .img-medium}
+![](/assets/img/2018/team-hacknight2.png){: .img-medium}
 
 附上往期的视频，https://youtu.be/vRFGdXRym8w
 
@@ -209,14 +209,14 @@ tags:
 
 　　这边的烤肉闻名遐迩，有幸跟着整个Account和客户们一起参与了BBQ。主要食物是：香肠、面包、芝士、番茄酱、烤肉酱、各种酒。
 大口吃肉才是这边的风格，他们并不烤素菜，素菜是用来拌沙拉的。
-![](/assets/img/team-bbq1.png){: .img-medium}
-![](/assets/img/team-bbq2.png){: .img-medium}
+![](/assets/img/2018/team-bbq1.png){: .img-medium}
+![](/assets/img/2018/team-bbq2.png){: .img-medium}
 
 #### 3. 物理环境与硬件
 
 * 办公区域
 
-![](/assets/img/team-office.png){: .img-medium}
+![](/assets/img/2018/team-office.png){: .img-medium}
 
 　　左边的A区域是一个大厨房，右边的B区域是工作区域，中间的部分是一些会议室。
 大厨房：大家中午吃饭一般都是带上来在大厨房坐着吃，此外，Weekly全体会议，各种其他活动（比如烧烤、世界杯、HackNight）。  
@@ -225,7 +225,7 @@ tags:
 
 * 办公桌
 　　最喜欢的莫过于这个办公桌了，可以升降，想站着办公的时候，就升起桌子，不用自己额外买小桌子或者把电脑垫的高高的。
-![](/assets/img/team-adjustable-table.png){: .img-medium}
+![](/assets/img/2018/team-adjustable-table.png){: .img-medium}
 
 * 编程设备（显示屏、鼠标、键盘）
 

@@ -22,7 +22,7 @@ tags:
 
 ### 1. 准备工作
 　　首先提前将日常的 Team Event 按照下述的维度进行横向纵向划分：
-　　![](/assets/img/team-event.png)
+　　![](/assets/img/2018/team-event.png)
 ### 2. 讲解
 　　向 Team 讲解各个维度，不同的颜色代表不同的维度。
 ### 3. 头脑风暴

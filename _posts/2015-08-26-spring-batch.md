@@ -8,7 +8,7 @@ tags:
 - spring
 ---
 ### 一、Spring Batch流程
-![](/assets/img/spring-batch流程.png)
+![](/assets/img/2015/spring-batch流程.png)
 　　每个Batch都会包含一个Job，每个Job装了若干Step，Step读取数据，处理数据，然后将这些数据存储起来(ItemReader用来读取数据，ItemProcessor用来处理数据，ItemWriter用来写数据) 。JobLauncher用来启动Job，JobRepository是上述处理提供的一种持久化机制，它为JobLauncher，Job，和Step实例提供CRUD(Create\Retrieve\Update\Delete)操作。  
 >1 Job = Many Steps.
 1 Step = 1 READ-PROCESS-WRITE or 1 Tasklet.
@@ -52,7 +52,7 @@ Job = {Step 1 -> Step 2 -> Step 3} (Chained together)
 ```
 	
 #### 2、job-hello-world.xml
-![](/assets/img/helloworld-job.png)
+![](/assets/img/2015/spring-batch-helloworld-job.png)
 　　首先，helloWorldJob里面配置了读（cvsFileItemReader），写（xmlItemWriter） 以及处理（itemProcessor），并设置了commit-interval="10"。  
 　　之后，对cvsFileItemReader中涉及的resource和lineMapper进行配置。对xmlItemWriter中涉及的resource、marshaller、rootTagName进行配置。而处理过程，则由稍后讲述的itemProcessor.java完成。
 ```xml
@@ -310,7 +310,7 @@ INFO: Job: [FlowJob: [name=helloWorldJob]] completed with the following paramete
 ```
 	
 ### 五、目录结构
-![](/assets/img/spring-batch-helloworld.png){: .img-medium}
+![](/assets/img/2015/spring-batch-helloworld.png){: .img-medium}
 
 ### 六、主要领域对象
 

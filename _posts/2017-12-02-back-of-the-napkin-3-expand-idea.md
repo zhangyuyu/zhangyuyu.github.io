@@ -47,7 +47,7 @@ tags:
 * 摩天大楼型
 * 爆米花型
 
-![](/assets/img/餐巾纸的背面-扩展创意-视觉笔记排版.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-视觉笔记排版.jpg){: .img-large}
 <p align=center> （图片来自[视觉笔记与手帐](http://www.jianshu.com/p/668c90a7e5a7)）</p>
 
 ### 1. 线型
@@ -56,7 +56,7 @@ tags:
 缺点：信息流向上死板，布局有制约。  
 
 【示例：线型】
-![](/assets/img/餐巾纸的背面-扩展创意-线型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-线型.jpg){: .img-large}
 
 ### 2. 放射型
 由一个主题发散出去，分为对称型和不对称型  
@@ -64,7 +64,7 @@ tags:
 缺点：对于某些读者，由于排列非线形，阅读会比较困难。  
 
 【示例：放射型】
-![](/assets/img/餐巾纸的背面-扩展创意-放射型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-放射型.jpg){: .img-large}
 
 ### 3. 垂直型
 从顶部至底部（只有一页）  
@@ -72,7 +72,7 @@ tags:
 缺点：制约布局，长度受纸的制约  
 
 【示例：垂直型】
-![](/assets/img/餐巾纸的背面-扩展创意-垂直型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-垂直型.jpg){: .img-large}
 
 ### 4. 路径型
 路径可以是Z、C、W等任何想到的形状。  
@@ -80,7 +80,7 @@ tags:
 缺点：需要规划，如果需要记录的内容超出预期，会空间不够。  
 
 【示例：路径型】
-![](/assets/img/餐巾纸的背面-扩展创意-路径型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-路径型.jpg){: .img-large}
 
 ### 5. 模块型
 将页面分为不同区域，分别放置不同信息。  
@@ -88,7 +88,7 @@ tags:
 缺点：限制了信息数量，需要预先规划。  
 
 【示例：模块型】
-![](/assets/img/餐巾纸的背面-扩展创意-模块型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-模块型.jpg){: .img-large}
 
 ### 6. 摩天大楼型
 特殊的模块型。  
@@ -96,7 +96,7 @@ tags:
 缺点：同模块型。  
 
 【示例：摩天大楼型】
-![](/assets/img/餐巾纸的背面-扩展创意-摩天大楼型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-摩天大楼型.jpg){: .img-large}
 
 ### 7. 爆米花型
 将标题和信息放在页面任意位置的版式。  
@@ -104,7 +104,7 @@ tags:
 缺点：信息摆放无序，难于理解。  
 
 【示例：爆米花型】
-![](/assets/img/餐巾纸的背面-扩展创意-爆米花型.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-爆米花型.jpg){: .img-large}
 
 ### 五、图形元素
 常用的5种视觉元素：人物、小图标、箭头、对话框、图框。  
@@ -117,56 +117,56 @@ tags:
 * 格雷法
 * others(自定义形式)
 
-![](/assets/img/餐巾纸的背面-扩展创意-人物的画法.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-人物的画法.jpg){: .img-large}
 
 ##### 火柴人
-![](/assets/img/餐巾纸的背面-扩展创意-火柴人.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-火柴人.jpg){: .img-medium}
 
 ##### 进阶火柴人
-![](/assets/img/餐巾纸的背面-扩展创意-进阶火柴人.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-进阶火柴人.jpg){: .img-medium}
 
 【示例】
-![](/assets/img/餐巾纸的背面-扩展创意-进阶火柴人示例.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-进阶火柴人示例.jpg){: .img-medium}
 
 ##### 星形人
-![](/assets/img/餐巾纸的背面-扩展创意-星形人.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-星形人.jpg){: .img-medium}
 
 ##### 格雷法
-![](/assets/img/餐巾纸的背面-扩展创意-格雷法.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-格雷法.jpg){: .img-medium}
 【示例】
-![](/assets/img/餐巾纸的背面-扩展创意-格雷法示例.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-格雷法示例.jpg){: .img-medium}
 
 ##### others
-![](/assets/img/餐巾纸的背面-扩展创意-others.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-others.jpg){: .img-medium}
 
 #### 2. 箭头
-![](/assets/img/餐巾纸的背面-扩展创意-箭头.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-箭头.jpg){: .img-medium}
 
 #### 3. 对话框
-![](/assets/img/餐巾纸的背面-扩展创意-对话框.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-对话框.jpg){: .img-medium}
 
 #### 4. 图框
-![](/assets/img/餐巾纸的背面-扩展创意-图框.jpg){: .img-medium}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-图框.jpg){: .img-medium}
 
 #### 5. 小图标
 小图标有很多种，这个很容易在网上就可以搜索到，文章末尾reference里面提供了几个icon的链接。
 限于篇幅，下面只列举一些比较好画的。
 
 【示例：项目符号】
-![](/assets/img/餐巾纸的背面-扩展创意-项目符号.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-项目符号.jpg){: .img-large}
 
 【示例：建筑】
-![](/assets/img/餐巾纸的背面-扩展创意-建筑.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-建筑.jpg){: .img-large}
 
 【示例：树木】
-![](/assets/img/餐巾纸的背面-扩展创意-树木.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-树木.jpg){: .img-large}
 
 ### 六、字体
 主要是风格、大小、间距、粗细、大小写、组合对比，要点在于让人一眼望去，层次分明。  
 
 【示例：字体的风格】
 字体有很多种风格，不同的在线资源分类方法也都不一样，下面只是随便截图了一段：
-![](/assets/img/餐巾纸的背面-扩展创意-字体风格.jpg){: .img-large}
+![](/assets/img/2017/餐巾纸的背面-扩展创意-字体风格.jpg){: .img-large}
 
 ### 七、配色
 1. 正文字体最好不要超过三种颜色，颜色太多显得杂乱，不要选择饱和度太高的颜色，就是鲜艳的颜色，太亮眼了，尽量用温和一些的深色系，如深灰或者黑色。  

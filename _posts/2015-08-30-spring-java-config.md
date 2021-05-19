@@ -125,7 +125,7 @@ Hello : Hello,Spring Java Config
 ```
 
 ### 五、目录结构
-![](/assets/img/spring-java-config.png){: .img-small}
+![](/assets/img/2015/spring-java-config.png){: .img-small}
 
 ### 六、补充@Import
 当要配置多个文件时候，可以用@Import

@@ -20,7 +20,7 @@ tags:
 
 　　Nexus是谷歌手机的一个牌子，我们要介绍的不是Nexus，而是Sonatype Nexus。  
 　　Sonatype Nexus是Sonatype公司的一个产品，叫Nexus，它是Maven的私服。  
-　　![](/assets/img/nexus-maven仓库.png)
+　　![](/assets/img/2018/nexus-maven仓库.png)
 
 　　事实上有三种专门的Maven仓库管理软件可以帮助我们创建私服：
 
@@ -34,7 +34,7 @@ tags:
 
 　　私服是指私有服务器，是架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方构建。有了私服之后，当 Maven 需要下载构件时，直接请求私服，私服上存在则下载到本地仓库；否则，私服请求外部的远程仓库，将构件下载到私服，再提供给本地仓库下载。
 
-![](/assets/img/nexus-私服.png)
+![](/assets/img/2018/nexus-私服.png)
 
 ## 四、Why Nexus?
 
@@ -56,12 +56,12 @@ tags:
 ## 五、Docker搭建
 
 　　安装过程，网上有很多资料，这里不再赘述。笔者是MAC Pro，安装了Docker for Mac，因此很容易Kitematic进行容器的安装。
-![](/assets/img/nexus-kitematic-container.png)
+![](/assets/img/2018/nexus-kitematic-container.png)
 
 ### 1. 安装目录
 
 下面是nexus的一些环境变量：
-![](/assets/img/nexus-环境变量.png)
+![](/assets/img/2018/nexus-环境变量.png)
 
 nexus-container中：
 ```
@@ -116,7 +116,7 @@ sh-4.2$
 ## 六、功能介绍
 
 ### 1. Browse Server Content
-![](/assets/img/nexus-功能-browse-server-content.png)
+![](/assets/img/2018/nexus-功能-browse-server-content.png)
 
 #### 1.1 Search
 　　搜索功能，就是从私服上查找是否有哪些包:
@@ -129,7 +129,7 @@ sh-4.2$
 
 ### 2. Server Adminstration And configuration
 　　看到这选项是要进行登录的，在右上角点击"Sign In"的登录按钮，输入`admin/admin123`,登录成功之后，即可看到此功能，如图所示：
-![](/assets/img/nexus-功能-server-adminstration-configuration.png)
+![](/assets/img/2018/nexus-功能-server-adminstration-configuration.png)
 
 #### 2.1 Repository
 * Blob Stores, 文件存储的地方，创建一个目录的话，对应文件系统的一个目录
@@ -174,7 +174,7 @@ sh-4.2$
 * mixed，混合的
 
 ##### 2.1.4 预定义本地仓库
-![](/assets/img/nexus-功能-repositories.png)
+![](/assets/img/2018/nexus-功能-repositories.png)
 
 #### 2.2 Security
 主要是用户、角色、权限的配置

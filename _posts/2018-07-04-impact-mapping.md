@@ -32,7 +32,7 @@ tags:
 
 　　Impact Mapping(影响地图)，是一种战略规划技术，通过明确传达假设，以防止组织在构建产品、交付项目时迷失方向，从而帮助团队将其活动与整体业务目标保持一致，并制定更好的路线图决策。
 
-![](/assets/img/impact-mapping-assumptions.png)
+![](/assets/img/2018/impact-mapping-assumptions.png)
 
 　　简言之，Impact Mapping是一种非常简单的可视化思维分析模式，用于规划从目标到可交付成果的路径。
 
@@ -54,7 +54,7 @@ assumptions）；
 
 ## 四、结构
 
-![](/assets/img/impact-mapping-structure.png)
+![](/assets/img/2018/impact-mapping-structure.png)
 　　Impact Mapping包含四个层次，WHY、WHO、HOW和WHAT，分别对应了Goal、Actors、Impacts、Deliverables。
 
 ## 五、如何使用
@@ -135,7 +135,7 @@ Measure:
     * 发送电子邮件通知新产品
  
 　　汇总画处Impact Mapping 的图如下：   
-　　![](/assets/img/impact-mapping-example.png)
+　　![](/assets/img/2018/impact-mapping-example.png)
 
 ### 5. STORY
 　　接下来就可以按照模板写story 了，比如：

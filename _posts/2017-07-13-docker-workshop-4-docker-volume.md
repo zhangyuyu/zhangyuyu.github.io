@@ -275,7 +275,7 @@ Volume只有在下列情况下才能被删除：
 * 手动去`/var/lib/docker/volumes/`删除
 
 ### 3. 数据卷和数据卷容器的比较
-![](/assets/img/docker-volumn-vs-container.png)
+![](/assets/img/2017/docker-volumn-vs-container.png)
 
 ## 六、卷插件
 数据卷  
@@ -289,7 +289,7 @@ Volume只有在下列情况下才能被删除：
 
 　　Docker推出了Volume plugin接口机制，让第三方的存储厂商来支持Docker Volume并且在此基础上进行功能拓展。
 
-![](/assets/img/docker-volumn-plugin.png)
+![](/assets/img/2017/docker-volumn-plugin.png)
 
 * Rancher Convoy：Convoy是Rancher Labs用go开发的支持Device Mapper、NFS、EBS、GlusterFS多种后端存储的Docker Volume plugin driver. Convoy还提供了一个存储拓展功能（如快照、备份恢复等）的接口框架。
 

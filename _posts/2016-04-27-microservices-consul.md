@@ -49,7 +49,7 @@ tags:
 　　同事整理的RPC文档→[Remote Procedure Call](http://koly.me/2016/04/22/RPC-and-Apache-Thrift/)
 
 　　下图为Consul的架构图：
-![](/assets/img/consul-arch.jpg)
+![](/assets/img/2016/consul-arch.jpg)
 
 ### 使用Consul发现服务的三个组件
 1. Consul 存储服务信息  
@@ -62,7 +62,7 @@ tags:
 　　tool to query registered services and apply configuration
 
 　　下图为Consul和ECS之间一起运作的架构：
-![](/assets/img/consul-EC2.png)
+![](/assets/img/2016/consul-EC2.png)
 
 ### 参考
 * Consul官网对于Consul架构的解释：

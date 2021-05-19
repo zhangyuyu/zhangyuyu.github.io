@@ -10,16 +10,16 @@ tags:
 　　还记得吗，在第一部分我问了一个问题：如何在你刚写出来的web server上运行一个Django应用，Flask应用和Pyramid应用，同时不做出改动就能适应这些不同的Web框架呢？往下读就可以找到答案。  
 
 　　在以前，你选择的Python web框架会限制你可选择的web server，反之亦然。如果框架和服务器被设计成协同工作的话，那就是极好的。
-![](/assets/img/WS_part2_before_wsgi.png){: .img-medium}
+![](/assets/img/2016/WS_part2_before_wsgi.png){: .img-medium}
 
 　　但是当你试图去连接没有被设计成协同工作的服务器和框架时， 你可能会遇到（可能你遇到过）下面的问题：
-![](/assets/img/WS_part2_after_wsgi.png){: .img-medium}
+![](/assets/img/2016/WS_part2_after_wsgi.png){: .img-medium}
 
 　　基本上，你不得不使用能协同工作的组件，而不是你想使用的组件。因此，你如何确保你的web server能够运行多种web框架，而不用改变web server和web框架的代码呢？问题的答案就是*Python Web Server GateWay Interface*(或简称WSHI，读作"wizgy")。
-![](/assets/img/WS_part2_wsgi_idea.png){: .img-medium}
+![](/assets/img/2016/WS_part2_wsgi_idea.png){: .img-medium}
 
 　　WSGI允许开发者自由选择web server和web框架。现在你可以混合搭配不同的web server和web框架，并选择一个满足你需求的组合。比如，你可以用Gunicorn，Nginx/uWSGI或者Waitress运行Django，Flask或者Pyramid。真正的混合搭配，多亏了服务器和框架对WSGI的支持。  
-![](/assets/img/WS_part2_wsgi_interop.png){: .img-medium}
+![](/assets/img/2016/WS_part2_wsgi_interop.png){: .img-medium}
 
 　　因此，WSGI是我在第一部分提出，并在本文开头重复的问题的答案。你的web server必须实现WSGI接口的服务器端部分，所有的Python web框架已经实现了WSGI接口的框架端部分。这样不用修改服务器的代码去适应指定的web框架，你就能使用你的web server。  
 　　现在你已经知道web server和web框架都支持WSGI，它允许你选择适合的组合，同时也有利与服务器和框架的开发者专注于他们擅长的领域，不会因为越界而踩到对方的脚趾。其他语言也有类似的接口：比如Java有Servlet API，Ruby有Rack。
@@ -218,7 +218,7 @@ WSGIServer: Serving HTTP on port 8888 …
 ```
 
 　　刚才你告诉你的服务器去从python模块`pyramidapp`中加载一个可调用的app对象。现在你的服务已经准备好接收请求，转发请求至你的Pyramid应用程序。当前应用程序只处理一个路由：`\hello路由`。在浏览器地址栏输入`http://localhost:8888/hello`，回车观察结果：
-![](/assets/img/WS_part2_browser_pyramid.png){: .img-medium}
+![](/assets/img/2016/WS_part2_browser_pyramid.png){: .img-medium}
 
 　　你也可以在命令行用`curl` 指令来测试服务器：
 ```
@@ -252,7 +252,7 @@ WSGIServer: Serving HTTP on port 8888 …
 ```
 
 　　在浏览器输入`http://localhost:8888/hello`，回车：
-![](/assets/img/WS_part2_browser_flask.png)
+![](/assets/img/2016/WS_part2_browser_flask.png)
 
 　　再次用`curl`命令，看一下服务器返回Flask应用程序生成的信息：
 ```
@@ -274,7 +274,7 @@ app = wsgi.application
 WSGIServer: Serving HTTP on port 8888 …
 ```
 　　输入下面的地址，回车：
-![](/assets/img/WS_part2_browser_django.png){: .img-medium}
+![](/assets/img/2016/WS_part2_browser_django.png){: .img-medium}
 
 　　正如你之前做过的那几次一样，你也可以在命令行中进行测试，确认Django应用处理了你这次的请求：
 ```
@@ -318,7 +318,7 @@ run_application(app)
 3. 框架/应用程序生成一个HTTP状态（status）和HTTP响应头（headers），并传递给`start_response`可调用对象，让服务器把它们存储起来。框架/应用程序也返回了一个响应正文(body)。
 4. 服务器把状态、响应头以及响应正文合并为一个HTTP响应，然后把它传输给客户端（这个步骤不是规范的一部分，但它是流程的下一个逻辑步骤，为了清晰可见我把它加到这里）
 下面是这个接口的可视化表现：
-![](/assets/img/WS_part2_wsgi_interface.png){: .img-medium}
+![](/assets/img/2016/WS_part2_wsgi_interface.png){: .img-medium}
 
 　　到现在为止，你已经见到了Pyramid, Flask和Django Web应用程序，你也见到了实现WSGI规范的服务器端代码。你见到了不用任何框架实现的精简代码片段。
 　　当你用上述其中之一的框架开发web应用程序时候，你是在一个高层面工作，并没有直接与WSGI打交道，但是我知道你一定对WSGI接口的框架端非常好奇，因为你在阅读这篇文章。那么，让我们来创建一个不使用Pyramid, Flask或者Django的微型WSGI Web应用/Web框架，并用你的服务器运行它：
@@ -339,19 +339,19 @@ def app(environ, start_response):
 WSGIServer: Serving HTTP on port 8888 …
 ```
 　　输入下面的地址，回车，你会看到下面的结果：
-![](/assets/img/WS_part2_browser_simple_wsgi_app.png){: .img-medium}
+![](/assets/img/2016/WS_part2_browser_simple_wsgi_app.png){: .img-medium}
 
 ### HTTP响应
 　　在学习如何创建一个web server的同时，你刚刚写出了自己的微型WSGI Web框架。真是意外之喜。
 　　现在让我们回到服务器给客户端传输什么。下面是当你用HTTP客户端调用你的Pyramid应用程序时，服务器生成的HTTP响应。
-![](/assets/img/WS_part2_http_response.png){: .img-medium}
+![](/assets/img/2016/WS_part2_http_response.png){: .img-medium}
 
 　　上述响应和你在[第一部分](http://zhangyuyu.github.io/2016/03/05/WebServer1/)看到的有些类似，但是也有一些新的内容。比如，有四个之前没见过的HTTP headers: `Content-Type`，`Content-Length`，`Date`，`Server`。这些都是web server生成的响应头信息中应该含有的。虽然它们都不是被严格要求的，但是这些头信息的目的是传输有关HTTP请求/响应的附加信息。
 　　现在你更多的了解了关于WSGI的接口，下面是同一个HTTP响应关于哪些部分生成它的详细信息：
-![](/assets/img/WS_part2_http_response_explanation.png){: .img-medium}
+![](/assets/img/2016/WS_part2_http_response_explanation.png){: .img-medium}
 
 　　到现在我还没有说任何有关`environ`字典的信息，但是，它基本上就是一个Pyhon字典，这个字典必须包含某些有WSGI规定所规定的WSGI和CGI变量。解析完请求之后，服务器从HTTP请求中拿到了字典所需要的值。字典的内容如下：
-![](/assets/img/WS_part2_environ.png){: .img-medium}
+![](/assets/img/2016/WS_part2_environ.png){: .img-medium}
 
 　　Web 框架用这个字典的信息，来决定使用哪个view（基于指定路由和请求方法等）；决定从哪里读取请求的正文；以及把错误信息写在哪里，如果有的话。
 　　
@@ -364,7 +364,7 @@ WSGIServer: Serving HTTP on port 8888 …
 5. 然后，服务器把`environ`字典和一个`start_response`可调用对象作为参数传递给`application`可调用对象，并且获得相应正文。
 6. 之后，服务器用通过调用`application`可调用对象获得body数据，以及通过`start_response`可调用对象设置的状态和响应头信息一起构造一个HTTP响应。
 7. 最后，服务器把HTTP响应传输回客户端。
-![](/assets/img/WS_part2_server_summary.png){: .img-medium}
+![](/assets/img/2016/WS_part2_server_summary.png){: .img-medium}
 
 　　这就是全部了，你现在有了一个可以工作的WSGI服务器，它可以服务那些用WSGI兼容的Web框架（Django，Flask，Pyramid或者你自己写的WSGI框架）开发的Web应用程序。最好的是服务器能够在不改变服务器代码的情况下与多个Web框架使用。还不错！
 在你离开之前，还有一个问题需要你思考，"如何让你的服务器一次处理多个请求？"

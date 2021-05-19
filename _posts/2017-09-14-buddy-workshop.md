@@ -39,7 +39,7 @@ tags:
 
 ### 1. 提升自己的能力
 　　正如Cone of experience（学习金字塔）里面告诉我们的，我们是通过"教"的过程才真正学会，而不是学好了才能去教。
-![](/assets/img/buddy-cone-of-experience.png){: .img-medium}
+![](/assets/img/2017/buddy-cone-of-experience.png){: .img-medium}
 
 　　Teaching is Learning，这一点在费曼技巧里面也有一些体现。把教别人的过程作为帮助自己学习的过程。表面看起来是知识输出，
 但实际上这个过程还有额外的三个价值：
@@ -78,14 +78,14 @@ tags:
 
 ### 2. 数字化人才
 　　数字化人才的定义是以敏捷为核心，具备设计思维、商业视角和工程实践能力的人才。
-![](/assets/img/buddy-digital-talent.png){: .img-medium}
+![](/assets/img/2017/buddy-digital-talent.png){: .img-medium}
 
 　　数字化人才既具备工程实现的能力，又有商业嗅觉，了解用户和市场，还有设计思维，知道如何一步步做出用户满意的产品。
 以敏捷的心态为基础：快速试错、持续改进。当今社会，想要取得成功，跨界能力显得愈发重要。
 
 ## 五、如何培养
 　　**构建以<u>学习者为中心</u>的<u>可视化教学</u>**
-![](/assets/img/buddy-以学习者为中心的教学.jpg)
+![](/assets/img/2017/buddy-以学习者为中心的教学.jpg)
 
 
 ### 1. 少讲课、多辅导
@@ -114,7 +114,7 @@ tags:
 
 ### 3. 反馈
 　　戴明循环（PDCA）讲究从计划开始，经过实践，再反思，产生的改进行动再纳入下一轮计划的持续改进过程。
-![](/assets/img/buddy-pdca.png){: .img-medium}
+![](/assets/img/2017/buddy-pdca.png){: .img-medium}
 
 Plan - Do - Check - Action是持续改进提升的模型，这一套适用于很多方面，这里我们也可以用来不断改进我们的培养过程、以及锻炼学习过程。
 
@@ -123,7 +123,7 @@ Plan - Do - Check - Action是持续改进提升的模型，这一套适用于很
 　　德雷福斯模型（Dreyfus model of skill acquisition）概括了从新手到专家必须经历的 5 个阶段，每两个阶段之间都需要经历一定的时间，
 无法避免。因此在培养的时候，不能一蹴而就，要正确对待这个时间的鸿沟。
 
-![](/assets/img/buddy-coaching-evolution.png){: .img-medium}
+![](/assets/img/2017/buddy-coaching-evolution.png){: .img-medium}
 
 #### 一切能力的核心
 　　公司同事曾经做过一个调查，具体内容是，到底是什么样的人，才是能够让我司每一个团队（注意，是每一个团队）都能说出"我愿意与他共事"的人呢？
@@ -175,7 +175,7 @@ Plan - Do - Check - Action是持续改进提升的模型，这一套适用于很
 　　概念图是由概念，连接线和关注点组成。最小的单元是命题，命题由两个概念和一条连接线组成。它可以帮助我们把大脑中思考的事情
 用图来可视化。在这里可以帮助我们查看新人对事物的理解。如果新人的表达能力描述不清，借此辅助。  
 　　我们可以借助工具CmapTools进行概念图的绘制：
-![](/assets/img/buddy-cmap-json.png)
+![](/assets/img/2017/buddy-cmap-json.png)
 [原cmap文件地址](https://school.thoughtworks.cn:8341/rid=1RRC78MYB-1X88GJ7-PV6/JSON.cmap)
 
 ### 2. Tasking

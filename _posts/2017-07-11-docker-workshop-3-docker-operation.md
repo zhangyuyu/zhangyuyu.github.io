@@ -38,7 +38,8 @@ tags:
 <!-- more -->
 
 #### 1. 镜像是什么
-　　Docker镜像是一个特殊的**文件系统**，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+　　Docker镜像是一个特殊的**文件系统**，除了提供容器运行时所需的程序、库、资源、配置等文件外，
+还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
 
 镜像通常包含：
 
@@ -48,9 +49,11 @@ tags:
 
 #### 2. 镜像的分层存储
 　　传统的Linux加载bootfs时会先将rootfs设为read-only，然后在系统自检之后将rootfs从read-only改为read-write，然后我们就可以在rootfs上进行写和读的操作了。  
-　　但Docker的镜像却不是这样，它在bootfs自检完毕之后并不会把rootfs的read-only改为read-write。而是利用union mount（UnionFS的一种挂载机制）将一个或多个read-only的rootfs加载到之前的read-only的rootfs层之上。
+　　但Docker的镜像却不是这样，它在bootfs自检完毕之后并不会把rootfs的read-only改为read-write。而是利用union mount（UnionFS的一种挂载机制）
+将一个或多个read-only的rootfs加载到之前的read-only的rootfs层之上。
 
-![](/assets/img/docker-image-layer1.png)
+![](/assets/img/2017/docker-image-layer1.png)
+![](/assets/img/2017/docker-image-layer2.png)
 
 可以通过`docker info`查看宿主机上docker的文件系统方式：
 ```
@@ -90,7 +93,7 @@ apt-get install -y nginx
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
-![](/assets/img/docker-image-layers-history.png)
+![](/assets/img/2017/docker-image-layers-history.png)
 
 2）生成镜像
 ` docker build -t nginx-demo .`其中`.`是当前目录，包含`Dockerfile`文件

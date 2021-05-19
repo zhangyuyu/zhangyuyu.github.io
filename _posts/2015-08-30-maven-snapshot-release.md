@@ -12,7 +12,7 @@ tags:
 ### 1. 背景
 　　在开发应用的时候，将应用程序分为了不同的模块，模块之间采用jar包的形式依赖。
 
-![](/assets/img/maven-structure.png){: .img-medium}
+![](/assets/img/2015/maven-structure.png){: .img-medium}
    
 ### 2. 手动操作
 >每次更改common时候，都需要：

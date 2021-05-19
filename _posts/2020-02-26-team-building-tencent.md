@@ -1,10 +1,11 @@
 ---
 layout: post
-title: "团建之青甘小环线"
+title: "Tencent|团建之青甘小环线"
 date: 2020-08-26
-categories: team
+categories: life
 tags:
 - team
+- tencent
 comments: true
 ---
 

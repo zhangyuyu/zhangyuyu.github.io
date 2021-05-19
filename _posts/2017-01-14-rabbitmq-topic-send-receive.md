@@ -9,7 +9,7 @@ tags:
 ### 一、前言
 
 #### 1.项目结构：
-![](/assets/img/rabbit-1.png){: .img-medium}
+![](/assets/img/2017/rabbit-1.png){: .img-medium}
 　　A是消息的生产者，B、C则是消息的consumer。A会通过queue（不关心其产品类型）发送消息给B、C。
 
 #### 2.需求
@@ -26,13 +26,13 @@ tags:
 
 #### 4.解决方案
 　　因此，在兼容以前的基础上，我试图用下面的结构图解决上述痛点：
-![](/assets/img/rabbit-2.png){: .img-medium}
+![](/assets/img/2017/rabbit-2.png){: .img-medium}
 保持原有应用程序B和C的接收消息方式不变，新的应用程序开始改用topic的方法，这样可以兼容既有的应用程序，也可以将新应用程序的生产者和消费者解耦。但是还是存在一些问题：
 * A的消息那么多，全部放在一个topic可能负载过大，那么应该采取分布式的方法？
 * 如果消费者之一中途down了一段时间，该消息的等待时间又如何处理？是一直停留在topic中进行等待吗？
 
 　　最后，考虑到上述因素以及实际项目的其他因素，我将结构变成了如下：
-![](/assets/img/rabbit-3.png){: .img-medium}
+![](/assets/img/2017/rabbit-3.png){: .img-medium}
 
 　　虽然把最开始的痛点1又引入了，但是解耦的好处还是非常有意义的。
 

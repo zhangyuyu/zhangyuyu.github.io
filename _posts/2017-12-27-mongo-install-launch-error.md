@@ -2,7 +2,7 @@
 layout: post
 title: "Mongo-记一次安装启动异常"
 date: 2017-12-27 11:35:21
-categories: db
+categories: tech
 tags:
 - db
 ---
