@@ -130,10 +130,10 @@ SQL索引的知识点，进行整理如下。
 
 ### 1. B-树
 B-树，即B树，不能读成"B减树"。
-![](/assets/img/2017/mysql-index-B-Tree.jpg)
+![](/assets/img/2017/mysql-index-B-Tree.png)
 
 ### 2. B+树
-![](/assets/img/2017/mysql-index-B+Tree.jpg)
+![](/assets/img/2017/mysql-index-B+Tree.png)
 
 ## 七、散列索引
 

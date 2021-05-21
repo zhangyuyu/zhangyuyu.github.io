@@ -56,6 +56,7 @@ tags:
 ![](/assets/img/2017/docker-image-layer2.png)
 
 可以通过`docker info`查看宿主机上docker的文件系统方式：
+
 ```
 $ docker info
 Containers: 3
@@ -85,7 +86,7 @@ WARNING: No swap limit support
 
 #### 【练习1】通过Dockerfile构建镜像
 1）创建一个Dockerfile
-```yml
+```yaml
 FROM debian:8
 MAINTAINER John Citizen
 RUN apt-get update && \
@@ -96,7 +97,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ![](/assets/img/2017/docker-image-layers-history.png)
 
 2）生成镜像
-` docker build -t nginx-demo .`其中`.`是当前目录，包含`Dockerfile`文件
+`docker build -t nginx-demo .`其中`.`是当前目录，包含`Dockerfile`文件
 
 ```
 $ docker build -t nginx-demo .
@@ -126,22 +127,29 @@ Step 5 : CMD nginx -g daemon off;
 Removing intermediate container bdac893db4aa
 Successfully built 7bd0c6e98644
 ```
+
 可以看到Docker会创建（create -> commit -> destroy）一些临时的容器，如`Step 2`的`35d7b813f3ec`，生成的新的镜像作为中间镜像会被保存在cache中。可以通过下面两种方式查看该临时容器：
+
 ```
 $ docker inspect 3abd0b877321
 $ docker images -a |grep 3abd0b877321
 ```
+
 3）查看所有镜像
+
 ```
 $ docker images
 ```
+
 4）查看`nginx-demo`镜像信息
+
 ```
 $ docker inspect nginx-demo
-$ docker inspect -f '{{ .Config.ExposedPorts }}' nginx-demo
+$ docker inspect -f '{{.Config.ExposedPorts }}' nginx-demo
 ```
 
 5) 查看创建镜像的历史
+
 ```
 $ docker history nginx-demo:latest
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -160,7 +168,9 @@ aaec12cbddb4        3 weeks ago         /bin/sh -c #(nop) ADD file:9c48682ff75c7
 * 由于每一行指令，都会产生一个镜像，因此可以使用链式指令，有助于构建较小的镜像。(更多内容可以阅读《高性能Docker》)
 
 ### 四、Docker仓库
+
 #### 【练习2】使用Docker public仓库
+
 ```
 $ docker search busybox
 NAME                            DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
@@ -194,8 +204,10 @@ $ docker pull busybox
 ```
 
 #### 【练习3】搭建Docker private仓库
+
 1) 需要提前创建证书文件cert，并放到相应的地方。
 通过` registry:2`镜像运行起了一个私有registry如下：
+
 ```
 docker run -d \
   -p 5000:5000 \
@@ -206,12 +218,15 @@ docker run -d \
   -e REGISTRY_HTTP_TLS_KEY=/certs/registry_hostname.key \
   registry:2
 ```
+
 2) 查看所有docker容器
+
 ```
 $ docker ps -a
 ```
 
 3) 访问私有registry接口
+
 ```
 $ sudo curl -is --cacert /etc/docker/certs.d/registry:5000/registry.crt https://registry:5000/v2/
 HTTP/1.1 200 OK
@@ -221,20 +236,28 @@ Docker-Distribution-Api-Version: registry/2.0
 Date: Wed, 12 Jul 2017 13:30:17 GMT
 HTTP/1.1 200 OK
 ```
+
 ### 五、发布镜像到仓库
+
 #### 【练习4】上传镜像到registry
+
 1）给镜像打标签
+
 ```
 $ docker tag nginx-demo registry:5000/nginx-demo
 ```
+
 2) 查看所有镜像
+
 ```
 $ docker images
 REPOSITORY                      TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
 nginx-demo                      latest              8ef43fa97b67        About a minute ago   195.3 MB
 registry:5000/nginx-demo        latest              8ef43fa97b67        About a minute ago   195.3 MB
 ```
+
 3）上传镜像
+
 ```
 $ docker push registry:5000/nginx-demo
 The push refers to a repository [registry:5000/nginx-demo] (len: 1)
@@ -245,13 +268,17 @@ cdea4d036852: Pushed
 aaec12cbddb4: Pushed
 latest: digest: sha256:399e271209f61771afc03896bea5cd107d2da64985b7bea6733b9380b181b31b size: 8470
 ```
+
 4）访问registry接口查看镜像是否存在
+
 ```
 $ export CERT_PATH=/etc/docker/certs.d/registry:5000/registry.crt
 $ sudo curl -s --cacert ${CERT_PATH} https://registry:5000/v2/_catalog
 {"repositories":["nginx-demo"]}
 ```
+
 5) 删除本地镜像
+
 ```
 $ docker rmi nginx-demo
 Untagged: nginx-demo:latest
@@ -262,6 +289,7 @@ Deleted: 3abd0b8773212881d3e73babe2304d5b760c0b156095bd9496ceb2fedf71fd62
 ```
 
 6）从私有registry上拉取镜像
+
 ```
 $ docker pull registry:5000/nginx-demo
 Using default tag: latest
@@ -277,8 +305,11 @@ Status: Downloaded newer image for registry:5000/nginx-demo:latest
 ```
 
 ### 六、启动Docker容器
+
 #### 【练习5】启动Docker容器
+
 1) 启动一个容器
+
 ```
 $ docker run -d -p 80:80 --name nginx-app registry:5000/nginx-demo
 a56d494e8af22247eccbd7e99f108501684b52395a50f479cca09caa8ec18b19
@@ -287,36 +318,46 @@ CONTAINER ID        IMAGE                      COMMAND                  CREATED 
 a56d494e8af2        registry:5000/nginx-demo   "nginx -g 'daemon off"   3 seconds ago       Up 2 seconds        0.0.0.0:80->80/tcp       nginx-app
 7d01136fd367        registry:2                 "/bin/registry /etc/d"   22 minutes ago      Up 22 minutes       0.0.0.0:5000->5000/tcp   registry
 ```
+
 此处用`docker run`是创建并启动，`docker create`是单纯创建容器。
+
 2）查看容器log
+
 ```
 $ docker logs nginx-app
 ```
 
+
 ### 七、连接Docker容器
+
 #### 【练习6】连接多个Docker容器
+
 假设我们有如下三个应用，且都已经publish到了registry中：
 * shop-app，需要连接review和catalogue
 * review，微服务
 * catalogue，微服务
 
 1）先启动`review`和`catalogue`
+
 ```
 $ docker run -d -p 8082:8082 --name review registry:5000/review
 $ docker run -d -p 8084:8084 --name catalogue registry:5000/catalogue
 ```
 
 2）连接`shop-app`到`review`和`catalogue`
+
 ```
 $ docker run -d -p 8080:8080 --name shop-app --link review:review --link catalogue:catalogue registry:5000/shop-app
 ```
 
 3）查看`shop-app`容器
+
 ```
 $ docker exec shop-app cat /etc/hosts
 ```
 
 4）确认`shop-app`可以连接到`review`
+
 ```
 $ docker exec -t shop-app ping review
 ```
@@ -332,7 +373,8 @@ $ docker exec -t shop-app ping review
 
 #### 【练习7】使用Docker compose工具
 1）创建一个`docker-compose.yml`文件
-```yml
+
+```yaml
 shop-app:
   image: registry:5000/shop-app
   ports:
@@ -347,22 +389,29 @@ review:
 catalogue:
   image: registry:5000/catalogue
 ```
+
 2) 启动三个容器
+
 ```
 $ docker-compose up
 ```
+
 3） 查看运行的容器
+
 ```
 $ docker-compose ps
 ```
-3）查看log
-```
+
+4）查看log
+
+
 $ docker-compose logs
 ```
 
 `docker-compose`可以查看所有在`docker-compose.yml`中声明的容器的日志，不用切换tab查看单独的docker容器日志。
 
 ### 九、使用容器时要避免的做法
+
 * 不要在容器中保存数据（Don’t store data in containers）
 * 将应用打包到镜像再部署而不是更新到已有容器（Don’t ship your application in two pieces）
 * 不要产生过大的镜像 （Don’t create large images）
@@ -374,9 +423,11 @@ $ docker-compose logs
 * 不要使用 root 用户跑容器进程（Don’t run processes as a root user ）
 * 不要依赖于IP地址，而是要从外面通过环境变量传入 （Don’t rely on IP addresses ）
 
+
 ### 最后
 　　本篇文章主要是按照构建流程练习了docker的一些常见基本指令，指令并不全面，详细的指令可以参考[官网](https://docs.docker.com/engine/reference/commandline/docker/#parent-command)进行练习。  
 　　[下一篇](http://zhangyuyu.github.io/docker-workshop-4-docker-volume/)将讲述Docker的数据存储。
+
 
 ### References
 * [Docker笔记](http://feisky.xyz/docker/index.html)
