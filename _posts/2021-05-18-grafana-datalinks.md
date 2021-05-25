@@ -459,12 +459,13 @@ WHERE
 
 # 三、LeadTime下钻实战
 
-## 1、效果总览
+## 1、效果
 
+### 1.1 总览
 ![](/assets/img/2021/2021-Grafana下钻实战-效果总览.gif){: .img-large}
 
 
-1.1 【一层】LeadTime大盘
+### 1.2 【一层】LeadTime大盘
 
 大盘为第1层，是总体入口，点击折线图上某点，可以展示5个data links，进行第一次下钻到第2层。
 
@@ -474,9 +475,8 @@ WHERE
 
 - 右图，采用单一状态图，单独将当前均值展示出来，比较醒目。
 
-  
 
-1.2 【二层】LeadTime散点分布
+### 1.3 【二层】LeadTime散点分布
 
 下图为第2层，是第一层选择`LeadTime散点分布`之后跳转得来，左上角可点击`需求列表`进入第3层。
 
@@ -487,24 +487,29 @@ WHERE
 - 将散点分布的柱状图用绿色的线连接起来，结合右边的avg_leadtime、p25/p50/p75，在作图上画出红色竖线，可以知道左图是一个右长尾。
 
 
+### 1.4 【二层】LeadTime均值分阶段
 
-1.3 【三层】需求列表
+下图为第2层，是第一次选择`LeadTime均值分阶段`之后跳转得来
+
+![](/assets/img/2021/2021-Grafana下钻实战-二层-分阶段.png){: .img-large}
+- 本图需要安装插件Echarts，选择Echarts插件。
+- 本图展示选择时间点所在年初~选择时间点内需求，对齐进行各个阶段取均值
+
+
+### 1.5 【三层】需求列表
 
 下图为第3层，同时也可以由第1层直接跳转过来。
 
 ![](/assets/img/2021/2021-Grafana下钻实战-三层.png){: .img-large}
 
 - 本图采用表格，结合数据下钻中的datalink部分，分别链接到了内部的Grafana链接和外部的TAPD链接。
-
 - 点击左边第一列，可以跳转到Grafana其他Panel，展示需求时间分布比例
-
 - 点击左边第二列，可以跳转到TAPD上需求的详情页面
 
 - LeadTime可以排序，找到异常数据，进行分析。
 
-  
 
-1.4 【四层】需求时间分布比例
+### 1.6 【四层】需求时间分布比例
 
 下图为第4层，由需求列表中点击第一行第一列数据跳转而来。
 
@@ -597,7 +602,7 @@ WHERE
 
 
 
-链接到第2层的Data links如下：
+链接到【3.3】第2层的Data links如下：
 
 ![](/assets/img/2021/2021-Grafana下钻实战-一层配置.png){: .img-large}
 
@@ -632,7 +637,7 @@ WHERE
   GROUP BY TIMESTAMPDIFF(WEEK, first_for_dev_at, completed_at)
 ```
 
-链接到第3层需求列表的左上角Links如下：
+链接到【3.5】第3层需求列表的左上角Links如下：
 
 - 标题：`需求列表-${ep_tapd_workspace_id}：(年初-$ep_leadtime_datetime)`
 - URL：
@@ -643,9 +648,164 @@ ${ep_dashboard_url}?orgId=1&viewPanel=21&from=${__from}&to=${__to}
 &var-ep_tapd_workspace_id=${ep_tapd_workspace_id}
 ```
 
+### 3.4 【二层】LeadTime均值分阶段
+Query SQL:
+```
+SELECT 
+  date_format(data_datetime, '%Y-%m-%d') as 'category',
+  (
+    SELECT 
+      AVG(waiting_before_dev) 
+    FROM 
+      t_tapd_story_stage s 
+    WHERE 
+      s.tapd_workspace_id = "${ep_tapd_workspace_id}"
+      AND s.created_at >= date_format(data_datetime, '%Y-01-01')
+      AND waiting_before_dev >= 0
+      AND (s.completed_at BETWEEN date_format(data_datetime, '%Y-01-01')  AND date_format(data_datetime, '%Y-%m-%d'))
+  ) as '待开发',
+  (
+    SELECT 
+      AVG(in_dev) 
+    FROM 
+      t_tapd_story_stage s 
+    WHERE 
+      s.tapd_workspace_id = "${ep_tapd_workspace_id}"
+      AND s.created_at >= date_format(data_datetime, '%Y-01-01')
+      AND in_dev >= 0
+      AND (s.completed_at BETWEEN date_format(data_datetime, '%Y-01-01')  AND date_format(data_datetime, '%Y-%m-%d'))
+  ) as '开发中',
+  (
+    SELECT 
+      AVG(waiting_before_qa) 
+    FROM 
+      t_tapd_story_stage s 
+    WHERE 
+      s.tapd_workspace_id = "${ep_tapd_workspace_id}"
+      AND s.created_at >= date_format(data_datetime, '%Y-01-01')
+      AND waiting_before_qa >= 0
+      AND (s.completed_at BETWEEN date_format(data_datetime, '%Y-01-01')  AND date_format(data_datetime, '%Y-%m-%d'))
+  ) as '待测试',
+  (
+    SELECT 
+      AVG(in_qa) 
+    FROM 
+      t_tapd_story_stage s 
+    WHERE 
+      s.tapd_workspace_id = "${ep_tapd_workspace_id}"
+      AND s.created_at >= date_format(data_datetime, '%Y-01-01')
+      AND in_qa >= 0
+      AND (s.completed_at BETWEEN date_format(data_datetime, '%Y-01-01')  AND date_format(data_datetime, '%Y-%m-%d'))
+  ) as '测试中',
+  (
+    SELECT 
+      AVG(waiting_before_release) 
+    FROM 
+      t_tapd_story_stage s 
+    WHERE 
+      s.tapd_workspace_id = "${ep_tapd_workspace_id}"
+      AND s.created_at >= date_format(data_datetime, '%Y-01-01')
+      AND waiting_before_release >= 0
+      AND (s.completed_at BETWEEN date_format(data_datetime, '%Y-01-01')  AND date_format(data_datetime, '%Y-%m-%d'))
+  ) as '待上线'
+from 
+  t_calendar
+where data_datetime = '${ep_leadtime_datetime}'
+
+```
+
+- 标题：LeadTime-均值分阶段（年初~${ep_leadtime_datetime}）
+- Format as选择Table
+- Echarts Options：
+
+```js
+const axisOption = {
+  axisTick: {
+    show: false,
+  },
+  axisLine: {
+    show: true,
+  },
+  axisLabel: {
+    color: 'rgba(128, 128, 128, .9)',
+  },
+  splitLine: {
+    lineStyle: {
+      color: 'rgba(128, 128, 128, .2)',
+    },
+  },
+};
 
 
-### 3.4 【三层】需求列表
+const data_serise = function(){
+  data_from_sql = data.series[0].fields
+  xData = []
+  seData = []
+  leData = []
+  data_from_sql.forEach(function (item, index, array) {
+    if (item.name == "category"){
+      xData.push(item.values.buffer[0])
+    }
+    if (item.type == "number"){
+      show_data = item.values.buffer
+      result = []
+      show_data.forEach(function (item, idnex, array) {
+    		result.push(item.toFixed(2)) ;
+			});
+      seData.push({
+        name: item.name,
+        barWidth: 60,
+        type: 'bar',
+        stack: 1,
+        label: {show: true, formatter: '{c}天'},
+        data: result,
+    	});
+      leData.push(item.name)
+    }
+  });
+  return {'xData': xData, 'se':seData, 'leData': leData};
+}
+options = {
+  backgroundColor: 'transparent',
+  tooltip: {
+    trigger: 'axis',
+  },
+  legend: {
+    data: data_serise().leData,
+    textStyle: {
+      color: 'rgba(128, 128, 128, .9)',
+    },
+  },
+  yAxis: [
+        {
+            type: 'category',
+            data: data_serise().xData
+        }
+    ],
+    xAxis: [
+        {
+            type: 'value',
+            max : 50
+        }
+    ],
+  grid: {
+    left: 20,
+    right: 16,
+    top: 6,
+    bottom: 24,
+    containLabel: true,
+  },
+  series: data_serise().se,
+};
+
+
+return options;
+```
+
+
+
+
+### 3.5 【三层】需求列表
 
 Query SQL：
 
@@ -671,7 +831,7 @@ WHERE
 ORDER BY iteration_name DESC
 ```
 
-链接到第四层需求时间分布比例的Data Links如下：
+链接到【3.6】第四层需求时间分布比例的Data Links如下：
 
 - 标题：`需求-${ep_tapd_story_id}分布`
 - URL：
@@ -683,7 +843,7 @@ ${ep_dashboard_url}?viewPanel=71&orgId=1&from=${__from}
 
 
 
-### 3.5 【四层】需求时间分布比例
+### 3.6 【四层】需求时间分布比例
 
 第四层直接从URL中通过`"${ep_tapd_story_id}"`获取条件，进行查询，展示饼图。
 
