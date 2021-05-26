@@ -19,7 +19,7 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 [Node.js](https://github.com/tars-node/Tars.js/)、[PHP](https://github.com/TarsPHP/TarsPHP/)、
 [Java](https://github.com/TarsCloud/TarsJava) 等语言开发，最新版本已经支持后台开发语言
 新贵——[Go](https://github.com/TarsCloud/TarsGo)。
-　　
+
 　　本文旨在还原TarsGo Step by Step的过程。
 
 
@@ -50,16 +50,16 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 
 ## 3.2 整体步骤
 
-　　查看KM里面各种Tafgo Step by Step，大致步骤可以归纳如下：
+　　大致步骤可以归纳如下：
 
 
 1. 开发机申请
 2. 开发机创建服务
 3. 开发机关联本机，在Goland里面配置Deployment
-4. Taf147创建服务
+4. Taf开发环境创建服务
 5. 开发机里，进行make upload2test
-6. 观察Taf147是否部署成功
-7. Taf147接口测试创建用例，进行测试
+6. 观察Taf开发环境是否部署成功
+7. Taf开发环境接口测试创建用例，进行测试
 8. 通过网络权限申请，或者繁琐的步骤，进行client测试
    
 
@@ -71,9 +71,9 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 
 ## 4.1 申请开发机
 
-1. 登陆[Devcloud](http://devcloud.woa.com/#!/home/index)，点击首页【申请云服务器】，申请开发机，之后会收到邮件。
+1. 登陆内部[Devcloud]，点击首页【申请云服务器】，申请开发机。
 
-2. 连接登陆CVM开发机（申请的开发机，在本机是可以直接连通的，无须通过MNET跳板机）。
+2. 连接登陆开发机。
 
    ![](/assets/img/2020/20201113_连接开发机.png){: .img-medium}
 
@@ -106,7 +106,8 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
    - 配置内容并退出
 
      ```shell
-     export PATH=$PATH:/usr/local/go/binexport GOROOT=/usr/local/goexport GOPATH=/root/go
+     export PATH=$PATH:/usr/local/go/bin
+     export GOROOT=/usr/local/goexport GOPATH=/root/go
      ```
 
    - 导入系统环境
@@ -127,11 +128,11 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 
 3. 安装依赖包tarsgo
 
-   - 腾讯已经将taggo开源为tarsgo了（下面是内部链接）http://git.code.oa.com/tarsgo/tars.git
+   - 腾讯已经将taggo开源为tarsgo了（下面是内部链接）
 
      ```shell
      cd /root/go/src
-     git clone http://git.code.oa.com/tarsgo/tars.git
+     git clone http://xxx.xxx.oa.com/tarsgo/tars.git
      ```
 
    - 安装 tars2go	
@@ -332,7 +333,7 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 
 # 五、代码仓库
 
-1. 远程工蜂建仓https://git.code.oa.com/projects/new，创建同名项目
+1. 远程工蜂建仓，创建同名项目
 
 2. 添加成员`svn_taf`，Reporter或者其以上的等级
 
@@ -340,18 +341,18 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 
    ```shell
    [root@VM_38_187_centos ~/go/src/EPTest/EPTestServer]# git init
-   [root@VM_38_187_centos ~/go/src/EPTest/EPTestServer]# git remote add origin http://git.code.oa.com/yukkizhang/EPTestServer.git
+   [root@VM_38_187_centos ~/go/src/EPTest/EPTestServer]# git remote add origin http://xxx.xxx.oa.com/yukkizhang/EPTestServer.git
    [root@VM_38_187_centos ~/go/src/EPTest/EPTestServer]# git commit -m "[yukki] Init commit"
    [root@VM_38_187_centos ~/go/src/EPTest/EPTestServer]# git push -u origin master
    ```
 
    
 
-# 六、TAF 147
+# 六、TAF 开发环境
 
 ## 5.1 创建服务
 
-1. TAF_147->流程工具->TAF服务上线->Docker服务上线
+1. TAF_开发环境->流程工具->TAF服务上线->Docker服务上线
 
    ![](/assets/img/2020/20201113_TAF_创建服务.png){: .img-large}
 
@@ -366,7 +367,6 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 4. 点击“提交”，提交后，自己可以进行审核，点击“通过”后，完成上线。
 
 5. 查看服务详情
-   ![](/assets/img/2020/20201113_TAF_查看服务.png)
 
 
 
@@ -375,7 +375,7 @@ Framework）的对外开源版，去掉了许多冗杂多余的部分。该框�
 1. 回到开发机窗口上传
 
    ```shell
-   // 上线147开发环境
+   // 上线TAF开发环境
    make upload2test
    ```
 

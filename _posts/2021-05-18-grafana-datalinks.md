@@ -277,10 +277,10 @@ ORDER BY weekly_prj_ci_cnt desc
 
 ```
 TAPD详情：
-<a href="http://tapd.oa.com/xxx/prong/stories/stories_list">XXX项目需求详情</a></td>
+<a href="http://xxx.oa.com/xxx/prong/stories/stories_list">XXX项目需求详情</a></td>
 </br>
 计算规则：
-<img src="https://km.woa.com/files/photos/pictures/202105/1620358003_47_w1278_h584.png" width="50%"/>
+<img src="https://xxx.woa.com/files/photos/pictures/202105/1620358003_47_w1278_h584.png" width="50%"/>
 ```
 
 
@@ -317,7 +317,7 @@ SELECT
   SUM(eight) AS '大于8天',
   SUM(total) AS '总数',
   CONCAT(
-    "<a href='http://tapd.oa.com/",
+    "<a href='http://xxx.oa.com/",
     tapd_workspace_id,
     "/prong/iterations/view/",
     tapd_iteration_id,

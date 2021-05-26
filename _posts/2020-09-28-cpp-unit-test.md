@@ -629,7 +629,7 @@ using ::testing::InSequence;
 
 # 六、情景示例
 
-　　在这部分，我们用一个[示例项目](https://git.code.oa.com/catonzhong/cpp-ut)来演示，如何在不同情景中使用
+　　在这部分，我们用一个示例项目来演示，如何在不同情景中使用
 Google Test和Google Mock写单元测试用例。
 
 ## 1. 项目结构
@@ -905,13 +905,7 @@ TEST(ChatRoomTest, join) {
 1. Mock类和原类没有继承关系，在测试对象使用函数模板。在测试中，测试对象接受Mock类。
 2. 创建一个接口（抽象类），原类继承自这个接口（抽象类）。在测试中Mock这个接口（抽象类）。
 
-　　这两种方法，都需要对代码进行一定的修改或重构。如果不想修改被测试代码。可以考虑使用hook技术替换被mock的部分从而mock一般函数。km上有很多文章分享不同的工具和方法。
-
-1. [如何mock一个没有虚函数的类](http://km.oa.com/group/2804/articles/show/426064?kmref=search&from_page=2&no=4)
-2. [单元测试：googletest + googlemock + bhook](http://km.oa.com/articles/show/427350?kmref=search&from_page=4&no=1)
-3. [单元测试（UT）之GTEST， GMock，GMOCKPLUS](http://km.oa.com/group/11800/articles/show/284251?kmref=search&from_page=1&no=3)
-4. [TMock：结合Hook和GMock进行单元测试](http://km.oa.com/group/17627/articles/show/222211?kmref=search&from_page=1&no=5)
-5. [单元测试-gmock、tbase、tmock简介](http://km.oa.com/articles/show/459439?kmref=search&from_page=1&no=7)
+　　这两种方法，都需要对代码进行一定的修改或重构。如果不想修改被测试代码。可以考虑使用hook技术替换被mock的部分从而mock一般函数。
 
 使用`TMock`对非虚函数mock的例子：
 

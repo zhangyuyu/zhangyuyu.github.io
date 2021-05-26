@@ -1836,6 +1836,5 @@ Python属于脚本语言，不像编译型语言那样先将程序编译成二�
 - [Python测试框架最全资源汇总](http://www.testclass.net/post/python-test-list)
 - [Python Testing Tools Taxonomy](https://wiki.python.org/moin/PythonTestingToolsTaxonomy)
 -  [Modern Test-Driven Development in Python](https://testdriven.io/blog/modern-tdd/#when-should-you-use-mocks)
-- [Python情景示例代码](https://git.code.oa.com/yukkizhang/python-ut)
 - [单元测试成神之路——GoLang篇](https://zhangyuyu.github.io/golang-unit-test/)
 - [单元测试成神之路——C++篇](https://zhangyuyu.github.io/cpp-unit-test/)
